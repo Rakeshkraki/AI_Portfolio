@@ -7,7 +7,7 @@
 // ============================================================
 
 import {useEffect, useRef, useState} from "react";
-import { motion } from "framer-motion";
+import {motion} from "framer-motion";
 import {
     Brain,
     Database,
@@ -20,7 +20,7 @@ import {
     ArrowRight,
 } from "lucide-react";
 
-import { fadeUp, staggerContainer } from "@/lib/motion";
+import {fadeUp, staggerContainer} from "@/lib/motion";
 import {useFrame} from "@react-three/fiber";
 
 // ------------------------------------------------------------
@@ -165,16 +165,16 @@ function ArchitectureConnections() {
                     x2="100%"
                     y2="100%"
                 >
-                    <stop offset="0%" stopColor="#22D3EE" stopOpacity="0.7" />
-                    <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.4" />
+                    <stop offset="0%" stopColor="#22D3EE" stopOpacity="0.7"/>
+                    <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.4"/>
                 </linearGradient>
 
                 <filter id="glow">
-                    <feGaussianBlur stdDeviation="1.8" result="coloredBlur" />
+                    <feGaussianBlur stdDeviation="1.8" result="coloredBlur"/>
 
                     <feMerge>
-                        <feMergeNode in="coloredBlur" />
-                        <feMergeNode in="SourceGraphic" />
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
                     </feMerge>
                 </filter>
             </defs>
@@ -213,7 +213,7 @@ function ArchitectureConnections() {
 
                         {/* Animated Packet */}
 
-                        <DataPacket path={path} delay={index * 0.2} />
+                        <DataPacket path={path} delay={index * 0.2}/>
                     </g>
                 );
             })}
@@ -268,7 +268,7 @@ function BackgroundRings() {
             {[42, 58, 74].map((size, index) => (
                 <motion.div
                     key={size}
-                    animate={{ rotate: 360 }}
+                    animate={{rotate: 360}}
                     transition={{
                         duration: 24 + index * 6,
                         repeat: Infinity,
@@ -320,6 +320,294 @@ function PulseWaves() {
     );
 }
 
+// ============================================================
+// AI Request Flow Simulation
+// ============================================================
+
+const requestSteps = [
+    {
+        title: "User Prompt",
+        value: "Explain GraphRAG architecture",
+        color: "#38BDF8",
+    },
+    {
+        title: "GraphRAG Retrieval",
+        value: "Knowledge Graph + Vector Search",
+        color: "#22D3EE",
+    },
+    {
+        title: "Agent Planner",
+        value: "Route task to Retrieval + LLM",
+        color: "#8B5CF6",
+    },
+    {
+        title: "Inference Engine",
+        value: "GPT-5 / Llama / vLLM",
+        color: "#6366F1",
+    },
+    {
+        title: "Response Generation",
+        value: "Grounded enterprise answer",
+        color: "#10B981",
+    },
+];
+
+function RequestFlow() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card mt-20 rounded-[32px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8 flex items-center justify-between">
+                <div>
+                    <p className="mono text-xs uppercase tracking-[0.3em] text-cyan-300/70">
+                        LIVE PIPELINE
+                    </p>
+
+                    <h3 className="mt-3 text-3xl font-semibold text-white">
+                        AI Request Journey
+                    </h3>
+                </div>
+
+                <div className="status-pill">
+                    <span className="status-dot"/>
+                    STREAMING
+                </div>
+            </div>
+
+            <div className="space-y-5">
+                {requestSteps.map((step, index) => (
+                    <motion.div
+                        key={step.title}
+                        initial={{
+                            opacity: 0,
+                            x: -20,
+                        }}
+                        whileInView={{
+                            opacity: 1,
+                            x: 0,
+                        }}
+                        viewport={{once: true}}
+                        transition={{
+                            delay: index * 0.15,
+                        }}
+                        className="rounded-2xl border border-white/10 bg-black/20 p-5"
+                    >
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <p className="mono text-[10px] uppercase tracking-[0.25em] text-slate-500">
+                                    STEP {index + 1}
+                                </p>
+
+                                <h4 className="mt-2 text-lg font-semibold text-white">
+                                    {step.title}
+                                </h4>
+
+                                <p className="mt-2 text-sm text-slate-400">
+                                    {step.value}
+                                </p>
+                            </div>
+
+                            <motion.div
+                                animate={{
+                                    scale: [1, 1.25, 1],
+                                    opacity: [0.5, 1, 0.5],
+                                }}
+                                transition={{
+                                    repeat: Infinity,
+                                    duration: 2,
+                                    delay: index * 0.3,
+                                }}
+                                className="h-3 w-3 rounded-full"
+                                style={{
+                                    backgroundColor: step.color,
+                                    boxShadow: `0 0 12px ${step.color}`,
+                                }}
+                            />
+                        </div>
+
+                        <motion.div
+                            className="mt-4 h-[3px] rounded-full"
+                            style={{
+                                background: `linear-gradient(90deg,${step.color},transparent)`,
+                            }}
+                            initial={{width: 0}}
+                            whileInView={{width: "100%"}}
+                            viewport={{once: true}}
+                            transition={{
+                                delay: index * 0.15,
+                                duration: 0.6,
+                            }}
+                        />
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// Streaming Token Generator
+// ============================================================
+
+function StreamingTokens() {
+    const tokens = [
+        "GRAPH",
+        "NODE",
+        "VECTOR",
+        "EMBEDDING",
+        "RERANK",
+        "CONTEXT",
+        "AGENT",
+        "TOOL CALL",
+        "INFERENCE",
+        "OBSERVABILITY",
+        "CACHE HIT",
+        "LATENCY 128ms",
+    ];
+
+    return (
+        <div className="glass-card mt-12 overflow-hidden rounded-[28px] border border-cyan-400/10 p-6">
+            <p className="mono mb-4 text-xs uppercase tracking-[0.3em] text-cyan-300/70">
+                STREAMING TOKENS
+            </p>
+
+            <div className="relative flex overflow-hidden">
+                <motion.div
+                    animate={{
+                        x: ["0%", "-50%"],
+                    }}
+                    transition={{
+                        repeat: Infinity,
+                        duration: 12,
+                        ease: "linear",
+                    }}
+                    className="flex gap-4 whitespace-nowrap"
+                >
+                    {[...tokens, ...tokens].map((token, index) => (
+                        <div
+                            key={index}
+                            className="rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-2 text-xs font-medium tracking-wider text-cyan-300"
+                        >
+                            {token}
+                        </div>
+                    ))}
+                </motion.div>
+            </div>
+        </div>
+    );
+}
+
+// ============================================================
+// Legend
+// ============================================================
+
+const legendItems = [
+    ["#22D3EE", "Retrieval Layer"],
+    ["#8B5CF6", "Agent Orchestration"],
+    ["#38BDF8", "LLM Inference"],
+    ["#10B981", "Vector Search"],
+    ["#F59E0B", "Knowledge Graph"],
+    ["#EF4444", "Observability"],
+    ["#E879F9", "Guardrails"],
+    ["#6366F1", "GPU Compute"],
+];
+
+function ArchitectureLegend() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card mt-12 rounded-[28px] border border-white/10 p-6"
+        >
+            <p className="mono mb-5 text-xs uppercase tracking-[0.3em] text-cyan-300/70">
+                ARCHITECTURE LEGEND
+            </p>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {legendItems.map(([color, label]) => (
+                    <div
+                        key={label}
+                        className="flex items-center gap-3 rounded-xl bg-black/20 p-3"
+                    >
+                        <div
+                            className="h-3 w-3 rounded-full"
+                            style={{
+                                backgroundColor: color,
+                                boxShadow: `0 0 10px ${color}`,
+                            }}
+                        />
+
+                        <span className="text-sm text-slate-300">
+              {label}
+            </span>
+                    </div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Capabilities Grid
+// ============================================================
+
+const capabilities = [
+    {
+        title: "GraphRAG Retrieval",
+        value: "Hybrid graph + semantic retrieval",
+    },
+    {
+        title: "Agent Planning",
+        value: "Multi-agent task orchestration",
+    },
+    {
+        title: "Vector Similarity",
+        value: "Qdrant / Pinecone / FAISS",
+    },
+    {
+        title: "Knowledge Graph",
+        value: "Neo4j + Cypher traversal",
+    },
+    {
+        title: "Inference",
+        value: "GPT-5, Llama, vLLM, Mistral",
+    },
+    {
+        title: "Observability",
+        value: "Tracing • Metrics • Evaluation",
+    },
+];
+
+function CapabilityGrid() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="mt-16 grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+        >
+            {capabilities.map((capability) => (
+                <motion.div
+                    key={capability.title}
+                    whileHover={{
+                        y: -6,
+                        scale: 1.02,
+                    }}
+                    className="glass-card rounded-3xl border border-cyan-400/10 p-6"
+                >
+                    <div className="mb-4 h-10 w-10 rounded-full bg-cyan-400/10"/>
+
+                    <h4 className="text-lg font-semibold text-white">
+                        {capability.title}
+                    </h4>
+
+                    <p className="mt-3 text-sm leading-6 text-slate-400">
+                        {capability.value}
+                    </p>
+                </motion.div>
+            ))}
+        </motion.div>
+    );
+}
+
 export default function SystemArchitecture() {
     const [activeModule, setActiveModule] = useState("graphrag");
 
@@ -334,20 +622,21 @@ export default function SystemArchitecture() {
         >
             {/* Background Glow */}
 
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.08),transparent_60%)]" />
+            <div
+                className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.08),transparent_60%)]"/>
 
             <motion.div
                 variants={staggerContainer(0.18)}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
+                viewport={{once: true}}
                 className="container-ai relative z-10"
             >
                 {/* Heading */}
 
                 <motion.div variants={fadeUp} className="text-center">
                     <div className="status-pill mx-auto w-fit">
-                        <span className="status-dot" />
+                        <span className="status-dot"/>
                         AI SYSTEM ARCHITECTURE
                     </div>
 
@@ -377,7 +666,7 @@ export default function SystemArchitecture() {
                                 viewBox="0 0 100 100"
                                 className="h-full w-full"
                             >
-                                {Array.from({ length: 11 }).map((_, i) => (
+                                {Array.from({length: 11}).map((_, i) => (
                                     <g key={i}>
                                         <line
                                             x1={i * 10}
@@ -403,10 +692,10 @@ export default function SystemArchitecture() {
 
                         {/* Connections */}
 
-                        <BackgroundRings />
-                        <PulseWaves />
+                        <BackgroundRings/>
+                        <PulseWaves/>
 
-                        <ArchitectureConnections />
+                        <ArchitectureConnections/>
 
                         {/* Modules */}
 
@@ -440,15 +729,15 @@ export default function SystemArchitecture() {
                                                 : `0 0 15px ${module.color}33`,
                                             scale: active ? 1.05 : 1,
                                         }}
-                                        transition={{ duration: 0.35 }}
+                                        transition={{duration: 0.35}}
                                         className={`relative flex h-16 w-16 items-center justify-center rounded-full border ${
                                             active
                                                 ? "border-white/40 bg-white/10"
                                                 : "border-white/10 bg-black/40"
                                         }`}
-                                        style={{ color: module.color }}
+                                        style={{color: module.color}}
                                     >
-                                        <Icon size={26} />
+                                        <Icon size={26}/>
 
                                         {active && (
                                             <motion.div
@@ -472,10 +761,10 @@ export default function SystemArchitecture() {
                         {/* Floating AI Labels */}
 
                         {[
-                            { text: "RETRIEVAL", x: 18, y: 8 },
-                            { text: "REASONING", x: 72, y: 8 },
-                            { text: "VECTOR SEARCH", x: 80, y: 88 },
-                            { text: "OBSERVABILITY", x: 15, y: 88 },
+                            {text: "RETRIEVAL", x: 18, y: 8},
+                            {text: "REASONING", x: 72, y: 8},
+                            {text: "VECTOR SEARCH", x: 80, y: 88},
+                            {text: "OBSERVABILITY", x: 15, y: 88},
                         ].map((label) => (
                             <motion.div
                                 key={label.text}
@@ -521,7 +810,7 @@ export default function SystemArchitecture() {
                                         color: selected.color,
                                     }}
                                 >
-                                    <selected.icon size={30} />
+                                    <selected.icon size={30}/>
                                 </div>
 
                                 <h3 className="text-2xl font-semibold text-white">
@@ -559,7 +848,7 @@ export default function SystemArchitecture() {
                                         </p>
 
                                         <div className="status-pill">
-                                            <span className="status-dot" />
+                                            <span className="status-dot"/>
                                             ONLINE
                                         </div>
                                     </div>
@@ -614,6 +903,23 @@ export default function SystemArchitecture() {
                     </motion.div>
                 </div>
             </motion.div>
+            {/* =====================================================
+      AI Request Simulation
+===================================================== */}
+
+            <RequestFlow/>
+
+            {/* Streaming Tokens */}
+
+            <StreamingTokens/>
+
+            {/* Legend */}
+
+            <ArchitectureLegend/>
+
+            {/* Capabilities */}
+
+            <CapabilityGrid/>
         </section>
     );
 }

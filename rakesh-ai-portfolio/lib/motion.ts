@@ -48,7 +48,10 @@ export const heroItem: Variants = {
         opacity: 1,
         y: 0,
         filter: "blur(0px)",
-        transition,
+        transition : {
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+        },
     },
 };
 
@@ -64,7 +67,10 @@ export const fadeUp: Variants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition,
+        transition : {
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+        },
     },
 };
 
@@ -80,7 +86,10 @@ export const fadeDown: Variants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition,
+        transition : {
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+        },
     },
 };
 
@@ -96,7 +105,10 @@ export const fadeLeft: Variants = {
     visible: {
         opacity: 1,
         x: 0,
-        transition,
+        transition : {
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+        },
     },
 };
 
@@ -112,7 +124,10 @@ export const fadeRight: Variants = {
     visible: {
         opacity: 1,
         x: 0,
-        transition,
+        transition : {
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+        },
     },
 };
 
@@ -128,7 +143,10 @@ export const scaleReveal: Variants = {
     visible: {
         opacity: 1,
         scale: 1,
-        transition,
+        transition : {
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+        },
     },
 };
 
@@ -144,7 +162,10 @@ export const blurReveal: Variants = {
     visible: {
         opacity: 1,
         filter: "blur(0px)",
-        transition,
+        transition : {
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+        },
     },
 };
 
@@ -276,7 +297,10 @@ export const projectCard: Variants = {
         opacity: 1,
         y: 0,
         scale: 1,
-        transition,
+        transition :{
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+        },
     },
 };
 
@@ -401,7 +425,10 @@ export const dashboardWidget: Variants = {
         opacity: 1,
         scale: 1,
         y: 0,
-        transition: fastTransition,
+        transition: {
+            duration: 0.45,
+            ease: [0.22, 1, 0.36, 1],
+        },
     },
 };
 
