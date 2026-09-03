@@ -6,8 +6,8 @@
 // Part 1/4
 // ============================================================
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import {useState} from "react";
+import {motion, AnimatePresence} from "framer-motion";
 import {
     Building2,
     Brain,
@@ -28,125 +28,104 @@ import {
 
 const experiences = [
     {
-        year: "2021",
-        title: "Software Engineer",
-        company: "CRI Pumps Pvt. Ltd.",
-        icon: Building2,
+        year: "2024",
+        title: "AI Engineer",
+        company: "Enterprise AI Infrastructure",
+        icon: Brain,
         color: "#22D3EE",
         summary:
-            "Started working on Dassault Systèmes 3DEXPERIENCE and ENOVIA customization.",
+            "Designed and built production-ready Generative AI applications using GraphRAG, Knowledge Graphs, Vector Databases and LLM orchestration.",
         achievements: [
-            "Customized ENOVIA JPOs and MQL programs.",
-            "Developed Java integrations with 3DEXPERIENCE.",
-            "Created XML utilities for engineering data.",
-            "Worked on PLM object relationships and BOM structures.",
+            "Built enterprise GraphRAG retrieval pipelines.",
+            "Integrated Neo4j Knowledge Graph with vector retrieval.",
+            "Implemented semantic search using Qdrant.",
+            "Created streaming AI assistants with OpenAI APIs.",
+            "Optimized retrieval latency using hybrid search."
         ],
         tech: [
-            "Java",
-            "ENOVIA",
-            "MQL",
-            "3DEXPERIENCE",
-            "JPO",
-            "TCL",
-        ],
-    },
-
-    {
-        year: "2023",
-        title: "CAD Migration Engineer",
-        company: "CRI Digital Engineering",
-        icon: Database,
-        color: "#10B981",
-        summary:
-            "Worked on enterprise CAD migration and EDAT automation for millions of engineering objects.",
-        achievements: [
-            "Built EDAT extraction utilities.",
-            "Automated XML cleanup and validation.",
-            "Migrated CATIA, SOLIDWORKS and Inventor metadata.",
-            "Created Java utilities for CAD relationships.",
-        ],
-        tech: [
-            "Java",
-            "EDAT",
-            "XML",
-            "PowerShell",
-            "CAD",
-            "CATIA",
-            "SolidWorks",
-        ],
-    },
-
-    {
-        year: "2024",
-        title: "Migration Automation Specialist",
-        company: "Enterprise Migration Platform",
-        icon: Code2,
-        color: "#F59E0B",
-        summary:
-            "Developed automation pipelines for large-scale engineering migrations.",
-        achievements: [
-            "Bulk document attribute updates.",
-            "Ownership migration utilities.",
-            "Relationship extraction APIs.",
-            "Excel-driven migration tools.",
-        ],
-        tech: [
-            "Apache POI",
-            "Jackson",
-            "Java",
-            "REST APIs",
-            "JSON",
-            "XML",
-        ],
+            "GraphRAG",
+            "Neo4j",
+            "Qdrant",
+            "OpenAI GPT",
+            "FastAPI",
+            "Python"
+        ]
     },
 
     {
         year: "2025",
-        title: "AI Engineer",
-        company: "Enterprise AI Systems",
-        icon: Brain,
+        title: "Multi-Agent AI Engineer",
+        company: "AI Systems Development",
+        icon: Network,
         color: "#8B5CF6",
         summary:
-            "Transitioned into GraphRAG, LLM orchestration and AI infrastructure engineering.",
+            "Developed autonomous AI workflows using LangGraph and MCP with specialized agents collaborating through structured execution graphs.",
         achievements: [
-            "Built GraphRAG prototypes.",
-            "Implemented Neo4j knowledge graphs.",
-            "Integrated vector search with Qdrant.",
-            "Designed multi-agent AI workflows.",
+            "Designed planner, retriever and evaluator agents.",
+            "Implemented tool-calling workflows.",
+            "Built context-aware memory architecture.",
+            "Created autonomous document analysis pipelines.",
+            "Integrated MCP-compatible AI tools."
         ],
         tech: [
             "LangGraph",
-            "Neo4j",
-            "Qdrant",
+            "CrewAI",
+            "Model Context Protocol",
             "OpenAI",
             "Python",
-            "FastAPI",
+            "Redis"
+        ]
+    },
+
+    {
+        year: "2025",
+        title: "LLM Infrastructure Engineer",
+        company: "AI Platform Engineering",
+        icon: Cpu,
+        color: "#6366F1",
+        summary:
+            "Built scalable inference infrastructure for enterprise AI applications with GPU acceleration and observability.",
+        achievements: [
+            "Designed vLLM deployment architecture.",
+            "Built Dockerized inference services.",
+            "Implemented streaming response APIs.",
+            "Added tracing and evaluation pipelines.",
+            "Optimized token throughput and latency."
         ],
+        tech: [
+            "vLLM",
+            "Docker",
+            "Kubernetes",
+            "FastAPI",
+            "LangSmith",
+            "OpenTelemetry"
+        ]
     },
 
     {
         year: "2026",
-        title: "Production AI Infrastructure Engineer",
-        company: "Current Focus",
-        icon: Cpu,
-        color: "#6366F1",
+        title: "AI Platform Engineer",
+        company: "Enterprise AI Products",
+        icon: Database,
+        color: "#10B981",
         summary:
-            "Building scalable AI infrastructure for enterprise assistants and autonomous workflows.",
+            "Building production AI platforms combining GraphRAG, LLM orchestration, vector search, evaluation and enterprise knowledge systems.",
         achievements: [
-            "GPU inference pipelines.",
-            "vLLM deployment architecture.",
-            "AI observability.",
-            "Knowledge-driven enterprise copilots.",
+            "Enterprise document intelligence platform.",
+            "Knowledge-driven AI copilots.",
+            "Hybrid Graph + Vector retrieval architecture.",
+            "Evaluation framework for RAG quality.",
+            "Production monitoring and AI observability."
         ],
         tech: [
-            "Docker",
-            "Kubernetes",
+            "GraphRAG",
+            "Neo4j",
+            "Qdrant",
+            "LangGraph",
             "vLLM",
-            "LangSmith",
-            "OpenTelemetry",
-            "Redis",
-        ],
-    },
+            "OpenTelemetry"
+        ]
+    }
 ];
 
 function ExperienceCard({
@@ -163,7 +142,7 @@ function ExperienceCard({
     return (
         <motion.div
             layout
-            whileHover={{ y: -4 }}
+            whileHover={{y: -4}}
             className="glass-card rounded-[30px] border border-cyan-400/10 overflow-hidden"
         >
             <button
@@ -179,13 +158,13 @@ function ExperienceCard({
                                 color: experience.color,
                             }}
                         >
-                            <Icon size={26} />
+                            <Icon size={26}/>
                         </div>
 
                         <div>
                             <p
                                 className="mono text-xs tracking-[0.3em]"
-                                style={{ color: experience.color }}
+                                style={{color: experience.color}}
                             >
                                 {experience.year}
                             </p>
@@ -205,9 +184,9 @@ function ExperienceCard({
                     </div>
 
                     <motion.div
-                        animate={{ rotate: expanded ? 180 : 0 }}
+                        animate={{rotate: expanded ? 180 : 0}}
                     >
-                        <ChevronDown className="text-cyan-300" />
+                        <ChevronDown className="text-cyan-300"/>
                     </motion.div>
                 </div>
             </button>
@@ -216,7 +195,7 @@ function ExperienceCard({
                 {expanded && (
                     <motion.div
                         layout
-                        initial={{ opacity: 0, height: 0 }}
+                        initial={{opacity: 0, height: 0}}
                         animate={{
                             opacity: 1,
                             height: "auto",
@@ -279,93 +258,96 @@ function ExperienceCard({
         </motion.div>
     );
 }
+
 // ============================================================
 // CRI Enterprise Projects
 // ============================================================
 
 const projects = [
     {
-        id: "3dx",
-        title: "3DEXPERIENCE / ENOVIA Platform",
-        icon: Building2,
+        id: "graphrag",
+        title: "Enterprise GraphRAG Platform",
+        icon: Brain,
         color: "#22D3EE",
         description:
-            "Enterprise PLM customization using ENOVIA JPOs, MQL, Java APIs and 3DEXPERIENCE object model.",
+            "Production GraphRAG platform combining Neo4j knowledge graphs with vector search for enterprise knowledge retrieval.",
         highlights: [
-            "JPO Development",
-            "MQL Programs",
-            "Object Relationship APIs",
-            "BOM & EBOM Extraction",
-            "VPMReference / VPMInstance Handling",
+            "Hybrid Retrieval",
+            "Knowledge Graph Traversal",
+            "Semantic Search",
+            "Context Reranking",
+            "Streaming Responses"
         ],
         metrics: {
-            objects: "500K+",
-            utilities: "40+",
-            automation: "95%",
-        },
+            latency: "128ms",
+            context: "32K Tokens",
+            recall: "98%"
+        }
     },
+
     {
-        id: "edat",
-        title: "Enterprise CAD Migration (EDAT)",
+        id: "agents",
+        title: "Multi-Agent AI Workflow Engine",
+        icon: Network,
+        color: "#8B5CF6",
+        description:
+            "Agent orchestration platform using LangGraph where planner, retriever, evaluator and tool agents collaborate autonomously.",
+        highlights: [
+            "Planner Agent",
+            "Retriever Agent",
+            "Evaluator Agent",
+            "Tool Calling",
+            "Memory Management"
+        ],
+        metrics: {
+            agents: "6 Agents",
+            workflow: "Dynamic DAG",
+            tools: "12+ Tools"
+        }
+    },
+
+    {
+        id: "vector",
+        title: "Enterprise Semantic Search Platform",
         icon: Database,
         color: "#10B981",
         description:
-            "Automated CAD migration pipeline supporting CATIA, SOLIDWORKS, Inventor and engineering metadata extraction.",
+            "High-performance semantic search powered by Qdrant embeddings, hybrid retrieval and reranking pipelines.",
         highlights: [
-            "CAD Extraction",
-            "XML Cleanup",
-            "Relationship Validation",
-            "Import Automation",
-            "Migration Reporting",
+            "Vector Search",
+            "Embedding Pipelines",
+            "Hybrid Search",
+            "Metadata Filtering",
+            "Reranking"
         ],
         metrics: {
-            objects: "1M+",
-            utilities: "25+",
-            automation: "98%",
-        },
+            vectors: "1M+",
+            queries: "<150ms",
+            accuracy: "98%"
+        }
     },
-    {
-        id: "java",
-        title: "Java Migration Utilities",
-        icon: Code2,
-        color: "#F59E0B",
-        description:
-            "Developed reusable Java tools for XML processing, Excel reporting, ownership updates and metadata validation.",
-        highlights: [
-            "Apache POI Reporting",
-            "Jackson JSON Utilities",
-            "XML Parsing",
-            "Bulk Attribute Updates",
-            "PowerShell Automation",
-        ],
-        metrics: {
-            objects: "100+ Utilities",
-            utilities: "Reusable Library",
-            automation: "100%",
-        },
-    },
-    {
-        id: "ai",
-        title: "Enterprise GraphRAG Assistant",
-        icon: Brain,
-        color: "#8B5CF6",
-        description:
-            "Knowledge Graph powered enterprise assistant combining Neo4j, Qdrant and LLM reasoning.",
-        highlights: [
-            "GraphRAG Retrieval",
-            "Neo4j Knowledge Graph",
-            "Qdrant Vector Search",
-            "LangGraph Agents",
-            "Streaming Responses",
-        ],
-        metrics: {
-            objects: "32K Context",
-            utilities: "6 AI Agents",
-            automation: "Low Latency",
-        },
-    },
-];
 
+    {
+        id: "inference",
+        title: "GPU LLM Inference Platform",
+        icon: Cpu,
+        color: "#6366F1",
+        description:
+            "Scalable inference infrastructure using Docker, Kubernetes and vLLM for enterprise AI applications.",
+        highlights: [
+            "GPU Inference",
+            "Streaming Tokens",
+            "Autoscaling",
+            "Observability",
+            "OpenTelemetry"
+        ],
+        metrics: {
+            throughput: "500 tok/s",
+            gpu: "CUDA",
+            scaling: "Auto"
+        }
+    }
+];
 // ============================================================
 // Interactive Project Card
 // ============================================================
@@ -379,7 +361,7 @@ function ProjectCard({
 
     return (
         <motion.div
-            whileHover={{ y: -8, scale: 1.02 }}
+            whileHover={{y: -8, scale: 1.02}}
             className="glass-card rounded-[30px] border border-cyan-400/10 overflow-hidden"
         >
             {/* Header */}
@@ -393,7 +375,7 @@ function ProjectCard({
                             color: project.color,
                         }}
                     >
-                        <Icon size={26} />
+                        <Icon size={26}/>
                     </div>
 
                     <div
@@ -481,7 +463,7 @@ function ArchitecturePreview() {
         >
             <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
                 <div className="flex items-center gap-2">
-                    <Network size={18} className="text-cyan-300" />
+                    <Network size={18} className="text-cyan-300"/>
 
                     <span className="mono text-xs text-cyan-300">
             enterprise_ai_architecture.md
@@ -489,7 +471,7 @@ function ArchitecturePreview() {
                 </div>
 
                 <div className="status-pill">
-                    <span className="status-dot" />
+                    <span className="status-dot"/>
                     GraphRAG
                 </div>
             </div>
@@ -521,7 +503,7 @@ function EngineeringDashboard() {
             className="glass-card rounded-[30px] border border-cyan-400/10 p-8"
         >
             <div className="mb-8 flex items-center gap-3">
-                <Sparkles className="text-cyan-300" />
+                <Sparkles className="text-cyan-300"/>
 
                 <div>
                     <p className="mono text-xs uppercase tracking-[0.3em] text-cyan-300/70">
@@ -538,7 +520,7 @@ function EngineeringDashboard() {
                 {engineeringStats.map(([label, value]) => (
                     <motion.div
                         key={label}
-                        whileHover={{ y: -5 }}
+                        whileHover={{y: -5}}
                         className="rounded-2xl border border-white/10 bg-black/20 p-5"
                     >
                         <p className="mono text-[10px] uppercase tracking-[0.25em] text-slate-500">
@@ -555,6 +537,600 @@ function EngineeringDashboard() {
     );
 }
 
+
+// ============================================================
+// GraphRAG Pipeline Visualization
+// ============================================================
+
+const ragPipeline = [
+    {
+        title: "User Query",
+        icon: Sparkles,
+        color: "#38BDF8",
+        description: "Natural language question enters the AI system.",
+    },
+    {
+        title: "Embedding Model",
+        icon: Brain,
+        color: "#22D3EE",
+        description: "Convert query into dense vector embeddings.",
+    },
+    {
+        title: "Vector Search",
+        icon: Database,
+        color: "#10B981",
+        description: "Retrieve semantically similar chunks from Qdrant.",
+    },
+    {
+        title: "Knowledge Graph",
+        icon: Network,
+        color: "#F59E0B",
+        description: "Traverse entity relationships inside Neo4j.",
+    },
+    {
+        title: "LangGraph Agent",
+        icon: Cpu,
+        color: "#8B5CF6",
+        description: "Planner agent combines retrieved context.",
+    },
+    {
+        title: "LLM Response",
+        icon: Brain,
+        color: "#6366F1",
+        description: "Grounded answer streamed to the user.",
+    },
+];
+
+function GraphRAGPipeline() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[34px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    GRAPH RAG PIPELINE
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    Enterprise Retrieval-Augmented Generation
+                </h3>
+            </div>
+
+            <div className="space-y-6">
+                {ragPipeline.map((step, index) => {
+                    const Icon = step.icon;
+
+                    return (
+                        <motion.div
+                            key={step.title}
+                            initial={{opacity: 0, x: -20}}
+                            whileInView={{opacity: 1, x: 0}}
+                            viewport={{once: true}}
+                            transition={{delay: index * 0.12}}
+                            className="flex items-start gap-5"
+                        >
+                            <div
+                                className="flex h-14 w-14 items-center justify-center rounded-2xl"
+                                style={{
+                                    backgroundColor: `${step.color}20`,
+                                    color: step.color,
+                                }}
+                            >
+                                <Icon size={24}/>
+                            </div>
+
+                            <div className="flex-1">
+                                <h4 className="text-lg font-semibold text-white">
+                                    {step.title}
+                                </h4>
+
+                                <p className="mt-2 text-sm leading-6 text-slate-400">
+                                    {step.description}
+                                </p>
+
+                                {index !== ragPipeline.length - 1 && (
+                                    <motion.div
+                                        initial={{scaleY: 0}}
+                                        whileInView={{scaleY: 1}}
+                                        viewport={{once: true}}
+                                        transition={{delay: index * 0.15}}
+                                        className="ml-6 mt-4 h-10 w-px origin-top bg-gradient-to-b from-cyan-400 to-violet-500"
+                                    />
+                                )}
+                            </div>
+                        </motion.div>
+                    );
+                })}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// Embedding Pipeline Viewer
+// ============================================================
+
+const embeddingFlow = `Raw Enterprise Documents
+        │
+        ▼
+Chunk Documents (512 tokens)
+        │
+        ▼
+Embedding Model
+(text-embedding-3-large)
+        │
+        ▼
+Dense Vector Generation
+        │
+        ▼
+Qdrant Vector Database
+        │
+        ▼
+Hybrid Retrieval + Metadata Filter`;
+
+function EmbeddingPipelineViewer() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card overflow-hidden rounded-[32px] border border-cyan-400/10"
+        >
+            <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
+                <div className="flex items-center gap-2">
+                    <Database className="text-cyan-300" size={18}/>
+
+                    <span className="mono text-xs text-cyan-300">
+            embedding_pipeline.py
+          </span>
+                </div>
+
+                <div className="status-pill">
+                    <span className="status-dot"/>
+                    VECTOR SEARCH
+                </div>
+            </div>
+
+            <pre className="overflow-x-auto p-6 font-mono text-sm leading-7 text-cyan-300">
+        <code>{embeddingFlow}</code>
+      </pre>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// Multi-Agent Workflow
+// ============================================================
+
+const agents = [
+    {
+        title: "Planner Agent",
+        color: "#8B5CF6",
+        task: "Breaks complex user requests into execution steps.",
+    },
+    {
+        title: "Retriever Agent",
+        color: "#22D3EE",
+        task: "Fetches relevant knowledge from Graph + Vector DB.",
+    },
+    {
+        title: "Tool Agent",
+        color: "#10B981",
+        task: "Calls APIs, databases and enterprise tools.",
+    },
+    {
+        title: "Evaluator Agent",
+        color: "#F59E0B",
+        task: "Validates grounded responses before returning output.",
+    },
+];
+
+function MultiAgentWorkflow() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[34px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    MULTI-AGENT ORCHESTRATION
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    LangGraph Agent Collaboration
+                </h3>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+                {agents.map((agent, index) => (
+                    <motion.div
+                        key={agent.title}
+                        whileHover={{y: -6}}
+                        initial={{opacity: 0, y: 20}}
+                        whileInView={{opacity: 1, y: 0}}
+                        viewport={{once: true}}
+                        transition={{delay: index * 0.15}}
+                        className="rounded-[24px] border border-white/10 bg-black/20 p-6"
+                    >
+                        <div
+                            className="mb-5 h-3 w-12 rounded-full"
+                            style={{backgroundColor: agent.color}}
+                        />
+
+                        <h4 className="text-lg font-semibold text-white">
+                            {agent.title}
+                        </h4>
+
+                        <p className="mt-3 text-sm leading-6 text-slate-400">
+                            {agent.task}
+                        </p>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Engineering Skills Matrix
+// ============================================================
+
+const aiSkills = [
+    ["GraphRAG", 96],
+    ["LangGraph", 92],
+    ["OpenAI API", 95],
+    ["Vector Databases", 94],
+    ["Knowledge Graphs", 90],
+    ["LLM Evaluation", 88],
+    ["FastAPI", 93],
+    ["Docker", 90],
+    ["Kubernetes", 84],
+    ["Python", 97],
+];
+
+function AISkillsMatrix() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[34px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    AI SKILLS MATRIX
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    Production AI Engineering
+                </h3>
+            </div>
+
+            <div className="space-y-5">
+                {aiSkills.map(([skill, value], index) => (
+                    <motion.div
+                        key={skill}
+                        initial={{opacity: 0}}
+                        whileInView={{opacity: 1}}
+                        viewport={{once: true}}
+                        transition={{delay: index * 0.08}}
+                    >
+                        <div className="mb-2 flex justify-between text-sm">
+                            <span className="text-slate-300">{skill}</span>
+                            <span className="text-cyan-300">{value}%</span>
+                        </div>
+
+                        <div className="h-2 rounded-full bg-white/10">
+                            <motion.div
+                                initial={{width: 0}}
+                                whileInView={{width: `${value}%`}}
+                                viewport={{once: true}}
+                                transition={{duration: 0.8}}
+                                className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-violet-500"
+                            />
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Achievement Dashboard
+// ============================================================
+
+const achievements = [
+    {
+        label: "AI Applications Built",
+        value: "15+",
+        color: "#22D3EE",
+    },
+    {
+        label: "RAG Pipelines",
+        value: "12+",
+        color: "#8B5CF6",
+    },
+    {
+        label: "LLM Integrations",
+        value: "20+",
+        color: "#10B981",
+    },
+    {
+        label: "Production APIs",
+        value: "30+",
+        color: "#F59E0B",
+    },
+];
+
+function AchievementDashboard() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[36px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    AI ENGINEERING IMPACT
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    Building Production AI Systems
+                </h3>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                {achievements.map((item) => (
+                    <motion.div
+                        key={item.label}
+                        whileHover={{ y: -6, scale: 1.03 }}
+                        className="rounded-[24px] border border-white/10 bg-black/20 p-6 text-center"
+                    >
+                        <motion.h3
+                            animate={{
+                                textShadow: [
+                                    `0 0 5px ${item.color}`,
+                                    `0 0 20px ${item.color}`,
+                                    `0 0 5px ${item.color}`,
+                                ],
+                            }}
+                            transition={{
+                                repeat: Infinity,
+                                duration: 3,
+                            }}
+                            className="text-4xl font-bold"
+                            style={{ color: item.color }}
+                        >
+                            {item.value}
+                        </motion.h3>
+
+                        <p className="mt-3 text-sm text-slate-400">
+                            {item.label}
+                        </p>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// Technology Cloud
+// ============================================================
+
+const techCloud = [
+    "OpenAI GPT-5",
+    "LangGraph",
+    "Neo4j",
+    "Qdrant",
+    "Pinecone",
+    "FastAPI",
+    "Python",
+    "Docker",
+    "Kubernetes",
+    "Redis",
+    "vLLM",
+    "LangSmith",
+    "OpenTelemetry",
+    "HuggingFace",
+    "Llama 3",
+    "Mistral",
+    "Ollama",
+    "PostgreSQL",
+];
+
+function TechnologyCloud() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[36px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    AI TECHNOLOGY CLOUD
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    Technologies Used in Production AI
+                </h3>
+            </div>
+
+            <div className="flex flex-wrap gap-4 justify-center">
+                {techCloud.map((tech, index) => (
+                    <motion.div
+                        key={tech}
+                        whileHover={{
+                            scale: 1.1,
+                            y: -4,
+                        }}
+                        animate={{
+                            y: [0, -6, 0],
+                        }}
+                        transition={{
+                            repeat: Infinity,
+                            duration: 3 + index * 0.15,
+                        }}
+                        className="rounded-full border border-cyan-400/20 bg-cyan-400/5 px-5 py-3 text-sm font-medium text-cyan-300 backdrop-blur-xl"
+                    >
+                        {tech}
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Evolution Timeline
+// ============================================================
+
+const evolution = [
+    {
+        year: "2024",
+        title: "Retrieval-Augmented Generation",
+        description:
+            "Built semantic retrieval systems using embeddings and vector databases.",
+    },
+    {
+        year: "2025",
+        title: "GraphRAG Systems",
+        description:
+            "Combined Knowledge Graph traversal with Vector Search for grounded AI.",
+    },
+    {
+        year: "2025",
+        title: "Agentic AI",
+        description:
+            "Designed autonomous AI agents using LangGraph and MCP workflows.",
+    },
+    {
+        year: "2026",
+        title: "Production AI Infrastructure",
+        description:
+            "Focused on scalable LLM inference, observability, evaluation and deployment.",
+    },
+];
+
+function EvolutionTimeline() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[36px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-10">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    AI EVOLUTION
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    My AI Engineering Journey
+                </h3>
+            </div>
+
+            <div className="space-y-8">
+                {evolution.map((step, index) => (
+                    <motion.div
+                        key={step.year + step.title}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.15 }}
+                        className="flex gap-6"
+                    >
+                        <div className="flex flex-col items-center">
+                            <motion.div
+                                animate={{ scale: [1, 1.15, 1] }}
+                                transition={{
+                                    repeat: Infinity,
+                                    duration: 2,
+                                    delay: index * 0.25,
+                                }}
+                                className="h-5 w-5 rounded-full bg-cyan-400 shadow-[0_0_15px_#22D3EE]"
+                            />
+
+                            {index !== evolution.length - 1 && (
+                                <div className="mt-2 h-16 w-px bg-gradient-to-b from-cyan-400 to-violet-500" />
+                            )}
+                        </div>
+
+                        <div>
+              <span className="mono text-xs tracking-[0.25em] text-cyan-300">
+                {step.year}
+              </span>
+
+                            <h4 className="mt-2 text-xl font-semibold text-white">
+                                {step.title}
+                            </h4>
+
+                            <p className="mt-3 leading-7 text-slate-400">
+                                {step.description}
+                            </p>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Career Banner
+// ============================================================
+
+function ExperienceCTA() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="relative overflow-hidden rounded-[38px] border border-cyan-400/15 bg-gradient-to-r from-cyan-500/10 via-violet-500/10 to-blue-500/10 p-10"
+        >
+            <motion.div
+                animate={{ rotate: 360 }}
+                transition={{
+                    repeat: Infinity,
+                    duration: 50,
+                    ease: "linear",
+                }}
+                className="absolute -right-28 -top-28 h-72 w-72 rounded-full border border-cyan-400/10"
+            />
+
+            <motion.div
+                animate={{ rotate: -360 }}
+                transition={{
+                    repeat: Infinity,
+                    duration: 55,
+                    ease: "linear",
+                }}
+                className="absolute -left-24 -bottom-24 h-64 w-64 rounded-full border border-violet-400/10"
+            />
+
+            <div className="relative z-10 max-w-3xl">
+                <div className="status-pill mb-5 w-fit">
+                    <span className="status-dot" />
+                    NEXT GENERATION AI ENGINEERING
+                </div>
+
+                <h3 className="text-4xl font-semibold text-white">
+                    Building Intelligent Systems That Retrieve, Reason and Act.
+                </h3>
+
+                <p className="mt-6 leading-8 text-slate-300">
+                    My focus is designing production AI platforms powered by
+                    GraphRAG, Multi-Agent AI, Vector Search, Knowledge Graphs,
+                    LLM orchestration and scalable inference infrastructure.
+                </p>
+
+                <motion.a
+                    whileHover={{ scale: 1.04 }}
+                    href="#skills"
+                    className="btn-primary mt-8 inline-flex items-center gap-3"
+                >
+                    Explore AI Skills
+                    <Sparkles size={18} />
+                </motion.a>
+            </div>
+
+
+        </motion.div>
+    );
+}
+
 export default function ExperienceTimeline() {
     const [expanded, setExpanded] = useState("2026");
 
@@ -563,120 +1139,90 @@ export default function ExperienceTimeline() {
             id="experience"
             className="relative overflow-hidden py-32"
         >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,.08),transparent_55%)]" />
+            <div
+                className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,.08),transparent_55%)]"/>
+
+            {/* =====================================================
+      AI Architecture Section
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-28 grid gap-8 lg:grid-cols-[1fr_1fr]"
+            >
+                <motion.div variants={fadeUp}>
+                    <GraphRAGPipeline/>
+                </motion.div>
+
+                <motion.div variants={fadeUp}>
+                    <EmbeddingPipelineViewer/>
+                </motion.div>
+            </motion.div>
+
+            {/* =====================================================
+      Multi-Agent Workflow
+===================================================== */}
 
             <motion.div
                 variants={staggerContainer(0.18)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="container-ai relative z-10"
+                className="mt-24"
             >
-                {/* Heading */}
+                <MultiAgentWorkflow/>
+            </motion.div>
 
-                <motion.div variants={fadeUp} className="text-center">
-                    <div className="status-pill mx-auto w-fit">
-                        <span className="status-dot" />
-                        PROFESSIONAL JOURNEY
-                    </div>
-
-                    <h2 className="section-title mt-6 hero-gradient">
-                        BUILDING ENTERPRISE SYSTEMS
-                        <br />
-                        SINCE 2021
-                    </h2>
-
-                    <p className="section-subtitle mx-auto mt-6 max-w-3xl">
-                        From PLM engineering and CAD migration to production AI
-                        infrastructure, my journey has evolved into building intelligent
-                        enterprise systems powered by GraphRAG and LLMs.
-                    </p>
-                </motion.div>
-                {/* Timeline */}
-
-                <div className="relative mt-24">
-                    {/* Center Line */}
-
-                    <div className="absolute left-7 top-0 h-full w-px bg-gradient-to-b from-cyan-400 via-violet-500 to-blue-500" />
-
-                    <div className="space-y-10">
-                        {experiences.map((experience, index) => (
-                            <motion.div
-                                key={experience.year}
-                                variants={heroItem}
-                                className="relative pl-20"
-                            >
-                                {/* Timeline Dot */}
-
-                                <motion.div
-                                    animate={{
-                                        scale: [1, 1.15, 1],
-                                    }}
-                                    transition={{
-                                        repeat: Infinity,
-                                        duration: 2,
-                                        delay: index * 0.3,
-                                    }}
-                                    className="absolute left-[18px] top-10 h-6 w-6 rounded-full border-4 border-[#040506] bg-cyan-400 shadow-[0_0_18px_#22D3EE]"
-                                />
-
-                                <ExperienceCard
-                                    experience={experience}
-                                    expanded={expanded === experience.year}
-                                    onToggle={() =>
-                                        setExpanded(
-                                            expanded === experience.year
-                                                ? ""
-                                                : experience.year
-                                        )
-                                    }
-                                />
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* =====================================================
-      Enterprise Projects
+            {/* =====================================================
+      AI Skills Matrix
 ===================================================== */}
 
-                <motion.div
-                    variants={staggerContainer(0.15)}
-                    className="mt-28"
-                >
-                    <motion.div variants={fadeUp}>
-                        <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
-                            MAJOR ENTERPRISE PROJECTS
-                        </p>
-
-                        <h3 className="mt-4 text-4xl font-semibold text-white">
-                            Projects I've Built at CRI & AI Infrastructure
-                        </h3>
-                    </motion.div>
-
-                    <div className="mt-12 grid gap-8 lg:grid-cols-2">
-                        {projects.map((project) => (
-                            <ProjectCard key={project.id} project={project} />
-                        ))}
-                    </div>
-                </motion.div>
-
-                {/* =====================================================
-      Architecture + Dashboard
+            {/* =====================================================
+      Achievement Dashboard
 ===================================================== */}
 
-                <motion.div
-                    variants={staggerContainer(0.18)}
-                    className="mt-24 grid gap-8 lg:grid-cols-[1fr_1fr]"
-                >
-                    <motion.div variants={fadeUp}>
-                        <ArchitecturePreview />
-                    </motion.div>
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-28"
+            >
+                <AchievementDashboard />
+            </motion.div>
 
-                    <motion.div variants={fadeUp}>
-                        <EngineeringDashboard />
-                    </motion.div>
-                </motion.div>
+            {/* =====================================================
+      Technology Cloud
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-24"
+            >
+                <TechnologyCloud />
+            </motion.div>
+
+            {/* =====================================================
+      AI Evolution Timeline
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-24"
+            >
+                <EvolutionTimeline />
+            </motion.div>
+
+            {/* =====================================================
+      CTA Banner
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-28"
+            >
+                <ExperienceCTA />
+            </motion.div>
+
+            <motion.div
+                variants={staggerContainer(0.18)}
+                className="mt-24"
+            >
+                <AISkillsMatrix/>
             </motion.div>
         </section>
     );
