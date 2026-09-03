@@ -383,6 +383,296 @@ function GraphTerminal() {
     );
 }
 
+// ============================================================
+// Current Focus Dashboard
+// ============================================================
+
+const currentFocus = [
+    {
+        icon: Brain,
+        title: "Enterprise GraphRAG Platform",
+        status: "ACTIVE",
+        color: "#22D3EE",
+        progress: "92%",
+    },
+    {
+        icon: Network,
+        title: "Multi-Agent AI Workflows",
+        status: "IN DEVELOPMENT",
+        color: "#8B5CF6",
+        progress: "78%",
+    },
+    {
+        icon: Database,
+        title: "Knowledge Graph Retrieval",
+        status: "OPTIMIZED",
+        color: "#10B981",
+        progress: "96%",
+    },
+    {
+        icon: Cpu,
+        title: "GPU Inference Infrastructure",
+        status: "SCALING",
+        color: "#6366F1",
+        progress: "81%",
+    },
+];
+
+function CurrentFocusDashboard() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[36px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8 flex items-center justify-between">
+                <div>
+                    <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                        CURRENT FOCUS
+                    </p>
+
+                    <h3 className="mt-3 text-3xl font-semibold text-white">
+                        Building AI Infrastructure
+                    </h3>
+                </div>
+
+                <div className="status-pill">
+                    <span className="status-dot"/>
+                    LIVE DEVELOPMENT
+                </div>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+                {currentFocus.map((item) => {
+                    const Icon = item.icon;
+
+                    return (
+                        <motion.div
+                            key={item.title}
+                            whileHover={{y: -5}}
+                            className="rounded-3xl border border-white/10 bg-black/20 p-6"
+                        >
+                            <div className="mb-5 flex items-center justify-between">
+                                <div
+                                    className="flex h-14 w-14 items-center justify-center rounded-2xl"
+                                    style={{
+                                        backgroundColor: `${item.color}15`,
+                                        color: item.color,
+                                    }}
+                                >
+                                    <Icon size={24}/>
+                                </div>
+
+                                <span
+                                    className="rounded-full px-3 py-1 text-xs font-semibold"
+                                    style={{
+                                        color: item.color,
+                                        backgroundColor: `${item.color}15`,
+                                    }}
+                                >
+                  {item.status}
+                </span>
+                            </div>
+
+                            <h4 className="text-lg font-semibold text-white">
+                                {item.title}
+                            </h4>
+
+                            <div className="mt-5">
+                                <div className="mb-2 flex justify-between text-xs text-slate-400">
+                                    <span>Pipeline Progress</span>
+                                    <span>{item.progress}</span>
+                                </div>
+
+                                <div className="h-2 rounded-full bg-white/10">
+                                    <motion.div
+                                        initial={{width: 0}}
+                                        whileInView={{width: item.progress}}
+                                        viewport={{once: true}}
+                                        transition={{duration: 1}}
+                                        className="h-full rounded-full"
+                                        style={{backgroundColor: item.color}}
+                                    />
+                                </div>
+                            </div>
+                        </motion.div>
+                    );
+                })}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Engineering Philosophy
+// ============================================================
+
+const philosophy = [
+    "AI should retrieve knowledge before generating answers.",
+    "Observability is as important as model accuracy.",
+    "Agents should collaborate through structured workflows.",
+    "Knowledge Graphs provide explainability beyond embeddings.",
+];
+
+function AIPhilosophy() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="mt-24 grid gap-10 lg:grid-cols-[1fr_1fr]"
+        >
+            <div>
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    AI PHILOSOPHY
+                </p>
+
+                <h3 className="mt-4 text-4xl font-semibold text-white">
+                    Principles Behind Every AI System I Build
+                </h3>
+
+                <p className="mt-6 leading-8 text-slate-400">
+                    I design AI applications that are explainable, observable,
+                    scalable and grounded in enterprise knowledge rather than
+                    relying only on model memory.
+                </p>
+            </div>
+
+            <div className="space-y-5">
+                {philosophy.map((point, index) => (
+                    <motion.div
+                        key={point}
+                        initial={{opacity: 0, x: 20}}
+                        whileInView={{opacity: 1, x: 0}}
+                        viewport={{once: true}}
+                        transition={{delay: index * 0.15}}
+                        className="glass-card flex items-start gap-4 rounded-2xl border border-cyan-400/10 p-5"
+                    >
+                        <Sparkles className="mt-1 text-cyan-300" size={20}/>
+
+                        <p className="leading-7 text-slate-300">{point}</p>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// Open Source & Research
+// ============================================================
+
+const researchCards = [
+    {
+        title: "GraphRAG Research",
+        description:
+            "Experimenting with graph traversal, hybrid retrieval and enterprise knowledge grounding.",
+    },
+    {
+        title: "Agentic AI",
+        description:
+            "Building planning, routing and tool-using autonomous AI agents using LangGraph and MCP.",
+    },
+    {
+        title: "AI Infrastructure",
+        description:
+            "Inference optimization, vector indexing, evaluation pipelines and deployment workflows.",
+    },
+];
+
+function ResearchSection() {
+    return (
+        <motion.div variants={fadeUp} className="mt-24">
+            <div className="mb-10">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    RESEARCH & OPEN SOURCE
+                </p>
+
+                <h3 className="mt-4 text-4xl font-semibold text-white">
+                    Constantly Learning. Constantly Building.
+                </h3>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-3">
+                {researchCards.map((card) => (
+                    <motion.div
+                        key={card.title}
+                        whileHover={{y: -8, scale: 1.02}}
+                        className="glass-card rounded-[28px] border border-cyan-400/10 p-7"
+                    >
+                        <Boxes className="mb-5 text-cyan-300" size={26}/>
+
+                        <h4 className="text-xl font-semibold text-white">
+                            {card.title}
+                        </h4>
+
+                        <p className="mt-4 leading-7 text-slate-400">
+                            {card.description}
+                        </p>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// Availability Banner
+// ============================================================
+
+function AvailabilityBanner() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="relative mt-28 overflow-hidden rounded-[36px] border border-cyan-400/15 bg-gradient-to-r from-cyan-500/10 via-violet-500/10 to-blue-500/10 p-10"
+        >
+            <motion.div
+                animate={{rotate: 360}}
+                transition={{
+                    repeat: Infinity,
+                    duration: 40,
+                    ease: "linear",
+                }}
+                className="absolute -right-24 -top-24 h-64 w-64 rounded-full border border-cyan-400/10"
+            />
+
+            <motion.div
+                animate={{rotate: -360}}
+                transition={{
+                    repeat: Infinity,
+                    duration: 50,
+                    ease: "linear",
+                }}
+                className="absolute -left-24 -bottom-24 h-64 w-64 rounded-full border border-violet-400/10"
+            />
+
+            <div className="relative z-10 max-w-3xl">
+                <div className="status-pill mb-6 w-fit">
+                    <span className="status-dot"/>
+                    AVAILABLE FOR AI PROJECTS
+                </div>
+
+                <h3 className="text-4xl font-semibold text-white">
+                    Let's Build Intelligent Enterprise AI Systems Together.
+                </h3>
+
+                <p className="mt-6 leading-8 text-slate-300">
+                    Interested in GraphRAG, LLM applications, enterprise search,
+                    multi-agent systems, AI infrastructure or production AI
+                    engineering? Let's collaborate.
+                </p>
+
+                <motion.a
+                    whileHover={{scale: 1.04}}
+                    href="#contact"
+                    className="btn-primary mt-8 inline-flex items-center gap-3"
+                >
+                    Start a Conversation
+
+                    <ArrowUpRight size={18}/>
+                </motion.a>
+            </div>
+        </motion.div>
+    );
+}
+
 export default function AboutSection() {
     return (
         <section
@@ -690,7 +980,7 @@ export default function AboutSection() {
                                     key={item}
                                     className="flex items-center gap-3 text-slate-300"
                                 >
-                                    <Sparkles size={18} className="text-cyan-300" />
+                                    <Sparkles size={18} className="text-cyan-300"/>
                                     {item}
                                 </div>
                             ))}
@@ -698,7 +988,7 @@ export default function AboutSection() {
                     </motion.div>
 
                     <motion.div variants={fadeUp}>
-                        <TechOrbit />
+                        <TechOrbit/>
                     </motion.div>
                 </motion.div>
 
@@ -711,13 +1001,31 @@ export default function AboutSection() {
                     className="mt-28 grid gap-10 lg:grid-cols-[1fr_1fr]"
                 >
                     <motion.div variants={fadeUp}>
-                        <CareerTimeline />
+                        <CareerTimeline/>
                     </motion.div>
 
                     <motion.div variants={fadeUp}>
-                        <GraphTerminal />
+                        <GraphTerminal/>
                     </motion.div>
                 </motion.div>
+
+                {/* =====================================================
+      Current Focus Dashboard
+===================================================== */}
+
+                <CurrentFocusDashboard/>
+
+                {/* AI Philosophy */}
+
+                <AIPhilosophy/>
+
+                {/* Research Section */}
+
+                <ResearchSection/>
+
+                {/* Availability Banner */}
+
+                <AvailabilityBanner/>
 
             </motion.div>
         </section>
