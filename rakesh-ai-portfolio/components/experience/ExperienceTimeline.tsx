@@ -25,6 +25,7 @@ import {
     staggerContainer,
     heroItem,
 } from "@/lib/motion";
+import {Cloud} from "@react-three/drei";
 
 const experiences = [
     {
@@ -1131,6 +1132,327 @@ function ExperienceCTA() {
     );
 }
 
+// ============================================================
+// AI Engineering Responsibilities
+// ============================================================
+
+const responsibilities = [
+    {
+        title: "GraphRAG System Design",
+        icon: Brain,
+        color: "#22D3EE",
+        items: [
+            "Knowledge Graph architecture",
+            "Hybrid vector + graph retrieval",
+            "Context expansion strategies",
+            "Grounded LLM responses",
+        ],
+    },
+    {
+        title: "LLM Backend APIs",
+        icon: Cpu,
+        color: "#8B5CF6",
+        items: [
+            "FastAPI AI services",
+            "Streaming responses",
+            "Authentication & rate limiting",
+            "Async inference APIs",
+        ],
+    },
+    {
+        title: "Multi-Agent AI",
+        icon: Network,
+        color: "#10B981",
+        items: [
+            "Planner Agent",
+            "Retriever Agent",
+            "Tool Calling",
+            "Evaluator Agent",
+        ],
+    },
+    {
+        title: "AI Infrastructure",
+        icon: Cloud,
+        color: "#F59E0B",
+        items: [
+            "Docker deployment",
+            "Kubernetes orchestration",
+            "Redis caching",
+            "Observability pipelines",
+        ],
+    },
+];
+
+function ResponsibilitiesGrid() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="grid gap-6 md:grid-cols-2"
+        >
+            {responsibilities.map((section) => {
+                const Icon = section.icon;
+
+                return (
+                    <motion.div
+                        key={section.title}
+                        whileHover={{ y: -6 }}
+                        className="glass-card rounded-[30px] border border-cyan-400/10 p-6"
+                    >
+                        <div
+                            className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl"
+                            style={{
+                                backgroundColor: `${section.color}20`,
+                                color: section.color,
+                            }}
+                        >
+                            <Icon size={24} />
+                        </div>
+
+                        <h3 className="text-xl font-semibold text-white">
+                            {section.title}
+                        </h3>
+
+                        <div className="mt-5 space-y-3">
+                            {section.items.map((item) => (
+                                <div key={item} className="flex items-center gap-3">
+                                    <CheckCircle2
+                                        size={16}
+                                        color={section.color}
+                                    />
+
+                                    <span className="text-slate-300 text-sm">
+                    {item}
+                  </span>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+                );
+            })}
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Tech Stack Matrix
+// ============================================================
+
+const techMatrix = [
+    {
+        domain: "Foundation Models",
+        color: "#22D3EE",
+        tech: ["GPT-5", "Llama 3", "Mistral", "Embeddings"],
+    },
+    {
+        domain: "Retrieval AI",
+        color: "#10B981",
+        tech: ["Qdrant", "Neo4j", "Pinecone", "FAISS"],
+    },
+    {
+        domain: "Agent Systems",
+        color: "#8B5CF6",
+        tech: ["LangGraph", "MCP", "Tool Calling", "Memory"],
+    },
+    {
+        domain: "Backend AI",
+        color: "#F59E0B",
+        tech: ["FastAPI", "Python", "REST APIs", "AsyncIO"],
+    },
+    {
+        domain: "Infrastructure",
+        color: "#6366F1",
+        tech: ["Docker", "Kubernetes", "Redis", "OpenTelemetry"],
+    },
+];
+
+function TechStackMatrix() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[34px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    AI TECH STACK
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    Technologies Used Across AI Domains
+                </h3>
+            </div>
+
+            <div className="space-y-6">
+                {techMatrix.map((row) => (
+                    <div key={row.domain}>
+                        <div className="mb-3 flex items-center justify-between">
+                            <h4
+                                className="font-semibold"
+                                style={{ color: row.color }}
+                            >
+                                {row.domain}
+                            </h4>
+
+                            <span className="text-xs text-slate-500">
+                {row.tech.length} Technologies
+              </span>
+                        </div>
+
+                        <div className="flex flex-wrap gap-3">
+                            {row.tech.map((tech) => (
+                                <span
+                                    key={tech}
+                                    className="rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-2 text-sm text-cyan-300"
+                                >
+                  {tech}
+                </span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Engineering Metrics
+// ============================================================
+
+const aiMetrics = [
+    {
+        label: "GraphRAG Systems",
+        value: "6+",
+        color: "#22D3EE",
+    },
+    {
+        label: "LLM APIs Designed",
+        value: "20+",
+        color: "#8B5CF6",
+    },
+    {
+        label: "Vector Pipelines",
+        value: "15+",
+        color: "#10B981",
+    },
+    {
+        label: "Multi-Agent Workflows",
+        value: "10+",
+        color: "#F59E0B",
+    },
+    {
+        label: "Enterprise AI Services",
+        value: "12+",
+        color: "#EC4899",
+    },
+    {
+        label: "Infrastructure Deployments",
+        value: "8+",
+        color: "#6366F1",
+    },
+];
+
+function EngineeringMetrics() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+            {aiMetrics.map((metric) => (
+                <motion.div
+                    key={metric.label}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    className="glass-card rounded-[28px] border border-cyan-400/10 p-6"
+                >
+                    <div
+                        className="mb-4 h-2 rounded-full"
+                        style={{ backgroundColor: metric.color }}
+                    />
+
+                    <p className="text-xs uppercase tracking-[0.25em] text-slate-500">
+                        {metric.label}
+                    </p>
+
+                    <h3
+                        className="mt-4 text-4xl font-bold"
+                        style={{ color: metric.color }}
+                    >
+                        {metric.value}
+                    </h3>
+                </motion.div>
+            ))}
+        </motion.div>
+    );
+}
+
+// ============================================================
+// What I Build
+// ============================================================
+
+const buildCards = [
+    {
+        title: "Enterprise AI Copilots",
+        desc: "Grounded assistants powered by GraphRAG and enterprise knowledge.",
+        color: "#22D3EE",
+    },
+    {
+        title: "GraphRAG Platforms",
+        desc: "Knowledge Graph + Vector Retrieval architectures for reasoning.",
+        color: "#8B5CF6",
+    },
+    {
+        title: "Semantic Search Engines",
+        desc: "Embedding-based search with hybrid retrieval and reranking.",
+        color: "#10B981",
+    },
+    {
+        title: "Multi-Agent AI Systems",
+        desc: "LangGraph planners, retrievers, tools and evaluators.",
+        color: "#F59E0B",
+    },
+];
+
+function WhatIBuild() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[36px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    WHAT I BUILD
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    AI Platforms I Engineer
+                </h3>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+                {buildCards.map((card) => (
+                    <motion.div
+                        key={card.title}
+                        whileHover={{ y: -6 }}
+                        className="rounded-[26px] border border-white/10 bg-black/20 p-6"
+                    >
+                        <div
+                            className="mb-4 h-3 w-16 rounded-full"
+                            style={{ backgroundColor: card.color }}
+                        />
+
+                        <h4 className="text-xl font-semibold text-white">
+                            {card.title}
+                        </h4>
+
+                        <p className="mt-3 text-slate-400 leading-7">
+                            {card.desc}
+                        </p>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
 export default function ExperienceTimeline() {
     const [expanded, setExpanded] = useState("2026");
 
@@ -1223,6 +1545,50 @@ export default function ExperienceTimeline() {
                 className="mt-24"
             >
                 <AISkillsMatrix/>
+            </motion.div>
+
+            {/* =====================================================
+      AI Responsibilities
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-28"
+            >
+                <ResponsibilitiesGrid />
+            </motion.div>
+
+            {/* =====================================================
+      AI Tech Stack Matrix
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-24"
+            >
+                <TechStackMatrix />
+            </motion.div>
+
+            {/* =====================================================
+      Engineering Metrics
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-24"
+            >
+                <EngineeringMetrics />
+            </motion.div>
+
+            {/* =====================================================
+      What I Build
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-24"
+            >
+                <WhatIBuild />
             </motion.div>
         </section>
     );
