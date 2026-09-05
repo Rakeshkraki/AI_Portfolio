@@ -1450,6 +1450,340 @@ function SkillsCTA() {
         </motion.div>
     );
 }
+// ============================================================
+// AI Certifications Gallery
+// ============================================================
+
+const aiCertifications = [
+    {
+        title: "OpenAI API Development",
+        provider: "OpenAI",
+        color: "#22D3EE",
+    },
+    {
+        title: "LangGraph Agent Engineering",
+        provider: "LangChain",
+        color: "#8B5CF6",
+    },
+    {
+        title: "GraphRAG Architecture",
+        provider: "Knowledge AI",
+        color: "#10B981",
+    },
+    {
+        title: "FastAPI Backend APIs",
+        provider: "FastAPI",
+        color: "#F59E0B",
+    },
+    {
+        title: "Docker & Kubernetes",
+        provider: "Cloud Native",
+        color: "#EC4899",
+    },
+    {
+        title: "Vector Database Engineering",
+        provider: "AI Infrastructure",
+        color: "#6366F1",
+    },
+];
+
+function CertificationsGallery() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[40px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-10">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    AI CERTIFICATIONS
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    Continuous Learning in AI Engineering
+                </h3>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {aiCertifications.map((cert) => (
+                    <motion.div
+                        key={cert.title}
+                        whileHover={{
+                            y: -6,
+                            scale: 1.02,
+                        }}
+                        className="rounded-[26px] border border-white/10 bg-black/20 p-6"
+                    >
+                        <div
+                            className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl"
+                            style={{
+                                backgroundColor: `${cert.color}20`,
+                            }}
+                        >
+                            <Sparkles size={24} color={cert.color} />
+                        </div>
+
+                        <h4 className="text-lg font-semibold text-white">
+                            {cert.title}
+                        </h4>
+
+                        <p
+                            className="mt-3 text-sm font-medium"
+                            style={{ color: cert.color }}
+                        >
+                            {cert.provider}
+                        </p>
+
+                        <div className="mt-5 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-2 text-center text-xs text-cyan-300">
+                            Completed / Active Learning
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+// ============================================================
+// AI Learning Metrics Dashboard
+// ============================================================
+
+const learningMetrics = [
+    {
+        label: "AI Technologies Learned",
+        value: "35+",
+        color: "#22D3EE",
+    },
+    {
+        label: "Projects Built",
+        value: "12+",
+        color: "#8B5CF6",
+    },
+    {
+        label: "Vector Pipelines Created",
+        value: "15+",
+        color: "#10B981",
+    },
+    {
+        label: "GraphRAG Systems",
+        value: "6+",
+        color: "#F59E0B",
+    },
+    {
+        label: "Agents Designed",
+        value: "10+",
+        color: "#EC4899",
+    },
+    {
+        label: "APIs Engineered",
+        value: "20+",
+        color: "#6366F1",
+    },
+];
+
+function LearningMetricsDashboard() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+            {learningMetrics.map((metric) => (
+                <motion.div
+                    key={metric.label}
+                    whileHover={{ y: -5 }}
+                    className="glass-card rounded-[28px] border border-cyan-400/10 p-6 text-center"
+                >
+                    <motion.h3
+                        animate={{
+                            textShadow: [
+                                `0 0 10px ${metric.color}`,
+                                `0 0 20px ${metric.color}`,
+                                `0 0 10px ${metric.color}`,
+                            ],
+                        }}
+                        transition={{
+                            repeat: Infinity,
+                            duration: 3,
+                        }}
+                        className="text-4xl font-bold"
+                        style={{ color: metric.color }}
+                    >
+                        {metric.value}
+                    </motion.h3>
+
+                    <p className="mt-4 text-sm text-slate-400">
+                        {metric.label}
+                    </p>
+                </motion.div>
+            ))}
+        </motion.div>
+    );
+}
+// ============================================================
+// Open Source Dashboard
+// ============================================================
+
+const contributionAreas = [
+    {
+        title: "AI Backend Projects",
+        color: "#22D3EE",
+    },
+    {
+        title: "GraphRAG Experiments",
+        color: "#10B981",
+    },
+    {
+        title: "FastAPI Templates",
+        color: "#8B5CF6",
+    },
+    {
+        title: "LangGraph Workflows",
+        color: "#F59E0B",
+    },
+];
+
+function OpenSourceDashboard() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[40px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    OPEN SOURCE & GITHUB
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    AI Engineering Contributions
+                </h3>
+            </div>
+
+            {/* GitHub Heatmap */}
+
+            <div className="grid grid-cols-12 gap-2">
+                {Array.from({ length: 84 }).map((_, index) => (
+                    <motion.div
+                        key={index}
+                        whileHover={{ scale: 1.2 }}
+                        className="aspect-square rounded-md"
+                        style={{
+                            background:
+                                index % 5 === 0
+                                    ? "#22D3EE"
+                                    : index % 4 === 0
+                                        ? "#10B981"
+                                        : index % 3 === 0
+                                            ? "#8B5CF6"
+                                            : "#0F172A",
+                        }}
+                    />
+                ))}
+            </div>
+
+            <div className="mt-8 grid gap-5 md:grid-cols-2">
+                {contributionAreas.map((area) => (
+                    <div
+                        key={area.title}
+                        className="rounded-[22px] border border-white/10 bg-black/20 p-5"
+                    >
+                        <div
+                            className="mb-4 h-3 w-16 rounded-full"
+                            style={{ backgroundColor: area.color }}
+                        />
+
+                        <h4
+                            className="font-semibold"
+                            style={{ color: area.color }}
+                        >
+                            {area.title}
+                        </h4>
+
+                        <p className="mt-2 text-sm text-slate-400">
+                            Personal AI engineering repositories and production-ready experiments.
+                        </p>
+                    </div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+// ============================================================
+// Resume + Contact CTA
+// ============================================================
+
+function ResumeContactCTA() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="relative overflow-hidden rounded-[44px] border border-cyan-400/15 bg-gradient-to-r from-[#06131F] via-[#0B1020] to-[#18122B] p-10"
+        >
+            <motion.div
+                animate={{ rotate: 360 }}
+                transition={{
+                    repeat: Infinity,
+                    duration: 80,
+                    ease: "linear",
+                }}
+                className="absolute -right-28 -top-28 h-72 w-72 rounded-full border border-cyan-400/10"
+            />
+
+            <div className="relative z-10 max-w-3xl">
+                <div className="status-pill mb-5 w-fit">
+                    <span className="status-dot" />
+                    AI BACKEND ENGINEER
+                </div>
+
+                <h3 className="hero-gradient text-4xl font-bold">
+                    Ready to Build Production AI Platforms
+                </h3>
+
+                <p className="mt-6 text-lg leading-8 text-slate-300">
+                    Enterprise GraphRAG • Multi-Agent AI • FastAPI • LangGraph • Neo4j • Qdrant • AI Infrastructure
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                    <motion.a
+                        whileHover={{ scale: 1.05 }}
+                        href="/resume.pdf"
+                        download
+                        className="btn-primary inline-flex items-center gap-3"
+                    >
+                        Download Resume
+                        {/*<ArrowUpRight size={18} />*/}
+                    </motion.a>
+
+                    <motion.a
+                        whileHover={{ scale: 1.05 }}
+                        href="#contact"
+                        className="rounded-full border border-white/10 px-6 py-3 text-white"
+                    >
+                        Contact Me
+                    </motion.a>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+// ============================================================
+// Section Divider
+// ============================================================
+
+function SkillsDivider() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="my-28 flex items-center justify-center"
+        >
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
+
+            <div className="mx-6 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-5 py-2">
+        <span className="mono text-xs tracking-[0.3em] text-cyan-300">
+          NEXT • CONTACT
+        </span>
+            </div>
+
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-violet-400/40 to-transparent" />
+        </motion.div>
+    );
+}
 
 export default function SkillsSection() {
     return (
@@ -1650,6 +1984,55 @@ export default function SkillsSection() {
                 >
                     <SkillsCTA />
                 </motion.div>
+                {/* =====================================================
+      AI Certifications Gallery
+===================================================== */}
+
+                <motion.div
+                    variants={staggerContainer(0.15)}
+                    className="mt-28"
+                >
+                    <CertificationsGallery />
+                </motion.div>
+
+                {/* =====================================================
+      Learning Metrics Dashboard
+===================================================== */}
+
+                <motion.div
+                    variants={staggerContainer(0.15)}
+                    className="mt-24"
+                >
+                    <LearningMetricsDashboard />
+                </motion.div>
+
+                {/* =====================================================
+      Open Source Dashboard
+===================================================== */}
+
+                <motion.div
+                    variants={staggerContainer(0.15)}
+                    className="mt-24"
+                >
+                    <OpenSourceDashboard />
+                </motion.div>
+
+                {/* =====================================================
+      Resume + Contact CTA
+===================================================== */}
+
+                <motion.div
+                    variants={staggerContainer(0.15)}
+                    className="mt-28"
+                >
+                    <ResumeContactCTA />
+                </motion.div>
+
+                {/* =====================================================
+      Divider
+===================================================== */}
+
+                <SkillsDivider />
             </motion.div>
         </section>
     );
