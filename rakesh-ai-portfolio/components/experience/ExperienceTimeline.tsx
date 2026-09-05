@@ -1075,62 +1075,62 @@ function EvolutionTimeline() {
 // AI Career Banner
 // ============================================================
 
-function ExperienceCTA() {
-    return (
-        <motion.div
-            variants={fadeUp}
-            className="relative overflow-hidden rounded-[38px] border border-cyan-400/15 bg-gradient-to-r from-cyan-500/10 via-violet-500/10 to-blue-500/10 p-10"
-        >
-            <motion.div
-                animate={{ rotate: 360 }}
-                transition={{
-                    repeat: Infinity,
-                    duration: 50,
-                    ease: "linear",
-                }}
-                className="absolute -right-28 -top-28 h-72 w-72 rounded-full border border-cyan-400/10"
-            />
-
-            <motion.div
-                animate={{ rotate: -360 }}
-                transition={{
-                    repeat: Infinity,
-                    duration: 55,
-                    ease: "linear",
-                }}
-                className="absolute -left-24 -bottom-24 h-64 w-64 rounded-full border border-violet-400/10"
-            />
-
-            <div className="relative z-10 max-w-3xl">
-                <div className="status-pill mb-5 w-fit">
-                    <span className="status-dot" />
-                    NEXT GENERATION AI ENGINEERING
-                </div>
-
-                <h3 className="text-4xl font-semibold text-white">
-                    Building Intelligent Systems That Retrieve, Reason and Act.
-                </h3>
-
-                <p className="mt-6 leading-8 text-slate-300">
-                    My focus is designing production AI platforms powered by
-                    GraphRAG, Multi-Agent AI, Vector Search, Knowledge Graphs,
-                    LLM orchestration and scalable inference infrastructure.
-                </p>
-
-                <motion.a
-                    whileHover={{ scale: 1.04 }}
-                    href="#skills"
-                    className="btn-primary mt-8 inline-flex items-center gap-3"
-                >
-                    Explore AI Skills
-                    <Sparkles size={18} />
-                </motion.a>
-            </div>
-
-
-        </motion.div>
-    );
-}
+// function ExperienceCTA() {
+//     return (
+//         <motion.div
+//             variants={fadeUp}
+//             className="relative overflow-hidden rounded-[38px] border border-cyan-400/15 bg-gradient-to-r from-cyan-500/10 via-violet-500/10 to-blue-500/10 p-10"
+//         >
+//             <motion.div
+//                 animate={{ rotate: 360 }}
+//                 transition={{
+//                     repeat: Infinity,
+//                     duration: 50,
+//                     ease: "linear",
+//                 }}
+//                 className="absolute -right-28 -top-28 h-72 w-72 rounded-full border border-cyan-400/10"
+//             />
+//
+//             <motion.div
+//                 animate={{ rotate: -360 }}
+//                 transition={{
+//                     repeat: Infinity,
+//                     duration: 55,
+//                     ease: "linear",
+//                 }}
+//                 className="absolute -left-24 -bottom-24 h-64 w-64 rounded-full border border-violet-400/10"
+//             />
+//
+//             <div className="relative z-10 max-w-3xl">
+//                 <div className="status-pill mb-5 w-fit">
+//                     <span className="status-dot" />
+//                     NEXT GENERATION AI ENGINEERING
+//                 </div>
+//
+//                 <h3 className="text-4xl font-semibold text-white">
+//                     Building Intelligent Systems That Retrieve, Reason and Act.
+//                 </h3>
+//
+//                 <p className="mt-6 leading-8 text-slate-300">
+//                     My focus is designing production AI platforms powered by
+//                     GraphRAG, Multi-Agent AI, Vector Search, Knowledge Graphs,
+//                     LLM orchestration and scalable inference infrastructure.
+//                 </p>
+//
+//                 <motion.a
+//                     whileHover={{ scale: 1.04 }}
+//                     href="#skills"
+//                     className="btn-primary mt-8 inline-flex items-center gap-3"
+//                 >
+//                     Explore AI Skills
+//                     <Sparkles size={18} />
+//                 </motion.a>
+//             </div>
+//
+//
+//         </motion.div>
+//     );
+// }
 
 // ============================================================
 // AI Engineering Responsibilities
@@ -1453,6 +1453,962 @@ function WhatIBuild() {
     );
 }
 
+// ============================================================
+// AI Architecture Ownership
+// ============================================================
+
+const ownershipAreas = [
+    {
+        title: "GraphRAG Architecture",
+        description:
+            "Designed enterprise retrieval systems combining Knowledge Graphs and Vector Databases.",
+        color: "#22D3EE",
+    },
+    {
+        title: "AI Backend APIs",
+        description:
+            "Designed scalable FastAPI services for streaming LLM responses and AI orchestration.",
+        color: "#8B5CF6",
+    },
+    {
+        title: "Agentic AI Systems",
+        description:
+            "Implemented LangGraph-based planner, retriever, evaluator and tool agents.",
+        color: "#10B981",
+    },
+    {
+        title: "AI Infrastructure",
+        description:
+            "Built Docker, Kubernetes and Redis powered AI deployment environments.",
+        color: "#F59E0B",
+    },
+];
+
+function ArchitectureOwnership() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[36px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    ARCHITECTURE OWNERSHIP
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    AI Systems I Design End-to-End
+                </h3>
+            </div>
+
+            <div className="space-y-6">
+                {ownershipAreas.map((area, index) => (
+                    <motion.div
+                        key={area.title}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
+                        className="rounded-[26px] border border-white/10 bg-black/20 p-6"
+                    >
+                        <div className="flex items-center gap-4">
+                            <div
+                                className="h-4 w-4 rounded-full"
+                                style={{
+                                    backgroundColor: area.color,
+                                    boxShadow: `0 0 12px ${area.color}`,
+                                }}
+                            />
+
+                            <h4
+                                className="text-xl font-semibold"
+                                style={{ color: area.color }}
+                            >
+                                {area.title}
+                            </h4>
+                        </div>
+
+                        <p className="mt-4 leading-7 text-slate-400">
+                            {area.description}
+                        </p>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Workflow Visualization
+// ============================================================
+
+const workflowStages = [
+    "User Query",
+    "Planner Agent",
+    "Retriever",
+    "Knowledge Graph",
+    "Vector Search",
+    "LLM Inference",
+    "Streaming Response",
+];
+
+function AIWorkflowVisualization() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[36px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    DAILY AI WORKFLOW
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    Production AI Request Lifecycle
+                </h3>
+            </div>
+
+            <div className="space-y-5">
+                {workflowStages.map((stage, index) => (
+                    <div key={stage}>
+                        <motion.div
+                            whileHover={{ x: 6 }}
+                            className="flex items-center gap-5 rounded-[22px] border border-white/10 bg-black/20 p-5"
+                        >
+                            <motion.div
+                                animate={{
+                                    scale: [1, 1.15, 1],
+                                }}
+                                transition={{
+                                    repeat: Infinity,
+                                    duration: 2,
+                                    delay: index * 0.15,
+                                }}
+                                className="h-4 w-4 rounded-full bg-cyan-400 shadow-[0_0_12px_#22D3EE]"
+                            />
+
+                            <span className="text-white font-medium">{stage}</span>
+
+                            {/* <ArrowUpRight className="ml-auto text-cyan-300" size={18} />*/}
+                        </motion.div>
+
+                        {index !== workflowStages.length - 1 && (
+                            <div className="ml-7 h-6 w-px bg-gradient-to-b from-cyan-400 to-violet-500" />
+                        )}
+                    </div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Achievement Counters
+// ============================================================
+
+const achievementscount = [
+    {
+        value: "30+",
+        label: "LLM APIs Built",
+        color: "#22D3EE",
+    },
+    {
+        value: "12+",
+        label: "AI Platforms Engineered",
+        color: "#8B5CF6",
+    },
+    {
+        value: "10M+",
+        label: "Tokens Processed",
+        color: "#10B981",
+    },
+    {
+        value: "250K+",
+        label: "Knowledge Graph Nodes",
+        color: "#F59E0B",
+    },
+    {
+        value: "1M+",
+        label: "Vector Embeddings",
+        color: "#EC4899",
+    },
+    {
+        value: "98%",
+        label: "Retrieval Recall",
+        color: "#6366F1",
+    },
+];
+
+function AchievementCounters() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+            {achievementscount.map((item) => (
+                <motion.div
+                    key={item.label}
+                    whileHover={{ y: -6, scale: 1.03 }}
+                    className="glass-card rounded-[28px] border border-cyan-400/10 p-6 text-center"
+                >
+                    <motion.h3
+                        animate={{
+                            textShadow: [
+                                `0 0 10px ${item.color}`,
+                                `0 0 20px ${item.color}`,
+                                `0 0 10px ${item.color}`,
+                            ],
+                        }}
+                        transition={{
+                            repeat: Infinity,
+                            duration: 3,
+                        }}
+                        className="text-4xl font-bold"
+                        style={{ color: item.color }}
+                    >
+                        {item.value}
+                    </motion.h3>
+
+                    <p className="mt-3 text-sm text-slate-400">
+                        {item.label}
+                    </p>
+                </motion.div>
+            ))}
+        </motion.div>
+    );
+}
+
+// ============================================================
+// Production AI Pipeline
+// ============================================================
+
+const pipeline = [
+    {
+        title: "Embeddings",
+        tech: "OpenAI",
+        color: "#22D3EE",
+    },
+    {
+        title: "Vector DB",
+        tech: "Qdrant",
+        color: "#10B981",
+    },
+    {
+        title: "Knowledge Graph",
+        tech: "Neo4j",
+        color: "#8B5CF6",
+    },
+    {
+        title: "Agent Runtime",
+        tech: "LangGraph",
+        color: "#EC4899",
+    },
+    {
+        title: "Inference API",
+        tech: "FastAPI",
+        color: "#F59E0B",
+    },
+    {
+        title: "Monitoring",
+        tech: "LangSmith",
+        color: "#6366F1",
+    },
+];
+
+function ProductionPipeline() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[36px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    PRODUCTION AI PIPELINE
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    AI Platform Components
+                </h3>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                {pipeline.map((step, index) => (
+                    <motion.div
+                        key={step.title}
+                        whileHover={{ y: -6 }}
+                        className="rounded-[24px] border border-white/10 bg-black/20 p-5"
+                    >
+                        <div
+                            className="mb-4 h-3 w-16 rounded-full"
+                            style={{ backgroundColor: step.color }}
+                        />
+
+                        <p className="text-xs uppercase tracking-wide text-slate-500">
+                            {step.title}
+                        </p>
+
+                        <h4
+                            className="mt-3 text-xl font-semibold"
+                            style={{ color: step.color }}
+                        >
+                            {step.tech}
+                        </h4>
+
+                        <p className="mt-2 text-sm text-slate-500">
+                            Production AI Layer #{index + 1}
+                        </p>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Engineering Philosophy
+// ============================================================
+
+const principles = [
+    "Build AI systems that are grounded, observable and scalable.",
+    "Use GraphRAG for factual enterprise knowledge retrieval.",
+    "Design AI APIs with streaming-first architecture.",
+    "Create modular multi-agent systems instead of monolithic prompts.",
+    "Deploy AI services with production-grade infrastructure.",
+];
+
+function EngineeringPhilosophy() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[40px] border border-cyan-400/10 bg-gradient-to-br from-cyan-500/5 via-transparent to-violet-500/10 p-10"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    ENGINEERING PHILOSOPHY
+                </p>
+
+                <h3 className="mt-3 text-4xl font-semibold hero-gradient">
+                    Building AI That Works in Production
+                </h3>
+            </div>
+
+            <div className="space-y-5">
+                {principles.map((principle, index) => (
+                    <motion.div
+                        key={principle}
+                        initial={{ opacity: 0, x: -15 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.08 }}
+                        className="flex items-start gap-4"
+                    >
+                        <Sparkles className="mt-1 text-cyan-300" size={18} />
+
+                        <p className="text-slate-300 leading-7">
+                            {principle}
+                        </p>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Architecture Ownership Diagram
+// ============================================================
+
+const architectureLayers = [
+    {
+        title: "Frontend Experience",
+        tools: ["Next.js", "React", "Tailwind CSS"],
+        color: "#22D3EE",
+    },
+    {
+        title: "AI Backend APIs",
+        tools: ["FastAPI", "Python", "Streaming APIs"],
+        color: "#8B5CF6",
+    },
+    {
+        title: "Retrieval Layer",
+        tools: ["Neo4j", "Qdrant", "Embeddings"],
+        color: "#10B981",
+    },
+    {
+        title: "Agent Runtime",
+        tools: ["LangGraph", "Planner", "Retriever", "Evaluator"],
+        color: "#F59E0B",
+    },
+    {
+        title: "LLM Inference",
+        tools: ["GPT-5", "vLLM", "OpenAI API"],
+        color: "#EC4899",
+    },
+];
+
+function ArchitectureOwnershipDiagram() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[38px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-10">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    SYSTEM OWNERSHIP
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    AI Platform Architecture Layers
+                </h3>
+            </div>
+
+            <div className="space-y-5">
+                {architectureLayers.map((layer, index) => (
+                    <div key={layer.title}>
+                        <motion.div
+                            whileHover={{ scale: 1.01 }}
+                            className="rounded-[24px] border border-white/10 bg-black/20 p-5"
+                        >
+                            <div className="flex items-center gap-4">
+                                <div
+                                    className="h-4 w-4 rounded-full"
+                                    style={{
+                                        backgroundColor: layer.color,
+                                        boxShadow: `0 0 12px ${layer.color}`,
+                                    }}
+                                />
+
+                                <h4
+                                    className="font-semibold"
+                                    style={{ color: layer.color }}
+                                >
+                                    {layer.title}
+                                </h4>
+                            </div>
+
+                            <div className="mt-4 flex flex-wrap gap-3">
+                                {layer.tools.map((tool) => (
+                                    <span
+                                        key={tool}
+                                        className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs text-slate-300"
+                                    >
+                    {tool}
+                  </span>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        {index !== architectureLayers.length - 1 && (
+                            <div className="mx-auto my-3 h-6 w-px bg-gradient-to-b from-cyan-400 to-violet-500" />
+                        )}
+                    </div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Collaboration Model
+// ============================================================
+
+const collaborators = [
+    {
+        title: "Product Teams",
+        desc: "Convert business problems into AI product capabilities.",
+        color: "#22D3EE",
+    },
+    {
+        title: "Data Engineers",
+        desc: "Design ingestion pipelines and structured enterprise knowledge.",
+        color: "#10B981",
+    },
+    {
+        title: "ML Engineers",
+        desc: "Integrate embeddings, reranking and evaluation pipelines.",
+        color: "#8B5CF6",
+    },
+    {
+        title: "Platform Engineers",
+        desc: "Deploy scalable AI infrastructure and monitoring.",
+        color: "#F59E0B",
+    },
+];
+
+function CollaborationModel() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[36px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    CROSS-FUNCTIONAL COLLABORATION
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    Working Across AI Teams
+                </h3>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+                {collaborators.map((team) => (
+                    <motion.div
+                        key={team.title}
+                        whileHover={{ y: -5 }}
+                        className="rounded-[24px] border border-white/10 bg-black/20 p-6"
+                    >
+                        <div
+                            className="mb-4 h-3 w-16 rounded-full"
+                            style={{ backgroundColor: team.color }}
+                        />
+
+                        <h4
+                            className="text-xl font-semibold"
+                            style={{ color: team.color }}
+                        >
+                            {team.title}
+                        </h4>
+
+                        <p className="mt-3 text-slate-400 leading-7">
+                            {team.desc}
+                        </p>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Delivery Lifecycle
+// ============================================================
+
+const lifecycle = [
+    {
+        stage: "Discovery",
+        desc: "Understand enterprise AI use case and knowledge sources.",
+        color: "#22D3EE",
+    },
+    {
+        stage: "Architecture",
+        desc: "Design GraphRAG, retrieval strategy and agent workflows.",
+        color: "#8B5CF6",
+    },
+    {
+        stage: "Development",
+        desc: "Build FastAPI services, LangGraph agents and vector pipelines.",
+        color: "#10B981",
+    },
+    {
+        stage: "Deployment",
+        desc: "Containerize AI services and deploy with Kubernetes.",
+        color: "#F59E0B",
+    },
+    {
+        stage: "Observability",
+        desc: "Trace prompts, retrieval quality and inference latency.",
+        color: "#EC4899",
+    },
+];
+
+function DeliveryLifecycle() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[36px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    DELIVERY LIFECYCLE
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    From Idea to Production AI
+                </h3>
+            </div>
+
+            <div className="space-y-6">
+                {lifecycle.map((item, index) => (
+                    <div key={item.stage}>
+                        <motion.div
+                            initial={{ opacity: 0, x: -15 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.08 }}
+                            className="flex gap-5 rounded-[22px] border border-white/10 bg-black/20 p-5"
+                        >
+                            <div
+                                className="mt-1 h-4 w-4 rounded-full"
+                                style={{
+                                    backgroundColor: item.color,
+                                    boxShadow: `0 0 10px ${item.color}`,
+                                }}
+                            />
+
+                            <div>
+                                <h4
+                                    className="font-semibold"
+                                    style={{ color: item.color }}
+                                >
+                                    {item.stage}
+                                </h4>
+
+                                <p className="mt-2 text-slate-400 leading-7">
+                                    {item.desc}
+                                </p>
+                            </div>
+                        </motion.div>
+
+                        {index !== lifecycle.length - 1 && (
+                            <div className="ml-[10px] h-5 w-px bg-gradient-to-b from-cyan-400 to-violet-500" />
+                        )}
+                    </div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Learning Roadmap
+// ============================================================
+
+const roadmap = [
+    "Advanced GraphRAG Architectures",
+    "LLM Fine-tuning & LoRA",
+    "Model Context Protocol (MCP)",
+    "AI Evaluation & Guardrails",
+    "Agentic Memory Systems",
+    "Distributed AI Infrastructure",
+    "OpenTelemetry for AI",
+    "Multi-modal AI Applications",
+];
+
+function LearningRoadmap() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[36px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    CONTINUOUS LEARNING
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    AI Engineering Roadmap
+                </h3>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
+                {roadmap.map((topic, index) => (
+                    <motion.div
+                        key={topic}
+                        whileHover={{ x: 6 }}
+                        className="flex items-center gap-4 rounded-[20px] border border-white/10 bg-black/20 p-4"
+                    >
+                        <Sparkles className="text-cyan-300" size={18} />
+
+                        <span className="text-slate-300">{topic}</span>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// Experience CTA Banner
+// ============================================================
+
+function ExperienceCTA() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="relative overflow-hidden rounded-[42px] border border-cyan-400/15 bg-gradient-to-r from-cyan-500/10 via-violet-500/10 to-indigo-500/10 p-10"
+        >
+            <motion.div
+                animate={{ rotate: 360 }}
+                transition={{
+                    repeat: Infinity,
+                    duration: 60,
+                    ease: "linear",
+                }}
+                className="absolute -right-24 -top-24 h-64 w-64 rounded-full border border-cyan-400/10"
+            />
+
+            <div className="relative z-10 max-w-3xl">
+                <div className="status-pill mb-5 w-fit">
+                    <span className="status-dot" />
+                    NEXT SECTION
+                </div>
+
+                <h3 className="hero-gradient text-4xl font-bold">
+                    Education & AI Learning Journey
+                </h3>
+
+                <p className="mt-6 text-lg leading-8 text-slate-300">
+                    Academic foundation, AI certifications, hands-on learning roadmap,
+                    hackathons and continuous AI engineering growth.
+                </p>
+
+                <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    href="#education"
+                    className="btn-primary mt-8 inline-flex items-center gap-3"
+                >
+                    Explore Education
+                    {/*<ArrowUpRight size={18} />*/}
+                </motion.a>
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Impact Stories
+// ============================================================
+
+const impactStories = [
+    {
+        title: "Enterprise GraphRAG Platform",
+        impact: "Built hybrid retrieval architecture combining vector search and knowledge graphs.",
+        result: "98% retrieval recall • scalable enterprise search",
+        color: "#22D3EE",
+    },
+    {
+        title: "AI Copilot Backend",
+        impact: "Designed streaming FastAPI services for enterprise AI assistants.",
+        result: "Low-latency token streaming with async APIs",
+        color: "#8B5CF6",
+    },
+    {
+        title: "Agentic AI Workflows",
+        impact: "Implemented planner, retriever and evaluator agents with LangGraph.",
+        result: "Autonomous multi-agent orchestration",
+        color: "#10B981",
+    },
+];
+
+function AIImpactStories() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[40px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    AI IMPACT STORIES
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    Real AI Engineering Outcomes
+                </h3>
+            </div>
+
+            <div className="space-y-6">
+                {impactStories.map((story) => (
+                    <motion.div
+                        key={story.title}
+                        whileHover={{ y: -4 }}
+                        className="rounded-[28px] border border-white/10 bg-black/20 p-6"
+                    >
+                        <div
+                            className="mb-4 h-2 w-20 rounded-full"
+                            style={{ backgroundColor: story.color }}
+                        />
+
+                        <h4
+                            className="text-xl font-semibold"
+                            style={{ color: story.color }}
+                        >
+                            {story.title}
+                        </h4>
+
+                        <p className="mt-3 text-slate-300 leading-7">
+                            {story.impact}
+                        </p>
+
+                        <div className="mt-5 rounded-xl border border-cyan-400/10 bg-cyan-400/5 px-4 py-3">
+                            <p className="text-sm text-cyan-300 font-medium">
+                                {story.result}
+                            </p>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// Production AI Metrics Dashboard
+// ============================================================
+
+const productionMetrics = [
+    { label: "API Availability", value: "99.9%", color: "#22D3EE" },
+    { label: "Average Latency", value: "120ms", color: "#10B981" },
+    { label: "Streaming Throughput", value: "500 tok/s", color: "#8B5CF6" },
+    { label: "Knowledge Retrieval", value: "250K Nodes", color: "#F59E0B" },
+    { label: "Embedding Store", value: "1M+ Vectors", color: "#EC4899" },
+    { label: "Agent Executions", value: "500K+", color: "#6366F1" },
+];
+
+function ProductionMetricsDashboard() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[38px] border border-cyan-400/10 p-8"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    PRODUCTION AI METRICS
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    AI Platform Performance
+                </h3>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {productionMetrics.map((metric) => (
+                    <motion.div
+                        key={metric.label}
+                        whileHover={{ y: -5 }}
+                        className="rounded-[24px] border border-white/10 bg-black/20 p-6"
+                    >
+                        <div
+                            className="mb-4 h-2 rounded-full"
+                            style={{ backgroundColor: metric.color }}
+                        />
+
+                        <p className="text-xs uppercase tracking-[0.25em] text-slate-500">
+                            {metric.label}
+                        </p>
+
+                        <h4
+                            className="mt-4 text-3xl font-bold"
+                            style={{ color: metric.color }}
+                        >
+                            {metric.value}
+                        </h4>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// AI Certifications Ribbon
+// ============================================================
+
+const certifications = [
+    "OpenAI API Development",
+    "LangGraph Agent Engineering",
+    "GraphRAG Architecture",
+    "FastAPI Backend Development",
+    "Docker & Kubernetes for AI",
+    "Vector Database Engineering",
+    "Prompt Engineering",
+    "OpenTelemetry AI Observability",
+];
+
+function CertificationRibbon() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="glass-card rounded-[38px] border border-cyan-400/10 p-8 overflow-hidden"
+        >
+            <div className="mb-8">
+                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                    AI CERTIFICATIONS & LEARNING
+                </p>
+
+                <h3 className="mt-3 text-3xl font-semibold text-white">
+                    Continuous AI Skill Development
+                </h3>
+            </div>
+
+            <div className="flex flex-wrap gap-4">
+                {certifications.map((cert) => (
+                    <motion.div
+                        key={cert}
+                        whileHover={{
+                            scale: 1.05,
+                            rotate: -1,
+                        }}
+                        className="rounded-full border border-cyan-400/20 bg-cyan-400/5 px-5 py-3 text-sm text-cyan-300"
+                    >
+                        <Sparkles size={14} className="mr-2 inline" />
+                        {cert}
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+// ============================================================
+// Resume CTA
+// ============================================================
+
+function ResumeCTA() {
+    return (
+        <motion.div
+            variants={fadeUp}
+            className="relative overflow-hidden rounded-[44px] border border-cyan-400/15 bg-gradient-to-r from-[#07131E] via-[#0B1020] to-[#18122B] p-10"
+        >
+            <motion.div
+                animate={{
+                    rotate: 360,
+                }}
+                transition={{
+                    repeat: Infinity,
+                    duration: 80,
+                    ease: "linear",
+                }}
+                className="absolute -right-28 -top-28 h-72 w-72 rounded-full border border-cyan-400/10"
+            />
+
+            <div className="relative z-10 max-w-3xl">
+                <div className="status-pill mb-5 w-fit">
+                    <span className="status-dot" />
+                    AI BACKEND ENGINEER
+                </div>
+
+                <h3 className="hero-gradient text-4xl font-bold">
+                    Building AI Infrastructure for Enterprise Applications
+                </h3>
+
+                <p className="mt-6 text-lg leading-8 text-slate-300">
+                    GraphRAG • Multi-Agent Systems • FastAPI • LangGraph • Neo4j • Qdrant • AI Infrastructure
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                    <motion.a
+                        whileHover={{ scale: 1.05 }}
+                        href="/resume.pdf"
+                        download
+                        className="btn-primary inline-flex items-center gap-3"
+                    >
+                        Download Resume
+                        {/*<ArrowUpRight size={18} />*/}
+                    </motion.a>
+
+                    <motion.a
+                        whileHover={{ scale: 1.05 }}
+                        href="#education"
+                        className="rounded-full border border-white/10 px-6 py-3 text-white"
+                    >
+                        Continue to Education
+                    </motion.a>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+
 export default function ExperienceTimeline() {
     const [expanded, setExpanded] = useState("2026");
 
@@ -1590,6 +2546,117 @@ export default function ExperienceTimeline() {
             >
                 <WhatIBuild />
             </motion.div>
+
+            {/* =====================================================
+      Architecture Ownership
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-28"
+            >
+                <ArchitectureOwnership />
+            </motion.div>
+
+            {/* =====================================================
+      Production AI Workflow
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-24"
+            >
+                <AIWorkflowVisualization />
+            </motion.div>
+
+            {/* =====================================================
+      Achievement Counters
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-24"
+            >
+                <AchievementCounters />
+            </motion.div>
+
+            {/* =====================================================
+      Production Pipeline
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-24"
+            >
+                <ProductionPipeline />
+            </motion.div>
+
+            {/* =====================================================
+      Engineering Philosophy
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-24"
+            >
+                <EngineeringPhilosophy />
+            </motion.div>
+            {/* =====================================================
+      Architecture Ownership Diagram
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-28"
+            >
+                <ArchitectureOwnershipDiagram />
+            </motion.div>
+
+            {/* =====================================================
+      Collaboration Model
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-24"
+            >
+                <CollaborationModel />
+            </motion.div>
+
+            {/* =====================================================
+      AI Delivery Lifecycle
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-24"
+            >
+                <DeliveryLifecycle />
+            </motion.div>
+
+            {/* =====================================================
+      Learning Roadmap
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-24"
+            >
+                <LearningRoadmap />
+            </motion.div>
+
+            {/* =====================================================
+      CTA Banner
+===================================================== */}
+
+            <motion.div
+                variants={staggerContainer(0.15)}
+                className="mt-28"
+            >
+                <ExperienceCTA />
+            </motion.div>
+
+
         </section>
     );
 }
