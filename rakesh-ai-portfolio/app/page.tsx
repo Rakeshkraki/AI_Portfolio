@@ -12,6 +12,9 @@ import ExperienceSection from "@/components/experience/ExperienceSection";
 import SkillsSection from "@/components/skills/SkillsSection";
 import ContactSection from "@/components/contact/ContactSection";
 import Footer from "@/components/footer/Footer";
+import { Suspense } from "react";
+import ErrorBoundary from "@/components/providers/ErrorBoundary";
+import LoadingScreen from "@/components/effects/LoadingScreen";
 
 // Effects
 
@@ -416,11 +419,111 @@ function MobileSafeArea({
 // ============================================================
 // Homepage
 // ============================================================
+// ============================================================
+// Hidden SEO Heading
+// ============================================================
+
+function SEOHeading() {
+    return (
+        <h1 className="sr-only">
+            Rakesh Kumar — AI Backend Engineer specializing in GraphRAG, GPT-5,
+            LangGraph, FastAPI, Neo4j, Qdrant and AI Infrastructure.
+        </h1>
+    );
+}
+// ============================================================
+// Suspense Wrapper
+// ============================================================
+
+function PageSuspense({
+                          children,
+                      }: {
+    children: React.ReactNode;
+}) {
+    return (
+        <Suspense fallback={<LoadingScreen />}>
+            {children}
+        </Suspense>
+    );
+}
+// ============================================================
+// Error Boundary Wrapper
+// ============================================================
+
+function SafePage({
+                      children,
+                  }: {
+    children: React.ReactNode;
+}) {
+    return <ErrorBoundary>{children}</ErrorBoundary>;
+}
+// ============================================================
+// End of Portfolio Banner
+// ============================================================
+
+function EndBanner() {
+    return (
+        <section className="relative overflow-hidden py-28">
+            <div className="container-ai">
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="rounded-[44px] border border-cyan-400/15 bg-gradient-to-br from-cyan-500/10 via-violet-500/10 to-sky-500/10 p-12 text-center"
+                >
+                    <motion.div
+                        animate={{ scale: [1, 1.08, 1] }}
+                        transition={{ repeat: Infinity, duration: 3 }}
+                        className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-cyan-400/10 text-cyan-300 text-3xl"
+                    >
+                        ✨
+                    </motion.div>
+
+                    <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                        THANK YOU
+                    </p>
+
+                    <h2 className="hero-gradient mt-5 text-5xl font-bold">
+                        Let's Build Intelligent AI Together
+                    </h2>
+
+                    <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                        Passionate about GraphRAG, Agentic AI, AI Infrastructure,
+                        FastAPI, Retrieval Systems and scalable backend engineering.
+                    </p>
+
+                    <motion.a
+                        whileHover={{ scale: 1.05 }}
+                        href="#contact"
+                        className="btn-primary mt-10 inline-flex items-center gap-3"
+                    >
+                        Contact Me →
+                    </motion.a>
+                </motion.div>
+            </div>
+        </section>
+    );
+}
+// ============================================================
+// Scroll Restoration
+// ============================================================
+
+function ScrollRestoration() {
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="fixed inset-x-0 top-0 z-[999]"
+        />
+    );
+}
 
 export default function HomePage() {
     return (
         <main className="relative overflow-hidden bg-[#050816] text-white">
             {/* Floating UI */}
+            <ScrollRestoration />
 
             <InitialFade />
 
@@ -441,34 +544,46 @@ export default function HomePage() {
             <FloatingScrollTop />
 
             <MobileSafeArea>
-            <motion.div
-                variants={staggerContainer(0.12)}
-                initial="hidden"
-                animate="visible"
-            >
-                {/* Hero */}
+                <SafePage>
+                    <PageSuspense>
+                        <SEOHeading />
 
-                <LandingHero />
+                        <motion.div
+                            variants={staggerContainer(0.12)}
+                            initial="hidden"
+                            animate="visible"
+                        >
+                            {/* Hero */}
 
-                <Divider />
+                            <LandingHero />
 
-                {/* About */}
+                            <Divider />
 
-                <AboutPortfolioSection />
-                <TransitionGlow />
-                <ProjectsPortfolioSection />
-                <TransitionGlow />
-                <ExperiencePortfolioSection />
-                <TransitionGlow />
-                <SkillsPortfolioSection />
-                <TransitionGlow />
-                <ContactPortfolioSection />
+                            <AboutPortfolioSection />
 
-                {/* Footer */}
+                            <TransitionGlow />
 
-                <Footer />
-            </motion.div>
-                </MobileSafeArea>
+                            <ProjectsPortfolioSection />
+
+                            <TransitionGlow />
+
+                            <ExperiencePortfolioSection />
+
+                            <TransitionGlow />
+
+                            <SkillsPortfolioSection />
+
+                            <TransitionGlow />
+
+                            <ContactPortfolioSection />
+
+                            <EndBanner />
+
+                            <Footer />
+                        </motion.div>
+                    </PageSuspense>
+                </SafePage>
+            </MobileSafeArea>
         </main>
     );
 }
