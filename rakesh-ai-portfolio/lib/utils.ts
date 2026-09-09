@@ -1,310 +1,221 @@
-// ============================================================
-// lib/utils.ts
-// Shared utility functions for AI Portfolio
-// ============================================================
-
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-/* ============================================================
-   Tailwind Class Merge
-============================================================ */
+// ============================================================
+// Tailwind Class Merge
+// ============================================================
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
-/* ============================================================
-   Smooth Scroll Helper
-============================================================ */
+// ============================================================
+// Number Formatter
+// ============================================================
+
+export function formatNumber(value: number): string {
+    return new Intl.NumberFormat("en-IN").format(value);
+}
+
+// ============================================================
+// Compact Number Formatter
+// Example: 1500 -> 1.5K
+// ============================================================
+
+export function formatCompactNumber(value: number): string {
+    return new Intl.NumberFormat("en", {
+        notation: "compact",
+        maximumFractionDigits: 1,
+    }).format(value);
+}
+
+// ============================================================
+// Date Formatter
+// ============================================================
+
+export function formatDate(date: Date | string): string {
+    return new Intl.DateTimeFormat("en-IN", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+    }).format(new Date(date));
+}
+
+// ============================================================
+// Greeting Based On Time
+// ============================================================
+
+export function getGreeting(): string {
+    const hour = new Date().getHours();
+
+    if (hour < 12) return "Good Morning";
+    if (hour < 17) return "Good Afternoon";
+    if (hour < 21) return "Good Evening";
+
+    return "Welcome";
+}
+
+// ============================================================
+// Email Validation
+// ============================================================
+
+export function isValidEmail(email: string): boolean {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+}
+
+// ============================================================
+// Copy Text To Clipboard
+// ============================================================
+
+export async function copyToClipboard(text: string): Promise<boolean> {
+    try {
+        await navigator.clipboard.writeText(text);
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+// ============================================================
+// Smooth Scroll To Section
+// ============================================================
 
 export function scrollToSection(sectionId: string) {
-    const section = document.getElementById(sectionId);
+    const element = document.getElementById(sectionId);
 
-    if (!section) return;
+    if (!element) return;
 
-    section.scrollIntoView({
+    element.scrollIntoView({
         behavior: "smooth",
         block: "start",
     });
 }
 
-/* ============================================================
-   Number Formatter
-============================================================ */
+// ============================================================
+// Scroll To Top
+// ============================================================
 
-export function formatNumber(value: number): string {
-    if (value >= 1_000_000_000)
-        return `${(value / 1_000_000_000).toFixed(1)}B`;
-
-    if (value >= 1_000_000)
-        return `${(value / 1_000_000).toFixed(1)}M`;
-
-    if (value >= 1_000)
-        return `${(value / 1_000).toFixed(1)}K`;
-
-    return value.toString();
+export function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
 }
 
-/* ============================================================
-   Random Between Range
-============================================================ */
+// ============================================================
+// Debounce
+// ============================================================
 
-export function random(min: number, max: number) {
-    return Math.random() * (max - min) + min;
-}
-
-/* ============================================================
-   Clamp Value
-============================================================ */
-
-export function clamp(value: number, min: number, max: number) {
-    return Math.max(min, Math.min(max, value));
-}
-
-/* ============================================================
-   Linear Mapping
-============================================================ */
-
-export function mapRange(
-    value: number,
-    inMin: number,
-    inMax: number,
-    outMin: number,
-    outMax: number
+export function debounce<T extends (...args: any[]) => void>(
+    callback: T,
+    delay = 300
 ) {
-    return (
-        ((value - inMin) * (outMax - outMin)) /
-        (inMax - inMin) +
-        outMin
-    );
+    let timer: ReturnType<typeof setTimeout>;
+
+    return (...args: Parameters<T>) => {
+        clearTimeout(timer);
+
+        timer = setTimeout(() => {
+            callback(...args);
+        }, delay);
+    };
 }
 
-/* ============================================================
-   Delay Utility
-============================================================ */
+// ============================================================
+// Throttle
+// ============================================================
+
+export function throttle<T extends (...args: any[]) => void>(
+    callback: T,
+    delay = 300
+) {
+    let waiting = false;
+
+    return (...args: Parameters<T>) => {
+        if (waiting) return;
+
+        callback(...args);
+        waiting = true;
+
+        setTimeout(() => {
+            waiting = false;
+        }, delay);
+    };
+}
+
+// ============================================================
+// Sleep Helper
+// ============================================================
 
 export function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-/* ============================================================
-   Animation Delay Generator
-============================================================ */
+// ============================================================
+// Random ID Generator
+// ============================================================
 
-export function stagger(index: number, delay = 0.08) {
-    return index * delay;
+export function generateId(prefix = "id"): string {
+    return `${prefix}-${Math.random().toString(36).slice(2, 10)}`;
 }
 
-/* ============================================================
-   Random Glow Color
-============================================================ */
+// ============================================================
+// Random Integer
+// ============================================================
 
-const glowColors = [
-    "#22D3EE",
-    "#38BDF8",
-    "#8B5CF6",
-    "#A855F7",
-];
-
-export function randomGlowColor() {
-    return glowColors[Math.floor(Math.random() * glowColors.length)];
+export function randomBetween(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-/* ============================================================
-   Neural Node Generator
-============================================================ */
+// ============================================================
+// Clamp Value
+// ============================================================
 
-export interface NeuralNode {
-    id: number;
-    x: number;
-    y: number;
-    z: number;
-    size: number;
-    color: string;
+export function clamp(value: number, min: number, max: number): number {
+    return Math.min(Math.max(value, min), max);
 }
 
-export function generateNeuralNodes(count = 120): NeuralNode[] {
-    return Array.from({ length: count }).map((_, index) => ({
-        id: index,
-        x: random(-8, 8),
-        y: random(-6, 6),
-        z: random(-8, 8),
-        size: random(0.02, 0.08),
-        color: randomGlowColor(),
-    }));
+// ============================================================
+// Reading Time Calculator
+// ============================================================
+
+export function calculateReadingTime(text: string): number {
+    const words = text.trim().split(/\s+/).length;
+
+    return Math.max(1, Math.ceil(words / 200));
 }
 
-/* ============================================================
-   Neural Connections
-============================================================ */
+// ============================================================
+// Experience Calculator
+// ============================================================
 
-export interface NeuralEdge {
-    from: number;
-    to: number;
+export function calculateExperience(startYear = 2022): number {
+    return new Date().getFullYear() - startYear;
 }
 
-export function generateConnections(
-    nodes: NeuralNode[],
-    maxDistance = 3
-): NeuralEdge[] {
-    const edges: NeuralEdge[] = [];
+// ============================================================
+// Initials Generator
+// ============================================================
 
-    nodes.forEach((a) => {
-        nodes.forEach((b) => {
-            if (a.id === b.id) return;
-
-            const distance = Math.sqrt(
-                Math.pow(a.x - b.x, 2) +
-                Math.pow(a.y - b.y, 2) +
-                Math.pow(a.z - b.z, 2)
-            );
-
-            if (distance < maxDistance) {
-                edges.push({
-                    from: a.id,
-                    to: b.id,
-                });
-            }
-        });
-    });
-
-    return edges;
+export function getInitials(name: string): string {
+    return name
+        .split(" ")
+        .map((word) => word[0])
+        .join("")
+        .toUpperCase();
 }
 
-/* ============================================================
-   Mouse Position Normalizer
-============================================================ */
+// ============================================================
+// File Size Formatter
+// ============================================================
 
-export function normalizeMouse(
-    x: number,
-    y: number
-) {
-    return {
-        x: x * 2 - 1,
-        y: -(y * 2 - 1),
-    };
-}
+export function formatFileSize(bytes: number): string {
+    if (bytes === 0) return "0 Bytes";
 
-/* ============================================================
-   Device Capability Detection
-============================================================ */
+    const k = 1024;
+    const sizes = ["Bytes", "KB", "MB", "GB"];
 
-export function isTouchDevice() {
-    if (typeof window === "undefined") return false;
+    const index = Math.floor(Math.log(bytes) / Math.log(k));
 
-    return (
-        "ontouchstart" in window ||
-        navigator.maxTouchPoints > 0
-    );
-}
-
-export function isMobileDevice() {
-    if (typeof window === "undefined") return false;
-
-    return window.innerWidth < 768;
-}
-
-export function prefersReducedMotion() {
-    if (typeof window === "undefined") return false;
-
-    return window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-}
-
-/* ============================================================
-   Performance Tier
-============================================================ */
-
-export function getPerformanceTier() {
-    if (typeof window === "undefined") return "medium";
-
-    const cores = navigator.hardwareConcurrency ?? 4;
-    const width = window.innerWidth;
-
-    if (cores >= 8 && width >= 1440) return "high";
-    if (cores >= 4) return "medium";
-
-    return "low";
-}
-
-/* ============================================================
-   Viewport Visibility
-============================================================ */
-
-export function isElementVisible(
-    element: HTMLElement,
-    offset = 150
-) {
-    const rect = element.getBoundingClientRect();
-
-    return (
-        rect.top < window.innerHeight - offset &&
-        rect.bottom > offset
-    );
-}
-
-/* ============================================================
-   AI Pipeline Labels
-============================================================ */
-
-export const AI_PIPELINE = [
-    "INPUT",
-    "RETRIEVAL",
-    "CONTEXT",
-    "REASONING",
-    "AGENTS",
-    "INFERENCE",
-    "EVALUATION",
-    "OBSERVABILITY",
-];
-
-/* ============================================================
-   Grid Coordinates Generator
-============================================================ */
-
-export function generateGridPoints(
-    rows = 12,
-    cols = 12,
-    spacing = 1
-) {
-    const points: { x: number; y: number }[] = [];
-
-    for (let y = 0; y < rows; y++) {
-        for (let x = 0; x < cols; x++) {
-            points.push({
-                x: x * spacing,
-                y: y * spacing,
-            });
-        }
-    }
-
-    return points;
-}
-
-/* ============================================================
-   Token Counter Formatter
-============================================================ */
-
-export function formatTokens(tokens: number) {
-    if (tokens > 1_000_000)
-        return `${(tokens / 1_000_000).toFixed(2)}M`;
-
-    if (tokens > 1_000)
-        return `${(tokens / 1_000).toFixed(1)}K`;
-
-    return tokens.toString();
-}
-
-/* ============================================================
-   Latency Formatter
-============================================================ */
-
-export function latencyColor(latency: number) {
-    if (latency < 150) return "#22C55E";
-    if (latency < 300) return "#38BDF8";
-    if (latency < 600) return "#F59E0B";
-
-    return "#EF4444";
+    return `${parseFloat((bytes / Math.pow(k, index)).toFixed(2))} ${sizes[index]}`;
 }

@@ -1,577 +1,291 @@
 // ============================================================
-// RAKESH K - AI PORTFOLIO CONSTANTS
-// Single Source of Truth
+// Portfolio Constants
+// AI Backend Engineer Portfolio
 // ============================================================
 
-import {
-    Brain,
-    Network,
-    Database,
-    Cpu,
-    Boxes,
-    Cloud,
-    GitBranch,
-    Terminal,
-    ShieldCheck,
-    Activity,
-    Rocket,
-    Workflow,
-    Code2,
-    Search,
-    BookOpen,
-    Globe,
-} from "lucide-react";
+/* ---------------------------------- */
+/* Navigation */
+/* ---------------------------------- */
 
-// ============================================================
-// PROFILE
-// ============================================================
+export const NAV_LINKS = [
+    { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Experience", href: "#experience" },
+    { label: "Skills", href: "#skills" },
+    { label: "Contact", href: "#contact" },
+];
 
-export const PROFILE = {
-    name: "Rakesh K",
+/* ---------------------------------- */
+/* Personal Information */
+/* ---------------------------------- */
 
-    title: "Production AI Engineer",
+export const PERSONAL_INFO = {
+    name: "Rakesh Kumar",
+    title: "AI Backend Engineer",
 
-    subtitle: "Building Intelligent Systems That Operate At Scale",
+    subtitle:
+        "Building scalable AI backend systems, GraphRAG applications, LLM APIs, AI Agents, and cloud-native intelligent platforms.",
 
     location: "Bengaluru, Karnataka, India",
 
-    email: "your-email@example.com", // Update Later
+    email: "rakeshkumar.dev@example.com",
 
-    github: "https://github.com/", // Update Later
+    github: "https://github.com/rakeshkumar",
 
-    linkedin: "https://linkedin.com/in/", // Update Later
+    linkedin: "https://linkedin.com/in/rakeshkumar",
 
-    resume: "/resume.pdf",
-
-    status: "ONLINE",
+    website: "https://rakesh-ai.vercel.app",
 };
 
-// ============================================================
-// NAVIGATION
-// ============================================================
+/* ---------------------------------- */
+/* Hero Statistics */
+/* ---------------------------------- */
 
-export const NAV_ITEMS = [
+export const HERO_STATS = [
     {
-        id: "hero",
-        label: "HOME",
+        value: "4+",
+        label: "Years Experience",
     },
     {
-        id: "system",
-        label: "SYSTEM",
+        value: "15+",
+        label: "AI Projects",
     },
     {
-        id: "about",
-        label: "ABOUT",
+        value: "10+",
+        label: "LLM Integrations",
     },
     {
-        id: "experience",
-        label: "EXPERIENCE",
-    },
-    {
-        id: "projects",
-        label: "LAB",
-    },
-    {
-        id: "skills",
-        label: "STACK",
-    },
-    {
-        id: "dashboard",
-        label: "OBSERVABILITY",
-    },
-    {
-        id: "contact",
-        label: "CONTACT",
+        value: "24/7",
+        label: "Learning AI",
     },
 ];
 
-// ============================================================
-// SYSTEM STATUS (Hero HUD)
-// ============================================================
+/* ---------------------------------- */
+/* Social Links */
+/* ---------------------------------- */
 
-export const SYSTEM_STATUS = [
+export const SOCIAL_LINKS = [
     {
-        label: "SYSTEM STATUS",
-        value: "ONLINE",
+        name: "GitHub",
+        url: PERSONAL_INFO.github,
+        icon: "github",
     },
     {
-        label: "LOCATION",
-        value: "BENGALURU, INDIA",
+        name: "LinkedIn",
+        url: PERSONAL_INFO.linkedin,
+        icon: "linkedin",
     },
     {
-        label: "SPECIALIZATION",
-        value: "LLM SYSTEMS / RAG / AGENTS / INFERENCE",
-    },
-];
-
-// ============================================================
-// EXPERIENCE TIMELINE
-// ============================================================
-
-export const EXPERIENCE = [
-    {
-        year: "2023",
-        company: "Fundamentals",
-        role: "DevOps Engineer",
-        location: "India",
-
-        description:
-            "Started engineering career working on DevOps, automation, deployment pipelines and cloud infrastructure.",
-
-        technologies: [
-            "Docker",
-            "Linux",
-            "Git",
-            "Jenkins",
-            "CI/CD",
-            "AWS",
-        ],
-    },
-
-    {
-        year: "2024",
-        company: "Spektra Systems",
-        role: "Software Engineer (GenAI)",
-        location: "India",
-
-        description:
-            "Worked on Generative AI applications, APIs, prompt engineering, retrieval pipelines and AI integrations.",
-
-        technologies: [
-            "Python",
-            "FastAPI",
-            "LangChain",
-            "OpenAI",
-            "Vector Search",
-            "Azure AI",
-        ],
-    },
-
-    {
-        year: "2024 — Present",
-        company: "Solize India Private Limited",
-        role: "Production AI Engineer",
-        location: "Bengaluru, India",
-
-        description:
-            "Designing production-grade LLM systems, GraphRAG pipelines, Multi-Agent AI architectures and scalable AI infrastructure.",
-
-        technologies: [
-            "GraphRAG",
-            "LangGraph",
-            "Neo4j",
-            "Qdrant",
-            "FastAPI",
-            "vLLM",
-            "QLoRA",
-            "Docker",
-            "Kubernetes",
-            "Prometheus",
-        ],
-
-        highlights: [
-            "Production Multi-Tenant RAG Platform",
-            "GraphRAG with Neo4j + Qdrant",
-            "Multi-Agent Automation",
-            "LLM Fine-Tuning",
-            "LLMOps Pipelines",
-            "Inference Optimization",
-        ],
+        name: "Email",
+        url: `mailto:${PERSONAL_INFO.email}`,
+        icon: "mail",
     },
 ];
 
-// ============================================================
-// HERO METRICS
-// Use only metrics from your portfolio specification.
-// ============================================================
+/* ---------------------------------- */
+/* AI Skills */
+/* ---------------------------------- */
 
-export const HERO_METRICS = [
-    {
-        value: "60%",
-        label: "Inference Cost Reduction",
-    },
-    {
-        value: "40%",
-        label: "Query Accuracy Improvement",
-    },
-    {
-        value: "70%",
-        label: "Manual Analysis Time Reduction",
-    },
-    {
-        value: "100K+",
-        label: "Daily Queries Supported",
-    },
-];
-
-// ============================================================
-// AI SYSTEM MAP
-// ============================================================
-
-export const SYSTEM_NODES = [
-    {
-        id: "rag",
-        title: "GRAPH RAG",
-        icon: Search,
-        description:
-            "Hybrid retrieval combining vector search, BM25 and knowledge graph reasoning.",
-        stack: ["Qdrant", "Neo4j", "BGE-M3", "BM25", "Cohere Rerank"],
-    },
-
-    {
-        id: "agents",
-        title: "MULTI AGENTS",
-        icon: Workflow,
-        description:
-            "Collaborative AI agents orchestrated using LangGraph workflows.",
-        stack: ["LangGraph", "LangChain", "OpenAI", "Tool Calling"],
-    },
-
-    {
-        id: "llm",
-        title: "LLM SYSTEMS",
-        icon: Brain,
-        description:
-            "Production-grade Large Language Model applications and orchestration.",
-        stack: ["Llama 3", "GPT", "Mistral", "OpenAI API", "Transformers"],
-    },
-
-    {
-        id: "vector",
-        title: "VECTOR DATABASE",
-        icon: Database,
-        description: "Embedding storage and semantic retrieval layer.",
-        stack: ["Qdrant", "Embeddings", "Hybrid Search"],
-    },
-
-    {
-        id: "graph",
-        title: "KNOWLEDGE GRAPH",
-        icon: Network,
-        description:
-            "Entity relationship reasoning using Neo4j GraphRAG architecture.",
-        stack: ["Neo4j", "Cypher", "GraphRAG"],
-    },
-
-    {
-        id: "inference",
-        title: "INFERENCE ENGINE",
-        icon: Cpu,
-        description:
-            "Optimized inference pipelines using quantization and batching.",
-        stack: ["vLLM", "GPTQ", "PagedAttention", "TensorRT-LLM"],
-    },
-
-    {
-        id: "evaluation",
-        title: "EVALUATION",
-        icon: ShieldCheck,
-        description: "RAG quality evaluation and benchmark pipelines.",
-        stack: ["NDCG", "Recall", "RAGAS", "Custom Metrics"],
-    },
-
-    {
-        id: "observability",
-        title: "OBSERVABILITY",
-        icon: Activity,
-        description: "Monitoring AI infrastructure health and latency.",
-        stack: ["Prometheus", "Grafana", "Tracing", "Logs"],
-    },
-];
-
-// ============================================================
-// PROJECTS (LAB)
-// ============================================================
-
-export const PROJECTS = [
-    {
-        id: "rag-platform",
-
-        index: "01",
-
-        title: "Production Multi-Tenant RAG Platform",
-
-        icon: Database,
-
-        short:
-            "Enterprise-grade GraphRAG platform supporting multiple organizations.",
-
-        technologies: [
-            "GraphRAG",
-            "Qdrant",
-            "Neo4j",
-            "FastAPI",
-            "LangGraph",
-            "Docker",
-        ],
-
-        pipeline: [
-            "User Query",
-            "Hybrid Retrieval",
-            "Vector Search",
-            "Knowledge Graph",
-            "Reranking",
-            "LLM Response",
-        ],
-
-        metrics: [
-            "1000+ Concurrent Users",
-            "50+ Organizations",
-            "90% Cache Hit Rate",
-            "100K+ Queries / Month",
-        ],
-    },
-
-    {
-        id: "multi-agent",
-
-        index: "02",
-
-        title: "Autonomous Multi-Agent Code Review System",
-
-        icon: Workflow,
-
-        short:
-            "Multiple AI agents collaborate for code review, testing and optimization.",
-
-        technologies: [
-            "LangGraph",
-            "LangChain",
-            "OpenAI",
-            "GitHub API",
-            "Python",
-        ],
-
-        pipeline: [
-            "Pull Request",
-            "Reviewer Agent",
-            "Tester Agent",
-            "Optimizer Agent",
-            "Human Approval",
-        ],
-
-        metrics: [
-            "80% Issues Detected",
-            "95% Test Validity",
-            "60% Review Time Reduction",
-        ],
-    },
-
-    {
-        id: "domain-llm",
-
-        index: "03",
-
-        title: "Domain Expert LLM with DPO Alignment",
-
-        icon: Brain,
-
-        short:
-            "Fine-tuned domain-specific language model optimized using QLoRA and DPO.",
-
-        technologies: [
-            "QLoRA",
-            "DPO",
-            "Transformers",
-            "PyTorch",
-            "vLLM",
-        ],
-
-        pipeline: [
-            "Dataset",
-            "Synthetic Data",
-            "QLoRA",
-            "DPO",
-            "Evaluation",
-            "Production",
-        ],
-
-        metrics: [
-            "10K+ Training Examples",
-            "35% Benchmark Improvement",
-            "2x Inference Speedup",
-        ],
-    },
-
-    {
-        id: "inference-platform",
-
-        index: "04",
-
-        title: "High Performance LLM Inference Platform",
-
-        icon: Rocket,
-
-        short:
-            "Scalable inference infrastructure with batching, quantization and GPU optimization.",
-
-        technologies: [
-            "vLLM",
-            "Llama 3",
-            "TensorRT",
-            "Docker",
-            "Kubernetes",
-        ],
-
-        pipeline: [
-            "Request Queue",
-            "Continuous Batching",
-            "PagedAttention",
-            "GPU Execution",
-            "Streaming Tokens",
-        ],
-
-        metrics: [
-            "10–20x Throughput",
-            "60% Cost Reduction",
-            "99.9% Uptime",
-            "<2s P95 Latency",
-        ],
-    },
-];
-
-// ============================================================
-// TECH STACK CONSTELLATION
-// ============================================================
-
-export const SKILLS = {
-    languages: [
-        "Python",
-        "Java",
-        "TypeScript",
-        "JavaScript",
-        "SQL",
-    ],
-
+export const AI_SKILLS = {
     llm: [
+        "OpenAI GPT-5",
+        "GPT-4o",
         "LangChain",
         "LangGraph",
         "LlamaIndex",
-        "OpenAI",
-        "Transformers",
-        "vLLM",
-        "HuggingFace",
+        "Claude API",
+        "Gemini API",
+        "Prompt Engineering",
+        "Function Calling",
+        "Structured Outputs",
     ],
 
-    finetuning: [
-        "QLoRA",
-        "LoRA",
-        "DPO",
-        "PEFT",
-        "PyTorch",
-    ],
-
-    retrieval: [
-        "GraphRAG",
+    rag: [
         "RAG",
+        "GraphRAG",
         "Hybrid Search",
-        "BM25",
-        "BGE-M3",
-        "Cohere Rerank",
-    ],
-
-    vectorGraph: [
-        "Neo4j",
-        "Qdrant",
-        "FAISS",
-        "Embeddings",
-        "Cypher",
-    ],
-
-    mlops: [
-        "Docker",
-        "Kubernetes",
-        "Prometheus",
-        "Grafana",
-        "MLflow",
+        "Vector Search",
+        "Knowledge Graphs",
+        "Embedding Models",
+        "Chunking Strategies",
+        "Retrieval Optimization",
     ],
 
     backend: [
+        "Python",
         "FastAPI",
+        "Java",
+        "Spring Boot",
         "REST APIs",
         "WebSockets",
-        "PostgreSQL",
-        "Redis",
+        "Authentication",
+        "JWT",
+        "OAuth",
+        "Microservices",
     ],
 
-    devops: [
-        "Linux",
-        "Git",
+    databases: [
+        "Neo4j",
+        "PostgreSQL",
+        "MongoDB",
+        "Redis",
+        "Pinecone",
+        "ChromaDB",
+        "Qdrant",
+        "FAISS",
+    ],
+
+    cloud: [
+        "Docker",
+        "Kubernetes",
+        "AWS",
+        "Azure",
+        "Vercel",
         "GitHub Actions",
         "CI/CD",
-        "AWS",
+    ],
+
+    frontend: [
+        "Next.js",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "Framer Motion",
     ],
 };
 
-// ============================================================
-// COMMAND PALETTE
-// ============================================================
+/* ---------------------------------- */
+/* Experience Highlights */
+/* ---------------------------------- */
 
-export const COMMANDS = [
+export const EXPERIENCE_HIGHLIGHTS = [
+    "Developed AI backend APIs for enterprise applications.",
+    "Built GraphRAG systems using Neo4j knowledge graphs.",
+    "Integrated OpenAI, Gemini, and Claude APIs.",
+    "Designed scalable Retrieval-Augmented Generation pipelines.",
+    "Created AI agents with LangGraph and LangChain.",
+    "Implemented vector search using Pinecone, ChromaDB, and FAISS.",
+    "Optimized backend performance using FastAPI and async processing.",
+];
+
+/* ---------------------------------- */
+/* AI Certifications */
+/* ---------------------------------- */
+
+export const CERTIFICATIONS = [
     {
-        label: "Go to Hero",
-        action: "hero",
+        title: "Generative AI with Large Language Models",
+        provider: "DeepLearning.AI",
     },
     {
-        label: "Open AI System",
-        action: "system",
+        title: "LangChain for LLM Application Development",
+        provider: "LangChain Academy",
     },
     {
-        label: "View Experience",
-        action: "experience",
+        title: "OpenAI API Fundamentals",
+        provider: "OpenAI",
     },
     {
-        label: "Open Laboratory",
-        action: "projects",
-    },
-    {
-        label: "View AI Stack",
-        action: "skills",
-    },
-    {
-        label: "Observability Dashboard",
-        action: "dashboard",
-    },
-    {
-        label: "Download Resume",
-        action: "resume",
-    },
-    {
-        label: "Open GitHub",
-        action: "github",
-    },
-    {
-        label: "Open LinkedIn",
-        action: "linkedin",
+        title: "Neo4j Graph Data Science Fundamentals",
+        provider: "Neo4j",
     },
 ];
 
-// ============================================================
-// CONTACT LINKS
-// ============================================================
+/* ---------------------------------- */
+/* Project Categories */
+/* ---------------------------------- */
 
-export const CONTACT_LINKS = [
-    {
-        label: "GitHub",
-        icon: GitBranch,
-        href: PROFILE.github,
-    },
+export const PROJECT_CATEGORIES = [
+    "All",
+    "GraphRAG",
+    "LLM APIs",
+    "AI Agents",
+    "Backend APIs",
+    "Cloud AI",
+    "GenAI",
+];
 
-    {
-        label: "LinkedIn",
-        icon: Globe,
-        href: PROFILE.linkedin,
-    },
+/* ---------------------------------- */
+/* Contact Information */
+/* ---------------------------------- */
 
+export const CONTACT_INFO = [
     {
-        label: "Resume",
-        icon: BookOpen,
-        href: PROFILE.resume,
+        title: "Email",
+        value: PERSONAL_INFO.email,
+        icon: "mail",
     },
+    {
+        title: "Location",
+        value: PERSONAL_INFO.location,
+        icon: "map-pin",
+    },
+    {
+        title: "LinkedIn",
+        value: PERSONAL_INFO.linkedin,
+        icon: "linkedin",
+    },
+    {
+        title: "GitHub",
+        value: PERSONAL_INFO.github,
+        icon: "github",
+    },
+];
 
+/* ---------------------------------- */
+/* FAQ Section */
+/* ---------------------------------- */
+
+export const FAQ_ITEMS = [
     {
-        label: "Email",
-        icon: Terminal,
-        href: `mailto:${PROFILE.email}`,
+        question: "What AI technologies do you specialize in?",
+        answer:
+            "I specialize in GraphRAG, LLM APIs, AI Agents, LangChain, LangGraph, FastAPI, Neo4j, Vector Databases, and scalable AI backend architectures.",
     },
+    {
+        question: "Do you build production-ready AI backend systems?",
+        answer:
+            "Yes. I focus on scalable backend APIs, retrieval systems, authentication, observability, cloud deployment, and enterprise AI integrations.",
+    },
+    {
+        question: "Which vector databases have you worked with?",
+        answer:
+            "Pinecone, ChromaDB, FAISS, Qdrant, Redis Vector Search, and Neo4j vector indexes.",
+    },
+    {
+        question: "Are you open to AI Backend Engineer roles?",
+        answer:
+            "Yes. I'm actively looking for AI Backend Engineer, GenAI Engineer, and LLM Platform Engineer opportunities.",
+    },
+];
+
+/* ---------------------------------- */
+/* Footer */
+/* ---------------------------------- */
+
+export const FOOTER_TEXT = {
+    copyright: `© ${new Date().getFullYear()} Rakesh Kumar.`,
+    tagline: "Designed & Built with Next.js, TypeScript, Tailwind CSS, Framer Motion & AI.",
+};
+
+/* ---------------------------------- */
+/* SEO Keywords */
+/* ---------------------------------- */
+
+export const SEO_KEYWORDS = [
+    "AI Backend Engineer",
+    "Generative AI Engineer",
+    "GraphRAG Developer",
+    "LangChain",
+    "LangGraph",
+    "FastAPI",
+    "Neo4j",
+    "OpenAI GPT-5",
+    "Vector Database",
+    "RAG Pipeline",
+    "AI Agents",
+    "Python AI Backend",
+    "LLM Engineer",
+    "Next.js Portfolio",
 ];
