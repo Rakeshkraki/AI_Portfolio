@@ -12,7 +12,7 @@ import {
 
 import {
     PERSONAL_INFO,
-    HERO_STATS,
+    HERO_METRICS,
     SOCIAL_LINKS,
 } from "@/lib/constants";
 
@@ -218,7 +218,7 @@ export default function HeroSection() {
                     animate="visible"
                     className="mt-24 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
                 >
-                    {HERO_STATS.map((stat) => (
+                    {HERO_METRICS.map((stat) => (
                         <motion.div
                             key={stat.label}
                             variants={fadeUpChild}

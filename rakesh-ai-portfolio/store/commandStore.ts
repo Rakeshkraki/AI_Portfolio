@@ -1,12 +1,6 @@
 "use client";
 
-// ============================================================
-// store/commandStore.ts
-// AI Command Palette Store
-// ============================================================
-
 import { create } from "zustand";
-import { COMMANDS } from "@/lib/constants";
 import { scrollToSection } from "@/lib/utils";
 import { useSystemStore } from "./systemStore";
 
@@ -44,14 +38,76 @@ interface CommandState {
 // ------------------------------------------------------------
 
 const defaultCommands: CommandItem[] = [
-    ...COMMANDS.map((cmd, index) => ({
-        id: String(index),
-        label: cmd.label,
-        action: cmd.action,
+    {
+        id: "hero",
+        label: "Go to Hero Section",
+        action: "hero",
         category: "Navigation",
-        keywords: cmd.label.toLowerCase().split(" "),
-    })),
-
+        keywords: ["hero", "home", "landing"],
+    },
+    {
+        id: "about",
+        label: "Go to About Section",
+        action: "about",
+        category: "Navigation",
+        keywords: ["about", "profile"],
+    },
+    {
+        id: "experience",
+        label: "Go to Experience Section",
+        action: "experience",
+        category: "Navigation",
+        keywords: ["experience", "career"],
+    },
+    {
+        id: "projects",
+        label: "Go to Projects Section",
+        action: "projects",
+        category: "Navigation",
+        keywords: ["projects", "portfolio"],
+    },
+    {
+        id: "skills",
+        label: "Go to Skills Section",
+        action: "skills",
+        category: "Navigation",
+        keywords: ["skills", "technology"],
+    },
+    {
+        id: "dashboard",
+        label: "Go to AI Dashboard",
+        action: "dashboard",
+        category: "Navigation",
+        keywords: ["dashboard", "graph", "analytics"],
+    },
+    {
+        id: "contact",
+        label: "Go to Contact Section",
+        action: "contact",
+        category: "Navigation",
+        keywords: ["contact", "email"],
+    },
+    {
+        id: "resume",
+        label: "Download Resume",
+        action: "resume",
+        category: "Portfolio",
+        keywords: ["resume", "cv"],
+    },
+    {
+        id: "github",
+        label: "Open GitHub",
+        action: "github",
+        category: "Portfolio",
+        keywords: ["github", "code"],
+    },
+    {
+        id: "linkedin",
+        label: "Open LinkedIn",
+        action: "linkedin",
+        category: "Portfolio",
+        keywords: ["linkedin", "profile"],
+    },
     {
         id: "debug",
         label: "Enable Debug Mode",
@@ -59,7 +115,6 @@ const defaultCommands: CommandItem[] = [
         category: "System",
         keywords: ["debug", "developer", "system"],
     },
-
     {
         id: "diagnostics",
         label: "Run System Diagnostics",
@@ -67,7 +122,6 @@ const defaultCommands: CommandItem[] = [
         category: "System",
         keywords: ["system", "diagnostics", "status"],
     },
-
     {
         id: "sudo",
         label: "sudo rakesh",
@@ -83,11 +137,8 @@ const defaultCommands: CommandItem[] = [
 
 export const useCommandStore = create<CommandState>((set, get) => ({
     open: false,
-
     query: "",
-
     selected: 0,
-
     commands: defaultCommands,
 
     openPalette: () =>
@@ -124,15 +175,14 @@ export const useCommandStore = create<CommandState>((set, get) => ({
 
         const search = query.toLowerCase();
 
-        return commands.filter((command) => {
-            return (
+        return commands.filter(
+            (command) =>
                 command.label.toLowerCase().includes(search) ||
                 command.category.toLowerCase().includes(search) ||
                 command.keywords.some((keyword) =>
                     keyword.includes(search)
                 )
-            );
-        });
+        );
     },
 
     nextCommand: () => {
@@ -159,10 +209,10 @@ export const useCommandStore = create<CommandState>((set, get) => ({
 
     executeSelected: () => {
         const commands = get().filteredCommands();
-        const selectedCommand = commands[get().selected];
+        const command = commands[get().selected];
 
-        if (selectedCommand) {
-            get().executeCommand(selectedCommand);
+        if (command) {
+            get().executeCommand(command);
         }
     },
 
@@ -170,10 +220,11 @@ export const useCommandStore = create<CommandState>((set, get) => ({
         const system = useSystemStore.getState();
 
         switch (command.action) {
-            // ---------------- Navigation ----------------
-
             case "hero":
-            case "system":
+                scrollToSection("home");
+                system.setActiveSection("home");
+                break;
+
             case "about":
             case "experience":
             case "projects":
@@ -184,30 +235,27 @@ export const useCommandStore = create<CommandState>((set, get) => ({
                 system.setActiveSection(command.action);
                 break;
 
-            // ---------------- Resume ----------------
-
             case "resume":
-                window.open("/resume.pdf", "_blank");
+                window.open(
+                    "/resume/Rakesh-Kumar-AI-Backend-Engineer.pdf",
+                    "_blank"
+                );
                 break;
 
-            // ---------------- External ----------------
-
             case "github":
-                window.open(system ? "" : "", "_blank");
+                window.open("https://github.com/yourusername", "_blank");
                 break;
 
             case "linkedin":
-                window.open(system ? "" : "", "_blank");
+                window.open(
+                    "https://linkedin.com/in/yourlinkedin",
+                    "_blank"
+                );
                 break;
-
-            // ---------------- Debug ----------------
 
             case "debug":
                 system.toggleDebugMode();
-                alert("⚡ Debug Mode Enabled");
                 break;
-
-            // ---------------- Diagnostics ----------------
 
             case "diagnostics":
                 console.table({
@@ -216,23 +264,11 @@ export const useCommandStore = create<CommandState>((set, get) => ({
                     ParticleQuality: system.particleQuality,
                     Debug: system.debugMode,
                 });
-
-                alert("System diagnostics printed in browser console.");
                 break;
-
-            // ---------------- Easter Egg ----------------
 
             case "sudo":
                 system.toggleDebugMode();
-
-                alert(`
-ACCESS GRANTED
-
-Welcome Rakesh.
-
-AI Infrastructure Debug Console Enabled.
-        `);
-
+                console.log("AI Infrastructure Debug Console Enabled");
                 break;
 
             default:

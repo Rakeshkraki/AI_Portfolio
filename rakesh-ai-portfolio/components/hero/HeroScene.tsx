@@ -16,8 +16,9 @@ import {
 } from "@react-three/drei";
 import * as THREE from "three";
 
-import { generateNeuralNodes } from "@/lib/utils";
+import { generateNeuralNodes, NeuralNodeData } from "@/lib/utils";
 import { useSystemStore } from "@/store/systemStore";
+import {blue} from "next/dist/lib/picocolors";
 
 const PARTICLE_COUNT = 220;
 
@@ -539,7 +540,7 @@ function NeuralNetwork() {
 
     const positions = useMemo(
         () =>
-            nodes.map((n) => [n.x, n.y, n.z] as [number, number, number]),
+            nodes.map((n: NeuralNodeData) => [n.x, n.y, n.z] as [number, number, number]),
         [nodes]
     );
 
@@ -566,17 +567,17 @@ function NeuralNetwork() {
 
             <DataStreams />
 
-            {nodes.map((node) => (
+            {nodes.map((n: NeuralNodeData) => (
                 <Float
-                    key={node.id}
+                    key={n.id}
                     speed={1.5}
                     rotationIntensity={0.5}
                     floatIntensity={0.5}
                 >
                     <NeuralNode
-                        position={[node.x, node.y, node.z]}
-                        color={node.color}
-                        size={node.size}
+                        position={[n.x, n.y, n.z]}
+                        color="blue"
+                        size={n.size}
                     />
                 </Float>
             ))}

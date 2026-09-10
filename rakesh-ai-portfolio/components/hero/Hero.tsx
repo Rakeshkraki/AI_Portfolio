@@ -210,7 +210,7 @@ export default function Hero() {
                             </p>
 
                             <p className="mt-1 text-sm font-medium text-cyan-300">
-                                {item.value}
+                                {item.status}
                             </p>
                         </div>
                     ))}

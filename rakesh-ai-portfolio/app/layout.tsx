@@ -14,6 +14,7 @@ import LoadingScreen from "@/components/effects/LoadingScreen";
 import FloatingParticles from "@/components/effects/FloatingParticles";
 import KeyboardShortcuts from "@/components/effects/KeyboardShortcuts";
 
+
 // ============================================================
 // Fonts
 // ============================================================
@@ -428,6 +429,7 @@ export default function RootLayout({
                     selection:text-white
                 `}
         >
+
         <Providers>
             <SkipNavigation />
 

@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { NAV_LINKS, PERSONAL_INFO } from "@/lib/constants";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { scrollToSection } from "@/lib/utils";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 interface NavbarProps {
     onOpenMobileMenu: () => void;
@@ -53,6 +54,7 @@ export default function Navbar({
                     : "bg-transparent"
             }`}
         >
+            <ThemeToggle />
             <nav className="container-ai flex h-20 items-center justify-between">
                 {/* Logo */}
 

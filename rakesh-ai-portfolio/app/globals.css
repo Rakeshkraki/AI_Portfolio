@@ -4,9 +4,37 @@
 
 @import "tailwindcss";
 
+.input-field {
+    @apply w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition-all placeholder:text-slate-500;
+}
+
+.input-field:focus {
+    @apply border-cyan-400/40 ring-2 ring-cyan-400/20;
+}
+
+/* Hide glow on touch devices */
+@media (pointer: coarse) {
+    .cursor-glow {
+        display: none;
+    }
+}
 /* ==========================================================
    Root Variables
 ========================================================== */
+:root {
+    --background: #ffffff;
+    --foreground: #0f172a;
+}
+
+.dark {
+    --background: #020617;
+    --foreground: #f8fafc;
+}
+
+body {
+    background: var(--background);
+    color: var(--foreground);
+}
 
 :root {
     --background: #050816;

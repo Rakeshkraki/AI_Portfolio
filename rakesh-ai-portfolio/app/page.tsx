@@ -5,17 +5,19 @@ import { motion } from "framer-motion";
 
 // Sections
 
-import HeroSection from "@/components/hero/HeroSection";
+import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/about/AboutSection";
-import ProjectsSection from "@/components/projects/ProjectsSection";
-import ExperienceSection from "@/components/experience/ExperienceSection";
-import SkillsSection from "@/components/skills/SkillsSection";
+import ProjectsSection from "@/components/sections/ProjectsSection";
+import ExperienceSection from "@/components/sections/ExperienceSection";
+import SkillsSection from "@/components/sections/SkillsSection";
 import ContactSection from "@/components/contact/ContactSection";
 import Footer from "@/components/footer/Footer";
 import { Suspense } from "react";
 import ErrorBoundary from "@/components/providers/ErrorBoundary";
 import LoadingScreen from "@/components/effects/LoadingScreen";
-
+import ParticleBackground from "@/components/effects/ParticleBackground";
+import CursorGlow from "@/components/effects/CursorGlow";
+import AIChatWidget from "@/components/ai/AIChatWidget";
 // Effects
 
 import SectionDivider from "@/components/ui/SectionDivider";
@@ -523,30 +525,35 @@ export default function HomePage() {
     return (
         <main className="relative overflow-hidden bg-[#050816] text-white">
             {/* Floating UI */}
-            <ScrollRestoration />
 
-            <InitialFade />
+            <ParticleBackground/>
+            <CursorGlow/>
+            <ScrollRestoration/>
 
-            <PageDecorations />
+            <AIChatWidget />
 
-            <GridOverlay />
+            <InitialFade/>
 
-            <ParallaxLayers />
+            <PageDecorations/>
 
-            <AvailabilityBadge />
+            <GridOverlay/>
 
-            <FloatingNavigation />
+            <ParallaxLayers/>
 
-            <PortfolioHUD />
+            <AvailabilityBadge/>
 
-            <CommandPaletteButton />
+            <FloatingNavigation/>
 
-            <FloatingScrollTop />
+            <PortfolioHUD/>
+
+            <CommandPaletteButton/>
+
+            <FloatingScrollTop/>
 
             <MobileSafeArea>
                 <SafePage>
                     <PageSuspense>
-                        <SEOHeading />
+                        <SEOHeading/>
 
                         <motion.div
                             variants={staggerContainer(0.12)}
@@ -555,31 +562,31 @@ export default function HomePage() {
                         >
                             {/* Hero */}
 
-                            <LandingHero />
+                            <LandingHero/>
 
-                            <Divider />
+                            <Divider/>
 
-                            <AboutPortfolioSection />
+                            <AboutPortfolioSection/>
 
-                            <TransitionGlow />
+                            <TransitionGlow/>
 
-                            <ProjectsPortfolioSection />
+                            <ProjectsPortfolioSection/>
 
-                            <TransitionGlow />
+                            <TransitionGlow/>
 
-                            <ExperiencePortfolioSection />
+                            <ExperiencePortfolioSection/>
 
-                            <TransitionGlow />
+                            <TransitionGlow/>
 
-                            <SkillsPortfolioSection />
+                            <SkillsPortfolioSection/>
 
-                            <TransitionGlow />
+                            <TransitionGlow/>
 
-                            <ContactPortfolioSection />
+                            <ContactPortfolioSection/>
 
-                            <EndBanner />
+                            <EndBanner/>
 
-                            <Footer />
+                            <Footer/>
                         </motion.div>
                     </PageSuspense>
                 </SafePage>

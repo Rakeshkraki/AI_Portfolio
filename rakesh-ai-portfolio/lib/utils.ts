@@ -219,3 +219,22 @@ export function formatFileSize(bytes: number): string {
 
     return `${parseFloat((bytes / Math.pow(k, index)).toFixed(2))} ${sizes[index]}`;
 }
+export interface NeuralNodeData {
+    id: number;
+    x: number;
+    y: number;
+    z:number;
+    size: number;
+}
+
+export function generateNeuralNodes(
+    count = 30
+): NeuralNodeData[] {
+    return Array.from({ length: count }, (_, index) => ({
+        id: index,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        z: Math.random() * 100,
+        size: Math.random() * 8 + 4,
+    }));
+}

@@ -220,7 +220,7 @@ export default function Loader() {
                             : "bg-white/5 text-slate-500"
                         }`}
                       >
-                        <Icon size={18} />
+                        {/*<Icon size={18 />*/}
                       </div>
 
                       <div>
