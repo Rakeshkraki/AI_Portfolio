@@ -40,7 +40,7 @@ const spaceGrotesk = Space_Grotesk({
 // ============================================================
 
 const siteConfig = {
-    name: "Rakesh Kumar",
+    name: "Rakesh K",
     shortName: "Rakesh K",
     title: "AI Backend Engineer",
     url: "https://yourdomain.com",

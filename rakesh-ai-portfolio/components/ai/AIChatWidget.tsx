@@ -76,7 +76,7 @@ function generateResponse(question: string): string {
     )
         return KNOWLEDGE.availability;
 
-    return "I'm Rakesh Kumar's portfolio assistant. Ask me about GraphRAG, AI Backend Engineering, LangGraph, GPT-5 integrations, FastAPI, Neo4j, vector databases, or AI projects.";
+    return "I'm Rakesh K's portfolio assistant. Ask me about GraphRAG, AI Backend Engineering, LangGraph, GPT-5 integrations, FastAPI, Neo4j, vector databases, or AI projects.";
 }
 
 export default function AIChatWidget() {

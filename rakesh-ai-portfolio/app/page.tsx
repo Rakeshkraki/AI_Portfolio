@@ -428,7 +428,7 @@ function MobileSafeArea({
 function SEOHeading() {
     return (
         <h1 className="sr-only">
-            Rakesh Kumar — AI Backend Engineer specializing in GraphRAG, GPT-5,
+            Rakesh K — AI Backend Engineer specializing in GraphRAG, GPT-5,
             LangGraph, FastAPI, Neo4j, Qdrant and AI Infrastructure.
         </h1>
     );

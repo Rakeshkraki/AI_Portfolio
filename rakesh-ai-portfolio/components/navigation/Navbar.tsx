@@ -105,7 +105,7 @@ export default function Navbar({
 
                 <div className="hidden lg:flex items-center gap-4">
                     <Link
-                        href="/resume/Rakesh-Kumar-AI-Backend-Engineer.pdf"
+                        href="/resume/Rakesh-K-AI-Backend-Engineer.pdf"
                         target="_blank"
                         className="btn-primary btn-glow"
                     >

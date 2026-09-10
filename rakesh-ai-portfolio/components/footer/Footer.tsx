@@ -82,7 +82,7 @@ function FooterBranding() {
             </p>
 
             <h2 className="hero-gradient mt-5 text-5xl font-bold">
-                Rakesh Kumar
+                Rakesh K
             </h2>
 
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
@@ -589,7 +589,7 @@ function CopyrightSection() {
             <div className="flex flex-col gap-6 text-center lg:flex-row lg:items-center lg:justify-between lg:text-left">
                 <div>
                     <h4 className="text-xl font-semibold text-white">
-                        Rakesh Kumar
+                        Rakesh K
                     </h4>
 
                     <p className="mt-2 text-sm text-slate-500">
@@ -610,7 +610,7 @@ function CopyrightSection() {
             </div>
 
             <div className="mt-8 text-center text-sm text-slate-600">
-                © {new Date().getFullYear()} Rakesh Kumar. All rights reserved.
+                © {new Date().getFullYear()} Rakesh K. All rights reserved.
             </div>
         </motion.div>
     );

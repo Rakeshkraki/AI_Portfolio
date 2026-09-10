@@ -1,18 +1,18 @@
 
 export const PROFILE = {
-    name: "Rakesh Kumar",
+    name: "Rakesh K",
     title: "AI Backend Engineer",
 
     subtitle:
         "Building GraphRAG systems, AI Agents, LLM APIs and Enterprise AI Backend platforms.",
 
-    email: "rakeshkumar@example.com",
+    email: "rakeshK@example.com",
 
     location: "Bengaluru, Karnataka, India",
 
     status: "Available for Opportunities",
 
-    resume: "/resume/Rakesh-Kumar-AI-Backend-Engineer.pdf",
+    resume: "/resume/Rakesh-K-AI-Backend-Engineer.pdf",
 
     github: "https://github.com/yourusername",
 

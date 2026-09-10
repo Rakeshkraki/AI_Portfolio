@@ -186,7 +186,7 @@ export default function ProjectsSection() {
                         </p>
 
                         <a
-                            href="https://github.com/rakeshkumar"
+                            href="https://github.com/rakeshK"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn-primary mt-8 inline-flex items-center gap-2"

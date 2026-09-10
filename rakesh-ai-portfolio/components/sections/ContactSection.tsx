@@ -230,7 +230,7 @@ export default function ContactSection() {
                                     onChange={(e) =>
                                         updateField("name", e.target.value)
                                     }
-                                    placeholder="Rakesh Kumar"
+                                    placeholder="Rakesh K"
                                     className="input-field"
                                 />
                             </div>

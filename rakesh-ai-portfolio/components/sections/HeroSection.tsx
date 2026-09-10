@@ -111,7 +111,7 @@ export default function HeroSection() {
                             </button>
 
                             <Link
-                                href="/resume/Rakesh-Kumar-AI-Backend-Engineer.pdf"
+                                href="/resume/Rakesh-K-AI-Backend-Engineer.pdf"
                                 target="_blank"
                                 className="btn-secondary"
                             >

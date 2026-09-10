@@ -155,7 +155,7 @@ export default function MobileMenu({
 
                         <div className="mt-auto pt-10">
                             <a
-                                href="/resume/Rakesh-Kumar-AI-Backend-Engineer.pdf"
+                                href="/resume/Rakesh-K-AI-Backend-Engineer.pdf"
                                 target="_blank"
                                 rel="noreferrer"
                                 className="btn-primary flex w-full items-center justify-center gap-2"
