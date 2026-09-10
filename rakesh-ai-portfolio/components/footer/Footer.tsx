@@ -10,8 +10,7 @@ import { motion } from "framer-motion";
 
 import {
     ArrowUp,
-    //Github,
-    //Linkedin,
+    Link,
     Mail,
     Sparkles,
     Download,
@@ -31,13 +30,13 @@ const socialLinks = [
     {
         label: "GitHub",
         href: "https://github.com/rakesh-ai",
-        //icon: Github,
+        icon: Link,
         color: "#22D3EE",
     },
     {
         label: "LinkedIn",
         href: "https://linkedin.com/in/rakesh-ai",
-        //icon: Linkedin,
+        icon: Link,
         color: "#0EA5E9",
     },
     {

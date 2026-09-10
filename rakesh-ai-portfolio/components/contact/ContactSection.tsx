@@ -10,8 +10,7 @@ import { motion } from "framer-motion";
 
 import {
     Mail,
-    // Github,
-    // Linkedin,
+    Link,
     MapPin,
     Download,
     ArrowUpRight,
@@ -41,14 +40,14 @@ const contactInfo = [
         title: "GitHub",
         value: "github.com/rakesh-ai",
         href: "https://github.com/rakesh-ai",
-        //icon: Github,
+        icon: Link,
         color: "#8B5CF6",
     },
     {
         title: "LinkedIn",
         value: "linkedin.com/in/rakesh-ai",
         href: "https://linkedin.com/in/rakesh-ai",
-        //icon: Linkedin,
+        icon: Link,
         color: "#0EA5E9",
     },
     {
@@ -739,13 +738,13 @@ const quickActions = [
     },
     {
         label: "GitHub",
-        //icon: Github,
+        icon: Link,
         color: "#8B5CF6",
         href: "https://github.com/rakesh-ai",
     },
     {
         label: "LinkedIn",
-        //icon: Linkedin,
+        icon: Link,
         color: "#0EA5E9",
         href: "https://linkedin.com/in/rakesh-ai",
     },

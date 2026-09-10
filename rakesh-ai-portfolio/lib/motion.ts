@@ -47,7 +47,7 @@ export const floatingAnimation = {
     transition: {
         duration: 4,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
     },
 };
 
@@ -60,7 +60,10 @@ export const buttonTap = {
     scale: 0.95,
 };
 
-export const navHover = {
-    y: -2,
-    transition: { duration: 0.2 },
+export const navHover: Variants = {
+    rest: { y: 0 },
+    hover: {
+        y: -2,
+        transition: { duration: 0.2 },
+    },
 };
