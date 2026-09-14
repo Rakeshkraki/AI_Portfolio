@@ -237,7 +237,7 @@ export const useCommandStore = create<CommandState>((set, get) => ({
 
             case "resume":
                 window.open(
-                    "/resume/Rakesh-K-AI-Backend-Engineer.pdf",
+                    "mailto:rakeshK@example.com?subject=Resume%20request",
                     "_blank"
                 );
                 break;

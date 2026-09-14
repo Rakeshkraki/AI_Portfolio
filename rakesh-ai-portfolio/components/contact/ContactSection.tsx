@@ -106,11 +106,11 @@ function ContactHero() {
 
                     <motion.a
                         whileHover={{ scale: 1.05 }}
-                        href="/resume.pdf"
+                        href="mailto:rakeshK@example.com?subject=Resume%20request"
                         download
                         className="rounded-full border border-white/10 px-6 py-3 text-white"
                     >
-                        Download Resume
+                        Request Resume
                     </motion.a>
                 </div>
             </div>
@@ -244,7 +244,7 @@ function ResumeCard() {
 
                 <motion.a
                     whileHover={{ scale: 1.05 }}
-                    href="/resume.pdf"
+                    href="mailto:rakeshK@example.com?subject=Resume%20request"
                     download
                     className="btn-primary inline-flex items-center gap-3"
                 >
@@ -1188,11 +1188,11 @@ function RecruiterCTA() {
 
                     <motion.a
                         whileHover={{ scale: 1.05 }}
-                        href="/resume.pdf"
+                        href="mailto:rakeshK@example.com?subject=Resume%20request"
                         download
                         className="rounded-full border border-white/10 px-6 py-3 text-white"
                     >
-                        Download Resume
+                        Request Resume
                     </motion.a>
                 </div>
             </div>

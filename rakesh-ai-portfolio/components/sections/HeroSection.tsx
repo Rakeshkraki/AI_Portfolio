@@ -4,9 +4,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
     ArrowRight,
+    BriefcaseBusiness,
+    Code2,
     Download,
-    // Github,
-    // Linkedin,
     Mail,
 } from "lucide-react";
 
@@ -33,6 +33,12 @@ const ROLES = [
     "GenAI Engineer",
     "FastAPI Specialist",
 ];
+
+function SocialIcon({ icon }: { icon: string }) {
+    if (icon === "github") return <Code2 size={20} aria-hidden="true" />;
+    if (icon === "linkedin") return <BriefcaseBusiness size={20} aria-hidden="true" />;
+    return <Mail size={20} aria-hidden="true" />;
+}
 
 export default function HeroSection() {
     const { text } = useTypewriter({
@@ -111,12 +117,12 @@ export default function HeroSection() {
                             </button>
 
                             <Link
-                                href="/resume/Rakesh-K-AI-Backend-Engineer.pdf"
+                                href={`mailto:${PERSONAL_INFO.email}?subject=Resume%20request`}
                                 target="_blank"
                                 className="btn-secondary"
                             >
-                                <Download size={18} />
-                                Download Resume
+                                <Download size={18} aria-hidden="true" />
+                                Request Resume
                             </Link>
                         </motion.div>
 
@@ -131,11 +137,11 @@ export default function HeroSection() {
                                     key={social.name}
                                     href={social.url}
                                     target="_blank"
+                                    rel="noreferrer"
+                                    aria-label={social.name}
                                     className="icon-box-sm border-soft transition hover:border-cyan-400/30 hover:bg-cyan-500/10 hover:text-cyan-400"
                                 >
-                                    {/*{social.icon === "github" && <Github size={20} />}*/}
-                                    {/*{social.icon === "linkedin" && <Linkedin size={20} />}*/}
-                                    {social.icon === "mail" && <Mail size={20} />}
+                                    <SocialIcon icon={social.icon} />
                                 </Link>
                             ))}
                         </motion.div>

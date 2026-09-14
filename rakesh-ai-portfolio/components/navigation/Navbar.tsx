@@ -105,7 +105,7 @@ export default function Navbar({
 
                 <div className="hidden lg:flex items-center gap-4">
                     <Link
-                        href="/resume/Rakesh-K-AI-Backend-Engineer.pdf"
+                        href="mailto:rakeshK@example.com?subject=Resume%20request"
                         target="_blank"
                         className="btn-primary btn-glow"
                     >

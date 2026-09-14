@@ -181,11 +181,11 @@ function FooterResumeCard() {
 
             <motion.a
                 whileHover={{ scale: 1.05 }}
-                href="/resume.pdf"
+                href="mailto:rakeshK@example.com?subject=Resume%20request"
                 download
                 className="btn-primary mt-8 inline-flex items-center gap-3"
             >
-                Download Resume
+                Request Resume
                 <Download size={18} />
             </motion.a>
         </motion.div>

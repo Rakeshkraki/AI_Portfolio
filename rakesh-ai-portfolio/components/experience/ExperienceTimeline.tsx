@@ -2388,11 +2388,11 @@ function ResumeCTA() {
                 <div className="mt-8 flex flex-wrap gap-4">
                     <motion.a
                         whileHover={{ scale: 1.05 }}
-                        href="/resume.pdf"
+                        href="mailto:rakeshK@example.com?subject=Resume%20request"
                         download
                         className="btn-primary inline-flex items-center gap-3"
                     >
-                        Download Resume
+                        Request Resume
                         {/*<ArrowUpRight size={18} />*/}
                     </motion.a>
 

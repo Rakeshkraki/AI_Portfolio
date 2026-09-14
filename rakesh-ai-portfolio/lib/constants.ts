@@ -12,7 +12,7 @@ export const PROFILE = {
 
     status: "Available for Opportunities",
 
-    resume: "/resume/Rakesh-K-AI-Backend-Engineer.pdf",
+    resume: "mailto:rakeshK@example.com?subject=Resume%20request",
 
     github: "https://github.com/yourusername",
 

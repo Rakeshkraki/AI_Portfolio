@@ -1,8 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-//import { X, Github, Linkedin, Mail, Download } from "lucide-react";
-import { X, Mail, Download } from "lucide-react";
+import { X, BriefcaseBusiness, Code2, Mail, Download } from "lucide-react";
 
 import { NAV_LINKS, SOCIAL_LINKS, PERSONAL_INFO } from "@/lib/constants";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
@@ -36,11 +35,11 @@ export default function MobileMenu({
     const renderIcon = (icon: string) => {
         switch (icon) {
             case "github":
-                // return <Github size={20} />;
+                return <Code2 size={20} aria-hidden="true" />;
             case "linkedin":
-                // return <Linkedin size={20} />;
+                return <BriefcaseBusiness size={20} aria-hidden="true" />;
             case "mail":
-                return <Mail size={20} />;
+                return <Mail size={20} aria-hidden="true" />;
             default:
                 return null;
         }
@@ -143,6 +142,7 @@ export default function MobileMenu({
                                         href={social.url}
                                         target="_blank"
                                         rel="noreferrer"
+                                        aria-label={social.name}
                                         className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-400"
                                     >
                                         {renderIcon(social.icon)}
@@ -155,13 +155,13 @@ export default function MobileMenu({
 
                         <div className="mt-auto pt-10">
                             <a
-                                href="/resume/Rakesh-K-AI-Backend-Engineer.pdf"
+                                href={`mailto:${PERSONAL_INFO.email}?subject=Resume%20request`}
                                 target="_blank"
                                 rel="noreferrer"
                                 className="btn-primary flex w-full items-center justify-center gap-2"
                             >
                                 <Download size={18} />
-                                Download Resume
+                                Request Resume
                             </a>
 
                             <p className="mt-6 text-center text-xs text-slate-500">

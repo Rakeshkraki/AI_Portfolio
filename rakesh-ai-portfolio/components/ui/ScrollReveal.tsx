@@ -76,7 +76,7 @@ export default function ScrollReveal({
             whileInView="visible"
             viewport={{
                 once,
-                amount: 0.2,
+                amount: "some",
             }}
             transition={{
                 duration,

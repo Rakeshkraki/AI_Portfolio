@@ -344,22 +344,6 @@ function ParallaxLayers() {
 // Floating Availability Badge
 // ============================================================
 
-function AvailabilityBadge() {
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 }}
-            className="fixed left-1/2 top-6 z-50 hidden -translate-x-1/2 lg:flex items-center gap-3 rounded-full border border-green-400/20 bg-black/60 backdrop-blur-xl px-5 py-2"
-        >
-            <div className="h-2 w-2 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,.8)] animate-pulse" />
-
-            <span className="text-sm text-green-300">
-        Available for AI Backend Engineer Roles
-      </span>
-        </motion.div>
-    );
-}
 // ============================================================
 // Progress HUD
 // ============================================================
@@ -539,8 +523,6 @@ export default function HomePage() {
             <GridOverlay/>
 
             <ParallaxLayers/>
-
-            <AvailabilityBadge/>
 
             <FloatingNavigation/>
 
