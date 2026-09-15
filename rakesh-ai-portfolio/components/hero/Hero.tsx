@@ -1,11 +1,5 @@
 "use client";
 
-// ============================================================
-// components/hero/Hero.tsx
-// Cinematic AI Hero Section
-// Part 1/3
-// ============================================================
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -20,7 +14,6 @@ import {
 } from "lucide-react";
 
 import HeroScene from "./HeroScene";
-
 import { PROFILE, SYSTEM_STATUS, HERO_METRICS } from "@/lib/constants";
 import {
     heroContainer,
@@ -32,219 +25,158 @@ import {
     buttonHover,
     buttonTap,
 } from "@/lib/motion";
-
 import { scrollToSection } from "@/lib/utils";
 import { useSystemStore } from "@/store/systemStore";
 
+const FLOATING_ICONS = [Brain, Database, Network, Cpu, Activity];
+
 export default function Hero() {
     const bootCompleted = useSystemStore((s) => s.bootCompleted);
-
     const [mounted, setMounted] = useState(false);
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+    useEffect(() => setMounted(true), []);
 
     if (!mounted || !bootCompleted) return null;
 
     return (
         <section
             id="hero"
-            className="relative min-h-screen overflow-hidden"
+            className="relative isolate min-h-screen overflow-hidden pt-24 lg:pt-0"
         >
-            {/* =====================================================
-           3D Hero Scene (Next File)
-      ====================================================== */}
-
             <HeroScene />
 
-            {/* Overlay Gradient */}
-
-            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#040506]" />
-
-            {/* =====================================================
-            Hero Content
-      ====================================================== */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#040506]" />
 
             <motion.div
                 variants={heroContainer}
                 initial="hidden"
                 animate="visible"
-                className="container-ai relative z-10 flex min-h-screen flex-col justify-center"
+                className="container-ai relative z-10 flex min-h-screen items-center"
             >
-                {/* ---------- System Badge ---------- */}
+                <div className="grid w-full items-center gap-12 lg:grid-cols-[1.2fr_.8fr]">
+                    <div>
+                        <motion.div variants={heroItem} className="mb-6 flex flex-wrap items-center gap-4">
+                            <div className="status-pill">
+                                <span className="status-dot" />
+                                {PROFILE.status}
+                            </div>
 
-                <motion.div
-                    variants={heroItem}
-                    className="mb-10 flex items-center gap-4"
-                >
-                    <div className="status-pill">
-                        <span className="status-dot" />
-                        {PROFILE.status}
-                    </div>
+                            <span className="hidden h-px w-16 bg-cyan-400/40 md:block" />
 
-                    <div className="hidden md:block h-px w-20 bg-gradient-to-r from-cyan-400 to-transparent" />
-
-                    <p className="mono text-xs uppercase tracking-[0.3em] text-cyan-300/70">
-                        Production AI Infrastructure
-                    </p>
-                </motion.div>
-
-                {/* ---------- Huge Name ---------- */}
-
-                <motion.div variants={heroItem}>
-                    <h1 className="hero-title hero-gradient">
-                        RAKESH
-                    </h1>
-
-                    <h1 className="hero-title text-white">
-                        K
-                    </h1>
-                </motion.div>
-
-                {/* ---------- Role ---------- */}
-
-                <motion.div variants={heroItem} className="mt-6">
-                    <h2 className="display-text max-w-3xl text-2xl font-semibold text-slate-200 md:text-4xl">
-                        {PROFILE.title}
-                    </h2>
-
-                    <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-400">
-                        Building production-grade LLM systems, GraphRAG,
-                        multi-agent architectures, inference pipelines,
-                        vector databases, knowledge graphs and AI
-                        infrastructure that operates at scale.
-                    </p>
-                </motion.div>
-
-                {/* ---------- CTA ---------- */}
-
-                <motion.div
-                    variants={heroItem}
-                    className="mt-10 flex flex-wrap gap-5"
-                >
-                    <motion.button
-                        whileHover={buttonHover}
-                        whileTap={buttonTap}
-                        onClick={() => scrollToSection("system")}
-                        className="btn-primary flex items-center gap-3"
-                    >
-                        <Sparkles size={18} />
-
-                        Explore System
-                    </motion.button>
-
-                    <motion.button
-                        whileHover={buttonHover}
-                        whileTap={buttonTap}
-                        onClick={() => scrollToSection("experience")}
-                        className="btn-secondary flex items-center gap-3"
-                    >
-                        View Experience
-
-                        <ArrowUpRight size={18} />
-                    </motion.button>
-                </motion.div>
-                {/* =====================================================
-              Hero Metrics
-        ====================================================== */}
-
-                <motion.div
-                    variants={staggerContainer(0.15, 0.3)}
-                    initial="hidden"
-                    animate="visible"
-                    className="mt-20 grid grid-cols-2 gap-4 md:grid-cols-4"
-                >
-                    {HERO_METRICS.map((metric) => (
-                        <motion.div
-                            key={metric.label}
-                            variants={metricReveal}
-                            className="glass-card p-5"
-                        >
-                            <h3 className="metric-value text-cyan-300">
-                                {metric.value}
-                            </h3>
-
-                            <p className="metric-label mt-3 leading-5">
-                                {metric.label}
+                            <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                                Production AI Infrastructure
                             </p>
                         </motion.div>
-                    ))}
-                </motion.div>
 
-                {/* =====================================================
-              Scroll Indicator
-        ====================================================== */}
+                        <motion.div variants={heroItem}>
+                            <h1 className="hero-title hero-gradient">RAKESH</h1>
+                            <h1 className="hero-title text-white">K</h1>
+                        </motion.div>
 
-                <motion.div
-                    animate={floatingAnimation}
-                    className="absolute bottom-10 left-1/2 -translate-x-1/2"
-                >
-                    <button
-                        onClick={() => scrollToSection("system")}
-                        className="flex flex-col items-center gap-2 text-cyan-300/70 hover:text-cyan-300"
+                        <motion.div variants={heroItem} className="mt-6 space-y-6">
+                            <h2 className="max-w-3xl text-2xl font-semibold text-slate-100 md:text-4xl">
+                                {PROFILE.title}
+                            </h2>
+
+                            <p className="max-w-2xl text-base leading-8 text-slate-400 md:text-lg">
+                                Building production-grade LLM systems, GraphRAG pipelines,
+                                multi-agent architectures, vector databases, knowledge graphs,
+                                semantic search, and scalable AI backend infrastructure.
+                            </p>
+                        </motion.div>
+
+                        <motion.div variants={heroItem} className="mt-10 flex flex-wrap gap-4">
+                            <motion.button
+                                whileHover={buttonHover}
+                                whileTap={buttonTap}
+                                onClick={() => scrollToSection("projects")}
+                                className="btn-primary"
+                            >
+                                <Sparkles size={18} />
+                                Explore Projects
+                            </motion.button>
+
+                            <motion.button
+                                whileHover={buttonHover}
+                                whileTap={buttonTap}
+                                onClick={() => scrollToSection("experience")}
+                                className="btn-secondary"
+                            >
+                                View Experience
+                                <ArrowUpRight size={18} />
+                            </motion.button>
+                        </motion.div>
+
+                        <motion.div
+                            variants={staggerContainer(0.12, 0.2)}
+                            initial="hidden"
+                            animate="visible"
+                            className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-4"
+                        >
+                            {HERO_METRICS.map((metric) => (
+                                <motion.div
+                                    key={metric.label}
+                                    variants={metricReveal}
+                                    className="glass-card p-5"
+                                >
+                                    <h3 className="metric-value text-cyan-300">{metric.value}</h3>
+                                    <p className="metric-label mt-2 text-sm text-slate-400">
+                                        {metric.label}
+                                    </p>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </div>
+
+                    <motion.div
+                        variants={fadeUp}
+                        initial="hidden"
+                        animate="visible"
+                        className="hidden lg:flex justify-end"
                     >
+                        <div className="glass-card w-full max-w-sm space-y-4 p-6">
+                            <div className="flex items-center justify-between">
+                                <span className="text-sm text-cyan-300">AI Runtime Status</span>
+                                <div className="h-2 w-2 rounded-full bg-emerald-400" />
+                            </div>
+
+                            {SYSTEM_STATUS.map((item) => (
+                                <div key={item.label} className="flex items-center justify-between">
+                  <span className="text-xs uppercase tracking-wider text-slate-500">
+                    {item.label}
+                  </span>
+                                    <span className="text-sm font-medium text-cyan-300">
+                    {item.status}
+                  </span>
+                                </div>
+                            ))}
+
+                            <div className="mt-4 grid grid-cols-3 gap-3 pt-4">
+                                {FLOATING_ICONS.map((Icon, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-300"
+                                    >
+                                        <Icon size={18} />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+
+                <motion.button
+                    animate={floatingAnimation}
+                    onClick={() => scrollToSection("about")}
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cyan-300/70 hover:text-cyan-300"
+                >
+                    <div className="flex flex-col items-center gap-2">
             <span className="mono text-[10px] uppercase tracking-[0.35em]">
               Scroll
             </span>
-
                         <ArrowDown size={18} />
-                    </button>
-                </motion.div>
-            </motion.div>
-            {/* =====================================================
-            Left HUD
-      ====================================================== */}
-
-            <motion.div
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-                className="absolute left-5 top-1/2 hidden -translate-y-1/2 xl:block"
-            >
-                <div className="glass-card space-y-5 p-5">
-                    {SYSTEM_STATUS.map((item) => (
-                        <div key={item.label}>
-                            <p className="mono text-[10px] uppercase tracking-[0.3em] text-slate-500">
-                                {item.label}
-                            </p>
-
-                            <p className="mt-1 text-sm font-medium text-cyan-300">
-                                {item.status}
-                            </p>
-                        </div>
-                    ))}
-                </div>
-            </motion.div>
-
-            {/* =====================================================
-            Right Floating Stack
-      ====================================================== */}
-
-            <motion.div
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-                className="absolute right-5 top-1/2 hidden -translate-y-1/2 xl:flex xl:flex-col xl:gap-5"
-            >
-                {[
-                    Brain,
-                    Database,
-                    Network,
-                    Cpu,
-                    Activity,
-                ].map((Icon, index) => (
-                    <motion.div
-                        key={index}
-                        whileHover={{
-                            scale: 1.15,
-                            rotate: 8,
-                        }}
-                        className="glass-card flex h-14 w-14 items-center justify-center border border-cyan-400/10 bg-black/30 text-cyan-300 shadow-[0_0_30px_rgba(34,211,238,.12)]"
-                    >
-                        <Icon size={20} />
-                    </motion.div>
-                ))}
+                    </div>
+                </motion.button>
             </motion.div>
         </section>
     );
