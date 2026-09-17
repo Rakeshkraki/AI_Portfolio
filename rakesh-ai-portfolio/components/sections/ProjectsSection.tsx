@@ -1,174 +1,239 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
     ArrowUpRight,
+    Bot,
+    BrainCircuit,
+    Database,
     ExternalLink,
-    Filter,
-    Sparkles,
-    Star,
+    FileSearch
 } from "lucide-react";
 
-import ScrollReveal from "@/components/ui/ScrollReveal";
-import { PROJECTS } from "@/data/projects";
-import { staggerContainer, fadeUpChild } from "@/lib/motion";
+import {
+    FaGithub
+} from "react-icons/fa";
 
-const CATEGORIES = ["All","GraphRAG","AI Agents","LLM APIs","Backend APIs","Cloud AI","GenAI"];
+const PROJECTS = [
+    {
+        title: "DocuBrain AI",
+        subtitle: "Enterprise GraphRAG Knowledge Platform",
+        icon: BrainCircuit,
+        gradient: "from-cyan-500 to-blue-600",
+        description:
+            "Built a production-ready GraphRAG platform that transforms enterprise documents into an intelligent knowledge graph with semantic retrieval and GPT-powered answers.",
+        stack: [
+            "FastAPI",
+            "LangChain",
+            "LangGraph",
+            "Neo4j",
+            "Qdrant",
+            "OpenAI GPT-5",
+            "Docker",
+            "Redis",
+        ],
+        features: [
+            "Hybrid Graph + Vector Retrieval",
+            "Streaming AI Responses",
+            "Knowledge Graph Visualization",
+            "Enterprise Authentication",
+        ],
+        githubUrl: "#",
+        demoUrl: "#",
+    },
+    {
+        title: "AI Resume Analyzer",
+        subtitle: "LLM Powered ATS Optimization Engine",
+        icon: FileSearch,
+        gradient: "from-violet-500 to-fuchsia-600",
+        description:
+            "Analyzes resumes against job descriptions using embeddings and LLM reasoning to improve ATS compatibility and recruiter matching.",
+        stack: [
+            "FastAPI",
+            "OpenAI",
+            "Embeddings",
+            "PDF Parsing",
+            "PostgreSQL",
+            "Docker",
+        ],
+        features: [
+            "ATS Score",
+            "Keyword Gap Analysis",
+            "Skill Suggestions",
+            "Recruiter Summary Generation",
+        ],
+        githubUrl: "#",
+        demoUrl: "#",
+    },
+    {
+        title: "AI Multi-Agent Workflow",
+        subtitle: "LangGraph Autonomous Agent System",
+        icon: Bot,
+        gradient: "from-emerald-500 to-cyan-500",
+        description:
+            "Designed autonomous AI agents capable of planning, retrieving knowledge, executing tools, and collaborating using LangGraph.",
+        stack: [
+            "LangGraph",
+            "LangChain",
+            "OpenAI",
+            "Redis",
+            "FastAPI",
+            "Docker",
+        ],
+        features: [
+            "Planner Agent",
+            "Retriever Agent",
+            "Tool Calling",
+            "Conversation Memory",
+        ],
+        githubUrl: "#",
+        demoUrl: "#",
+    },
+    {
+        title: "Semantic Search API",
+        subtitle: "Enterprise Vector Search Microservice",
+        icon: Database,
+        gradient: "from-blue-500 to-indigo-600",
+        description:
+            "Developed a scalable semantic search API supporting embeddings, hybrid search, reranking, metadata filters, and document chunk retrieval.",
+        stack: [
+            "FastAPI",
+            "Qdrant",
+            "FAISS",
+            "PostgreSQL",
+            "Docker",
+            "Redis",
+        ],
+        features: [
+            "Semantic Search",
+            "Hybrid Retrieval",
+            "Metadata Filters",
+            "Streaming Results",
+        ],
+        githubUrl: "#",
+        demoUrl: "#",
+    },
+];
 
 export default function ProjectsSection() {
-    const [selectedCategory, setSelectedCategory] = useState("All");
-
-    const filteredProjects = useMemo(() => {
-        if (selectedCategory === "All") return PROJECTS;
-        return PROJECTS.filter((p) => p.category === selectedCategory);
-    }, [selectedCategory]);
-
     return (
-        <section id="projects" className="section-spacing relative overflow-hidden">
+        <section id="projects" className="section-spacing relative overflow-hidden" >
             <div className="container-ai relative z-10">
-                <ScrollReveal>
-                    <div className="mx-auto max-w-3xl text-center">
-                        <span className="badge-glow">Featured AI Projects</span>
+                <div className="mx-auto max-w-3xl text-center">
+                    <span className="badge-glow">Featured AI Projects</span>
 
-                        <h2 className="section-title mt-6">
-                            Production-Ready GenAI, GraphRAG & AI Agent Systems
-                        </h2>
+                    <h2 className="section-title mt-6">
+                        Production-Ready GenAI &amp; LLM Projects
+                    </h2>
 
-                        <p className="section-description mt-6">
-                            Enterprise-grade AI backend applications built using FastAPI, LangGraph,
-                            GPT-5, Neo4j, Qdrant, Redis, Docker, and cloud-native infrastructure.
-                        </p>
-                    </div>
-                </ScrollReveal>
-
-                <div className="mt-12 flex flex-wrap justify-center gap-3">
-                    {CATEGORIES.map((category) => (
-                        <button
-                            key={category}
-                            onClick={() => setSelectedCategory(category)}
-                            className={`rounded-full border px-4 py-2 text-sm transition ${
-                                selectedCategory === category
-                                    ? "border-cyan-400 bg-cyan-500/15 text-cyan-300"
-                                    : "border-slate-700 text-slate-400 hover:border-cyan-400 hover:text-white"
-                            }`}
-                        >
-              <span className="flex items-center gap-2">
-                <Filter size={14} />
-                  {category}
-              </span>
-                        </button>
-                    ))}
+                    <p className="section-description mt-6">
+                        Projects focused on GraphRAG, AI Agents, Retrieval-Augmented
+                        Generation, Vector Databases, LLM APIs, and scalable AI backend
+                        engineering.
+                    </p>
                 </div>
 
-                <motion.div
-                    variants={staggerContainer(0.1,0)}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once:true }}
-                    className="mt-16 grid gap-8 lg:grid-cols-2"
-                >
-                    {filteredProjects.map((project) => (
-                        <motion.article
-                            key={project.id}
-                            variants={fadeUpChild}
-                            whileHover={{ y:-6 }}
-                            className="project-card rounded-card group flex flex-col overflow-hidden"
-                        >
-                            <div className="relative h-56 overflow-hidden rounded-2xl bg-gradient-to-br from-cyan-500/15 via-slate-950 to-violet-600/10">
-                                <div className="absolute inset-0 opacity-20 hero-grid" />
+                <div className="mt-20 space-y-10">
+                    {PROJECTS.map((project, index) => {
+                        const Icon = project.icon;
 
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <Sparkles size={54} className="text-cyan-400 opacity-80" />
-                                </div>
+                        return (
+                            <motion.div
+                                key={project.title}
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.08 }}
+                                whileHover={{ y: -6 }}
+                                className="glass-card rounded-card border border-white/5 bg-gradient-to-br from-slate-900/80 to-slate-950 p-8"
+                            >
+                                <div className="grid gap-10 lg:grid-cols-[1fr_280px]">
+                                    <div>
+                                        <div className="flex items-center gap-4">
+                                            <div
+                                                className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${project.gradient}`}
+                                            >
+                                                <Icon className="text-white" size={26} />
+                                            </div>
 
-                                {project.featured && (
-                                    <div className="absolute left-4 top-4 rounded-full bg-yellow-400/15 border border-yellow-300/30 px-3 py-1 text-xs flex items-center gap-2 text-yellow-300">
-                                        <Star size={14} fill="currentColor"/>
-                                        Featured
-                                    </div>
-                                )}
+                                            <div>
+                                                <h3 className="text-2xl font-bold text-white">
+                                                    {project.title}
+                                                </h3>
 
-                                <div className="absolute bottom-4 right-4 rounded-full bg-cyan-500/15 px-3 py-1 text-xs text-cyan-300 border border-cyan-400/20">
-                                    {project.category}
-                                </div>
-                            </div>
+                                                <p className="text-cyan-300">{project.subtitle}</p>
+                                            </div>
+                                        </div>
 
-                            <div className="flex flex-1 flex-col pt-6">
-                                <h3 className="text-2xl font-semibold text-white group-hover:text-cyan-300 transition">
-                                    {project.title}
-                                </h3>
+                                        <p className="mt-6 leading-8 text-slate-300">
+                                            {project.description}
+                                        </p>
 
-                                <p className="mt-4 flex-1 leading-7 text-slate-300">
-                                    {project.description}
-                                </p>
-
-                                <div className="mt-6 flex flex-wrap gap-2">
-                                    {project.technologies.map((tech) => (
-                                        <span
-                                            key={tech}
-                                            className="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1 text-xs text-slate-300"
-                                        >
+                                        <div className="mt-8 flex flex-wrap gap-3">
+                                            {project.stack.map((tech) => (
+                                                <span
+                                                    key={tech}
+                                                    className="rounded-full border border-cyan-400/20 bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-300"
+                                                >
                       {tech}
                     </span>
-                                    ))}
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div className="rounded-2xl border border-cyan-400/10 bg-cyan-500/5 p-5">
+                                            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">
+                                                Highlights
+                                            </p>
+
+                                            <div className="space-y-4">
+                                                {project.features.map((feature) => (
+                                                    <div
+                                                        key={feature}
+                                                        className="flex items-center gap-3 text-slate-300"
+                                                    >
+                                                        <ArrowUpRight
+                                                            className="text-cyan-400"
+                                                            size={18}
+                                                        />
+
+                                                        <span className="text-sm">{feature}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div className="mt-8 flex gap-3">
-                                    {project.github && (
-                                        <a
-                                            href="https://github.com/Rakeshkraki"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="btn-primary mt-8 inline-flex items-center gap-2"
-                                        >
-                                            <ExternalLink size={18} />
-                                            Explore GitHub Projects
-                                        </a>
-                                    )}
+                                <div className="mt-8 flex flex-wrap gap-4">
+                                    <a
+                                        href={project.githubUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="btn-primary inline-flex items-center gap-2"
+                                    >
+                                        <FaGithub size={18} />
+                                        Source Code
+                                    </a>
 
-                                    {project.live && (
-                                        <a
-                                            href={project.live}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="btn-primary"
-                                        >
-                                            Live Demo
-                                            <ArrowUpRight size={18}/>
-                                        </a>
-                                    )}
+                                    <a
+                                        href={project.demoUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="btn-secondary inline-flex items-center gap-2"
+                                    >
+                                        <ExternalLink size={18} />
+                                        Live Demo
+                                    </a>
                                 </div>
-                            </div>
-                        </motion.article>
-                    ))}
-                </motion.div>
-
-                <ScrollReveal className="mt-24">
-                    <div className="dashboard-card rounded-card text-center p-10">
-                        <Sparkles size={42} className="mx-auto text-cyan-400"/>
-
-                        <h3 className="mt-6 text-3xl font-semibold text-white">
-                            Building AI Infrastructure That Scales
-                        </h3>
-
-                        <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-                            GraphRAG platforms, AI agents, MCP integrations, semantic search,
-                            vector databases, streaming APIs, and production-ready GenAI backend systems.
-                        </p>
-
-                        <a
-                            href="https://github.com/Rakeshkraki"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-primary mt-8 inline-flex items-center gap-2"
-                        >
-                            <ExternalLink size={18} />
-                            Explore GitHub Projects
-                        </a>
-                    </div>
-                </ScrollReveal>
+                            </motion.div>
+                        );
+                    })}
+                </div>
             </div>
         </section>
+
+
     );
 }

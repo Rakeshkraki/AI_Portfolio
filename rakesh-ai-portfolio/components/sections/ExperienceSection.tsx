@@ -1,208 +1,274 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BriefcaseBusiness, CalendarDays, MapPin, CheckCircle2 } from "lucide-react";
+import {
+    Bot,
+    BrainCircuit,
+    CheckCircle2,
+    Network,
+    ServerCog,
+} from "lucide-react";
 
-import ScrollReveal from "@/components/ui/ScrollReveal";
-import {
-    EXPERIENCE,
-    EXPERIENCE_METRICS,
-} from "@/data/experience";
-import {
-    staggerContainer,
-    fadeUpChild,
-} from "@/lib/motion";
+const EXPERIENCE = [
+    {
+        company: "Current Company",
+        role: "AI Backend Engineer (Transitioning from Enterprise Backend)",
+        period: "2025 — Present",
+        icon: BrainCircuit,
+        color: "from-cyan-500 to-blue-500",
+        summary:
+            "Designing scalable AI backend services, Retrieval-Augmented Generation pipelines, GraphRAG architecture, vector search APIs, and LLM integrations.",
+        achievements: [
+            "Built enterprise-ready GraphRAG architecture.",
+            "Designed semantic search microservices with FastAPI.",
+            "Integrated GPT APIs with streaming responses.",
+            "Implemented vector search with Neo4j & Qdrant.",
+            "Dockerized backend AI services.",
+        ],
+        stack: [
+            "FastAPI",
+            "LangChain",
+            "Neo4j",
+            "Qdrant",
+            "Redis",
+            "Docker",
+            "OpenAI",
+        ],
+    },
+    {
+        company: "Self Learning + AI Projects",
+        role: "GenAI / LLM Engineer",
+        period: "2024 — Present",
+        icon: Bot,
+        color: "from-violet-500 to-fuchsia-500",
+        summary:
+            "Built multiple production-oriented AI applications focused on GraphRAG, AI Agents, document intelligence, embeddings, and autonomous workflows.",
+        achievements: [
+            "Developed DocuBrain GraphRAG Platform.",
+            "Built AI Resume Analyzer with ATS optimization.",
+            "Implemented LangGraph multi-agent workflow.",
+            "Created semantic document search API.",
+        ],
+        stack: [
+            "LangGraph",
+            "OpenAI GPT-5",
+            "Embeddings",
+            "Docker",
+            "PostgreSQL",
+            "Redis",
+        ],
+    },
+    {
+        company: "Backend Engineering Foundation",
+        role: "Backend Developer",
+        period: "2023 — 2024",
+        icon: ServerCog,
+        color: "from-emerald-500 to-cyan-500",
+        summary:
+            "Built REST APIs, authentication systems, SQL databases, cloud deployment pipelines, and scalable backend services.",
+        achievements: [
+            "FastAPI & REST API development.",
+            "JWT Authentication.",
+            "PostgreSQL database design.",
+            "Docker deployment pipeline.",
+        ],
+        stack: [
+            "FastAPI",
+            "PostgreSQL",
+            "Docker",
+            "Redis",
+            "JWT",
+            "GitHub Actions",
+        ],
+    },
+];
+
+const STATS = [
+    {
+        value: "15+",
+        label: "AI Backend APIs",
+    },
+    {
+        value: "6",
+        label: "GraphRAG Projects",
+    },
+    {
+        value: "20+",
+        label: "LLM Integrations",
+    },
+    {
+        value: "100K+",
+        label: "Vector Embeddings Indexed",
+    },
+];
+
+const CORE_TECHNOLOGIES = [
+    "GraphRAG",
+    "AI Agents",
+    "LLM APIs",
+    "FastAPI",
+    "Neo4j",
+    "Qdrant",
+    "Docker",
+    "Redis",
+    "LangGraph",
+];
 
 export default function ExperienceSection() {
     return (
-        <section id="experience" className="section-spacing relative">
-            <div className="container-ai">
-                {/* Header */}
+        <section id="experience" className="section-spacing relative overflow-hidden" >
+            <div className="container-ai relative z-10">
+                {/* Section Header */}
+                <div className="mx-auto max-w-3xl text-center">
+                    <span className="badge-glow">Experience Timeline</span>
 
-                <ScrollReveal>
-                    <div className="mx-auto max-w-3xl text-center">
-                        <span className="badge-glow">Experience</span>
+                    <h2 className="section-title mt-6">
+                        AI Engineering Experience
+                    </h2>
 
-                        <h2 className="section-title mt-6">
-                            AI Backend Engineering Journey
-                        </h2>
+                    <p className="section-description mt-6">
+                        Building scalable AI backend infrastructure, GraphRAG systems,
+                        semantic retrieval pipelines, and production-ready LLM
+                        applications.
+                    </p>
+                </div>
 
-                        <p className="section-description mt-6">
-                            Building scalable AI infrastructure, GraphRAG systems,
-                            Retrieval-Augmented Generation pipelines, AI agents,
-                            vector search, and enterprise LLM backend APIs.
-                        </p>
-                    </div>
-                </ScrollReveal>
-
-                {/* Metrics */}
-
-                <ScrollReveal className="mt-14">
-                    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                        {EXPERIENCE_METRICS.map((metric) => (
-                            <motion.div
-                                key={metric.label}
-                                whileHover={{ y: -6 }}
-                                className="dashboard-card text-center"
-                            >
-                                <h3 className="hero-gradient text-4xl font-bold">
-                                    {metric.value}
-                                </h3>
-
-                                <p className="mt-3 text-sm text-slate-400">
-                                    {metric.label}
-                                </p>
-                            </motion.div>
-                        ))}
-                    </div>
-                </ScrollReveal>
-
-                {/* Timeline */}
-
-                <motion.div
-                    variants={staggerContainer(0.16, 0)}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="timeline mt-24"
-                >
-                    {EXPERIENCE.map((experience) => (
+                {/* Stats */}
+                <div className="mt-20 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                    {STATS.map((stat) => (
                         <motion.div
-                            key={experience.id}
-                            variants={fadeUpChild}
-                            className="timeline-item pb-16 last:pb-0"
+                            key={stat.label}
+                            whileHover={{ y: -6 }}
+                            className="dashboard-card p-6 text-center"
                         >
-                            <div className="timeline-dot" />
+                            <h3 className="metric-value hero-gradient">{stat.value}</h3>
 
-                            <div className="glass-card rounded-card p-7">
-                                {/* Header */}
+                            <p className="metric-label mt-2">{stat.label}</p>
+                        </motion.div>
+                    ))}
+                </div>
 
-                                <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-                                    <div>
-                                        <h3 className="text-2xl font-semibold text-white">
-                                            {experience.role}
-                                        </h3>
+                {/* Experience Timeline */}
+                <div className="timeline mt-24 space-y-12">
+                    {EXPERIENCE.map((job, index) => {
+                        const Icon = job.icon;
 
-                                        <div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-slate-400">
-                      <span className="flex items-center gap-2">
-                        <BriefcaseBusiness size={16} />
-                          {experience.company}
-                      </span>
+                        return (
+                            <motion.div
+                                key={job.company}
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.08 }}
+                                className="timeline-item"
+                            >
+                                <div className="timeline-dot" />
 
-                                            <span className="flex items-center gap-2">
-                        <CalendarDays size={16} />
-                                                {experience.duration}
-                      </span>
+                                <div className="glass-card rounded-card border border-white/5 bg-gradient-to-br from-slate-900/80 to-slate-950 p-8">
+                                    {/* Job Header */}
+                                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+                                        <div>
+                                            <div className="flex items-center gap-4">
+                                                <div
+                                                    className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${job.color}`}
+                                                >
+                                                    <Icon
+                                                        className="text-white"
+                                                        size={26}
+                                                    />
+                                                </div>
 
-                                            <span className="flex items-center gap-2">
-                        <MapPin size={16} />
-                                                {experience.location}
-                      </span>
+                                                <div>
+                                                    <h3 className="text-2xl font-bold text-white">
+                                                        {job.company}
+                                                    </h3>
+
+                                                    <p className="text-cyan-300">
+                                                        {job.role}
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
+
+                                        <div className="status-pill">{job.period}</div>
                                     </div>
 
-                                    <span className="rounded-full border border-cyan-400/20 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300">
-                    AI Backend Engineering
-                  </span>
-                                </div>
+                                    {/* Summary */}
+                                    <p className="mt-6 leading-8 text-slate-300">
+                                        {job.summary}
+                                    </p>
 
-                                {/* Description */}
-
-                                <p className="mt-8 leading-8 text-slate-300">
-                                    {experience.description}
-                                </p>
-
-                                {/* Achievements */}
-
-                                <div className="mt-10">
-                                    <h4 className="mb-5 text-lg font-semibold text-white">
-                                        Key Achievements
-                                    </h4>
-
-                                    <div className="grid gap-4">
-                                        {experience.achievements.map((achievement) => (
+                                    {/* Achievements */}
+                                    <div className="mt-8 grid gap-4 md:grid-cols-2">
+                                        {job.achievements.map((achievement) => (
                                             <div
                                                 key={achievement}
-                                                className="flex items-start gap-3 rounded-xl border border-white/5 bg-white/5 p-4"
+                                                className="flex items-start gap-3 rounded-xl border border-cyan-400/10 bg-cyan-500/5 p-4"
                                             >
                                                 <CheckCircle2
-                                                    size={20}
-                                                    className="mt-0.5 flex-shrink-0 text-cyan-400"
+                                                    className="mt-1 shrink-0 text-cyan-400"
+                                                    size={18}
                                                 />
 
-                                                <p className="text-sm leading-7 text-slate-300">
-                                                    {achievement}
-                                                </p>
+                                                <span className="text-sm text-slate-300">
+                      {achievement}
+                    </span>
                                             </div>
                                         ))}
                                     </div>
-                                </div>
 
-                                {/* Technologies */}
-
-                                <div className="mt-10">
-                                    <h4 className="mb-5 text-lg font-semibold text-white">
-                                        Technologies Used
-                                    </h4>
-
-                                    <div className="flex flex-wrap gap-2">
-                                        {experience.technologies.map((tech) => (
+                                    {/* Technology Stack */}
+                                    <div className="mt-8 flex flex-wrap gap-3">
+                                        {job.stack.map((tech) => (
                                             <span
                                                 key={tech}
-                                                className="rounded-full border border-cyan-400/15 bg-cyan-500/10 px-3 py-2 text-xs text-cyan-300 transition hover:border-cyan-400/30"
+                                                className="rounded-full border border-cyan-400/20 bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-300"
                                             >
-                        {tech}
-                      </span>
+                    {tech}
+                  </span>
                                         ))}
                                     </div>
                                 </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </motion.div>
+                            </motion.div>
+                        );
+                    })}
+                </div>
 
-                {/* Summary Card */}
+                {/* Core Technologies */}
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="dashboard-card mt-24 rounded-card border border-cyan-400/10 bg-gradient-to-r from-cyan-500/5 via-slate-950 to-violet-500/5 p-10 text-center"
+                >
+                    <Network
+                        className="mx-auto text-cyan-400"
+                        size={42}
+                    />
 
-                <ScrollReveal className="mt-24">
-                    <div className="dashboard-card rounded-card p-10 text-center">
-                        <BriefcaseBusiness
-                            size={40}
-                            className="mx-auto text-cyan-400"
-                        />
+                    <h3 className="mt-5 text-3xl font-bold text-white">
+                        Engineering Production AI Systems
+                    </h3>
 
-                        <h3 className="mt-6 text-3xl font-semibold text-white">
-                            What I Bring as an AI Backend Engineer
-                        </h3>
+                    <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                        Passionate about GraphRAG, AI Agents, semantic retrieval,
+                        scalable FastAPI services, vector databases, cloud-native
+                        deployment, and enterprise-grade LLM infrastructure.
+                    </p>
 
-                        <div className="mx-auto mt-8 grid max-w-4xl gap-4 text-left md:grid-cols-2">
-                            {[
-                                "Production-ready FastAPI backend architecture.",
-                                "GraphRAG with Neo4j knowledge graphs.",
-                                "LLM orchestration using GPT-5, Claude & Gemini APIs.",
-                                "LangChain & LangGraph AI workflows.",
-                                "Vector databases including Pinecone, ChromaDB & Qdrant.",
-                                "Dockerized microservices with PostgreSQL & Redis.",
-                                "Authentication, caching, observability & async processing.",
-                                "Cloud-native AI infrastructure with CI/CD readiness.",
-                            ].map((item) => (
-                                <div
-                                    key={item}
-                                    className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/5 p-4"
-                                >
-                                    <CheckCircle2
-                                        size={18}
-                                        className="flex-shrink-0 text-cyan-400"
-                                    />
-
-                                    <span className="text-sm text-slate-300">
-                    {item}
-                  </span>
-                                </div>
-                            ))}
-                        </div>
+                    <div className="mt-8 flex flex-wrap justify-center gap-3">
+                        {CORE_TECHNOLOGIES.map((tech) => (
+                            <span
+                                key={tech}
+                                className="rounded-full border border-cyan-400/20 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300"
+                            >
+            {tech}
+          </span>
+                        ))}
                     </div>
-                </ScrollReveal>
+                </motion.div>
             </div>
         </section>
+
     );
 }

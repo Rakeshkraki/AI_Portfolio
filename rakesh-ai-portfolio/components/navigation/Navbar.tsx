@@ -1,129 +1,73 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Home, User, Briefcase, FolderKanban, Brain, Mail } from "lucide-react";
 import { motion } from "framer-motion";
-import { Menu, X, Download } from "lucide-react";
-import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
+import { useSystemStore } from "@/store/systemStore";
 
-import { NAV_LINKS, PERSONAL_INFO } from "@/lib/constants";
-import { useScrollSpy } from "@/hooks/useScrollSpy";
-import { scrollToSection } from "@/lib/utils";
-import ThemeToggle from "@/components/ui/ThemeToggle";
+const NAV_ITEMS = [
+    { id: "hero", label: "Home", icon: Home },
+    { id: "about", label: "About", icon: User },
+    { id: "experience", label: "Experience", icon: Briefcase },
+    { id: "projects", label: "Projects", icon: FolderKanban },
+    { id: "skills", label: "Skills", icon: Brain },
+    { id: "contact", label: "Contact", icon: Mail },
+];
 
-interface NavbarProps {
-    onOpenMobileMenu: () => void;
+function scrollToSection(id: string) {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    el.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+    });
 }
 
-export default function Navbar({
-                                   onOpenMobileMenu,
-                               }: NavbarProps) {
-    const [isScrolled, setIsScrolled] = useState(false);
-
-    const activeSection = useScrollSpy({
-        sectionIds: [
-            "home",
-            "about",
-            "projects",
-            "experience",
-            "skills",
-            "contact",
-        ],
-    });
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 30);
-        };
-
-        window.addEventListener("scroll", handleScroll, {
-            passive: true,
-        });
-
-        return () =>
-            window.removeEventListener("scroll", handleScroll);
-    }, []);
+export default function Navbar() {
+    const pathname = usePathname();
+    const activeSection = useSystemStore((state) => state.activeSection);
 
     return (
-        <motion.header
-            initial={{ y: -80 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.6 }}
-            className={`navbar fixed inset-x-0 top-0 transition-all duration-300 ${
-                isScrolled
-                    ? "border-b border-white/10 bg-slate-950/80 backdrop-blur-2xl"
-                    : "bg-transparent"
-            }`}
-        >
-            <ThemeToggle />
-            <nav className="container-ai flex h-20 items-center justify-between">
-                {/* Logo */}
+        <div className="fixed left-4 top-1/2 z-50 -translate-y-1/2 hidden lg:block">
+            <nav className="glass-card nav-pill flex flex-col gap-2 p-3 w-16 items-center">
+                {NAV_ITEMS.map((item) => {
+                    const Icon = item.icon;
 
-                <button
-                    onClick={() => scrollToSection("home")}
-                    className="group flex items-center gap-3"
+                    return (
+                        <motion.button
+                            key={item.id}
+                            whileHover={{ scale: 1.08 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => scrollToSection(item.id)}
+                            className={cn(
+                                "nav-item group relative",
+                                activeSection === item.id && "active"
+                            )}
+                            aria-label={item.label}
+                        >
+                            <Icon size={20} />
+
+                            <span className="absolute left-14 whitespace-nowrap rounded-lg bg-slate-900 px-3 py-1 text-xs text-white opacity-0 transition group-hover:opacity-100 pointer-events-none">
+                {item.label}
+              </span>
+                        </motion.button>
+                    );
+                })}
+
+                <div className="mt-2 h-px w-8 bg-slate-700" />
+
+                <Link
+                    href="/resume.pdf"
+                    target="_blank"
+                    className="nav-item"
+                    aria-label="Resume"
                 >
-                    <div className="icon-box h-11 w-11 rounded-full text-lg font-bold">
-                        RK
-                    </div>
-
-                    <div className="hidden md:block text-left">
-                        <p className="font-semibold text-white">
-                            {PERSONAL_INFO.name}
-                        </p>
-
-                        <p className="text-xs text-slate-400">
-                            AI Backend Engineer
-                        </p>
-                    </div>
-                </button>
-
-                {/* Desktop Navigation */}
-
-                <div className="hidden lg:flex items-center gap-8">
-                    {NAV_LINKS.map((item) => {
-                        const sectionId = item.href.replace("#", "");
-
-                        const isActive = activeSection === sectionId;
-
-                        return (
-                            <button
-                                key={item.href}
-                                onClick={() => scrollToSection(sectionId)}
-                                className={`nav-link text-sm font-medium transition-all ${
-                                    isActive
-                                        ? "nav-link-active text-cyan-400"
-                                        : "text-slate-300 hover:text-white"
-                                }`}
-                            >
-                                {item.label}
-                            </button>
-                        );
-                    })}
-                </div>
-
-                {/* Desktop CTA */}
-
-                <div className="hidden lg:flex items-center gap-4">
-                    <Link
-                        href="mailto:rakeshK@example.com?subject=Resume%20request"
-                        target="_blank"
-                        className="btn-primary btn-glow"
-                    >
-                        <Download size={18} />
-
-                        Resume
-                    </Link>
-                </div>
-
-                {/* Mobile Menu Button */}
-
-                <button
-                    onClick={onOpenMobileMenu}
-                    className="lg:hidden flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-cyan-400/40 hover:bg-cyan-400/10"
-                >
-                    <Menu size={22} />
-                </button>
+                    <span className="text-xs font-semibold">CV</span>
+                </Link>
             </nav>
-        </motion.header>
+        </div>
     );
 }

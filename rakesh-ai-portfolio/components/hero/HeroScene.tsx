@@ -1,110 +1,204 @@
 "use client";
 
-import { Suspense, useEffect, useMemo, useRef } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Stars, Float } from "@react-three/drei";
-import { EffectComposer, Bloom } from "@react-three/postprocessing";
-import * as THREE from "three";
-import { generateNeuralNodes, NeuralNodeData } from "@/lib/utils";
-import { useSystemStore } from "@/store/systemStore";
+import { motion } from "framer-motion";
 
-const COLORS = ["#22D3EE","#38BDF8","#8B5CF6"];
+const NODES = Array.from({ length: 28 }, (_, index) => ({
+    id: index,
+    size: Math.random() * 10 + 6,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    duration: Math.random() * 6 + 6,
+    delay: Math.random() * 2,
+}));
 
-function NeuralNodes(){
-    const quality = useSystemStore(s=>s.particleQuality);
-    const group = useRef<THREE.Group>(null);
+const LINES = Array.from({ length: 20 }, (_, index) => ({
+    id: index,
+    rotate: Math.random() * 360,
+    top: Math.random() * 100,
+    left: Math.random() * 100,
+    width: Math.random() * 160 + 80,
+    duration: Math.random() * 3 + 5,
+}));
 
-    const nodes = useMemo(()=>{
-        const count = quality==="high"?180:quality==="medium"?120:80;
-        return generateNeuralNodes(count);
-    },[quality]);
-
-    useFrame(({clock})=>{
-        if(group.current){
-            group.current.rotation.y = clock.elapsedTime*0.05;
-        }
-    });
-
+export default function HeroScene() {
     return (
-        <group ref={group}>
-            {nodes.map((n:NeuralNodeData,i)=>(
-                <Float key={n.id} speed={1.5} floatIntensity={0.4}>
-                    <mesh position={[n.x,n.y,n.z]}>
-                        <sphereGeometry args={[n.size,10,10]} />
-                        <meshStandardMaterial
-                            color={COLORS[i%COLORS.length]}
-                            emissive={COLORS[i%COLORS.length]}
-                            emissiveIntensity={1.6}
-                        />
-                    </mesh>
-                </Float>
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            {/* Cyan Ambient Glow */}
+            <motion.div
+                animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                }}
+                className="absolute -top-48 left-1/3 h-[500px] w-[500px] rounded-full bg-cyan-500/20 blur-[140px]"
+            />
+
+            {/* Violet Ambient Glow */}
+            <motion.div
+                animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.25, 0.45, 0.25],
+                }}
+                transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                }}
+                className="absolute bottom-0 right-0 h-[450px] w-[450px] rounded-full bg-violet-500/20 blur-[140px]"
+            />
+
+            {/* Outer Rotating Ring */}
+            <motion.div
+                animate={{
+                    rotate: 360,
+                }}
+                transition={{
+                    duration: 40,
+                    repeat: Infinity,
+                    ease: "linear",
+                }}
+                className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-500/10"
+            />
+
+            {/* Inner Rotating Ring */}
+            <motion.div
+                animate={{
+                    rotate: -360,
+                }}
+                transition={{
+                    duration: 55,
+                    repeat: Infinity,
+                    ease: "linear",
+                }}
+                className="absolute left-1/2 top-1/2 h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-violet-500/10"
+            />
+
+            {/* Neural Network Lines */}
+            {LINES.map((line) => (
+                <motion.div
+                    key={line.id}
+                    animate={{
+                        opacity: [0.1, 0.4, 0.1],
+                    }}
+                    transition={{
+                        duration: line.duration,
+                        repeat: Infinity,
+                    }}
+                    className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent"
+                    style={{
+                        top: `${line.top}%`,
+                        left: `${line.left}%`,
+                        width: `${line.width}px`,
+                        transform: `rotate(${line.rotate}deg)`,
+                    }}
+                />
             ))}
-        </group>
-    );
-}
 
-function CameraRig(){
-    const mouse = useSystemStore(s=>s.mouse);
+            {/* Floating Neural Nodes */}
+            {NODES.map((node) => (
+                <motion.div
+                    key={node.id}
+                    initial={{
+                        opacity: 0.2,
+                        scale: 0.8,
+                    }}
+                    animate={{
+                        opacity: [0.2, 1, 0.2],
+                        scale: [0.8, 1.3, 0.8],
+                        y: [0, -18, 0],
+                    }}
+                    transition={{
+                        duration: node.duration,
+                        repeat: Infinity,
+                        delay: node.delay,
+                    }}
+                    className="absolute rounded-full bg-cyan-400 shadow-[0_0_18px_rgba(34,211,238,0.8)]"
+                    style={{
+                        width: node.size,
+                        height: node.size,
+                        left: `${node.x}%`,
+                        top: `${node.y}%`,
+                    }}
+                />
+            ))}
 
-    useFrame(({camera})=>{
-        camera.position.x += (mouse.x*0.8-camera.position.x)*0.05;
-        camera.position.y += (mouse.y*0.45-camera.position.y)*0.05;
-        camera.lookAt(0,0,0);
-    });
+            {/* Background Grid */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:42px_42px] opacity-25" />
 
-    return null;
-}
+            {/* GraphRAG Status */}
+            <motion.div
+                animate={{
+                    y: [-20, 20, -20],
+                }}
+                transition={{
+                    duration: 12,
+                    repeat: Infinity,
+                }}
+                className="absolute left-10 top-28 rounded-xl border border-cyan-400/20 bg-slate-950/70 px-4 py-3 backdrop-blur-xl"
+            >
+                <p className="text-xs uppercase tracking-[0.25em] text-cyan-300">
+                    GraphRAG
+                </p>
 
-function Lighting(){
-    return (
-        <>
-            <ambientLight intensity={0.45}/>
-            <pointLight position={[0,0,0]} intensity={3.5} color="#22D3EE"/>
-            <pointLight position={[4,3,4]} intensity={1.5} color="#8B5CF6"/>
-        </>
-    );
-}
+                <p className="mt-1 text-sm text-white">
+                    Knowledge Graph Connected
+                </p>
+            </motion.div>
 
-function ReducedMotion(){
-    const {gl}=useThree();
-    useEffect(()=>{
-        if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-            gl.setPixelRatio(1);
-        }
-    },[gl]);
-    return null;
-}
+            {/* AI Agent Status */}
+            <motion.div
+                animate={{
+                    y: [20, -20, 20],
+                }}
+                transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                }}
+                className="absolute right-12 top-40 rounded-xl border border-violet-400/20 bg-slate-950/70 px-4 py-3 backdrop-blur-xl"
+            >
+                <p className="text-xs uppercase tracking-[0.25em] text-violet-300">
+                    AI Agent
+                </p>
 
-export default function HeroScene(){
-    const updateMouse = useSystemStore(s=>s.updateMouse);
+                <p className="mt-1 text-sm text-white">
+                    Reasoning Workflow Active
+                </p>
+            </motion.div>
 
-    return (
-        <div
-            className="absolute inset-0 -z-10"
-            onMouseMove={(e)=>{
-                updateMouse(
-                    (e.clientX/window.innerWidth)*2-1,
-                    -(e.clientY/window.innerHeight)*2+1
-                );
-            }}
-        >
-            <Canvas camera={{position:[0,0,7],fov:55}} dpr={[1,2]}>
-                <Suspense fallback={null}>
-                    <ReducedMotion/>
-                    <Lighting/>
+            {/* Vector Search Status */}
+            <motion.div
+                animate={{
+                    y: [-15, 15, -15],
+                }}
+                transition={{
+                    duration: 11,
+                    repeat: Infinity,
+                }}
+                className="absolute bottom-24 left-20 rounded-xl border border-emerald-400/20 bg-slate-950/70 px-4 py-3 backdrop-blur-xl"
+            >
+                <p className="text-xs uppercase tracking-[0.25em] text-emerald-300">
+                    Vector Search
+                </p>
 
-                    <Stars radius={80} depth={40} count={2500} factor={4} fade speed={0.8}/>
+                <p className="mt-1 text-sm text-white">
+                    Qdrant + Neo4j Synced
+                </p>
+            </motion.div>
 
-                    <NeuralNodes/>
-                    <CameraRig/>
-
-                    <EffectComposer>
-                        <Bloom intensity={1.15} luminanceThreshold={0.2}/>
-                    </EffectComposer>
-                </Suspense>
-            </Canvas>
-
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.08),transparent_65%)]"/>
+            {/* Vignette */}
+            <motion.div
+                animate={{
+                    opacity: [0.25, 0.5, 0.25],
+                }}
+                transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                }}
+                className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent,rgba(2,6,23,0.5)_75%,rgba(2,6,23,0.9)_100%)]"
+            />
         </div>
+
     );
 }
