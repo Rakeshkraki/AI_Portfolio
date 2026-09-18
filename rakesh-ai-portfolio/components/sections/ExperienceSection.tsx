@@ -11,9 +11,9 @@ import {
 
 const EXPERIENCE = [
     {
-        company: "Current Company",
+        company: "SOLIZE ",
         role: "AI Backend Engineer (Transitioning from Enterprise Backend)",
-        period: "2025 — Present",
+        period: "Aug 2024 — Present",
         icon: BrainCircuit,
         color: "from-cyan-500 to-blue-500",
         summary:
@@ -37,8 +37,8 @@ const EXPERIENCE = [
     },
     {
         company: "Self Learning + AI Projects",
-        role: "GenAI / LLM Engineer",
-        period: "2024 — Present",
+        role: "SDE Intern",
+        period: "Mar 2024 — Jul 2024",
         icon: Bot,
         color: "from-violet-500 to-fuchsia-500",
         summary:
@@ -59,9 +59,9 @@ const EXPERIENCE = [
         ],
     },
     {
-        company: "Backend Engineering Foundation",
-        role: "Backend Developer",
-        period: "2023 — 2024",
+        company: "Fundamentals",
+        role: "Devops Intern",
+        period: "Jan 2023 — Mar 2023",
         icon: ServerCog,
         color: "from-emerald-500 to-cyan-500",
         summary:
@@ -119,36 +119,7 @@ export default function ExperienceSection() {
         <section id="experience" className="section-spacing relative overflow-hidden" >
             <div className="container-ai relative z-10">
                 {/* Section Header */}
-                <div className="mx-auto max-w-3xl text-center">
-                    <span className="badge-glow">Experience Timeline</span>
 
-                    <h2 className="section-title mt-6">
-                        AI Engineering Experience
-                    </h2>
-
-                    <p className="section-description mt-6">
-                        Building scalable AI backend infrastructure, GraphRAG systems,
-                        semantic retrieval pipelines, and production-ready LLM
-                        applications.
-                    </p>
-                </div>
-
-                {/* Stats */}
-                <div className="mt-20 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-                    {STATS.map((stat) => (
-                        <motion.div
-                            key={stat.label}
-                            whileHover={{ y: -6 }}
-                            className="dashboard-card p-6 text-center"
-                        >
-                            <h3 className="metric-value hero-gradient">{stat.value}</h3>
-
-                            <p className="metric-label mt-2">{stat.label}</p>
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* Experience Timeline */}
                 <div className="timeline mt-24 space-y-12">
                     {EXPERIENCE.map((job, index) => {
                         const Icon = job.icon;
@@ -234,39 +205,6 @@ export default function ExperienceSection() {
                     })}
                 </div>
 
-                {/* Core Technologies */}
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="dashboard-card mt-24 rounded-card border border-cyan-400/10 bg-gradient-to-r from-cyan-500/5 via-slate-950 to-violet-500/5 p-10 text-center"
-                >
-                    <Network
-                        className="mx-auto text-cyan-400"
-                        size={42}
-                    />
-
-                    <h3 className="mt-5 text-3xl font-bold text-white">
-                        Engineering Production AI Systems
-                    </h3>
-
-                    <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-                        Passionate about GraphRAG, AI Agents, semantic retrieval,
-                        scalable FastAPI services, vector databases, cloud-native
-                        deployment, and enterprise-grade LLM infrastructure.
-                    </p>
-
-                    <div className="mt-8 flex flex-wrap justify-center gap-3">
-                        {CORE_TECHNOLOGIES.map((tech) => (
-                            <span
-                                key={tech}
-                                className="rounded-full border border-cyan-400/20 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300"
-                            >
-            {tech}
-          </span>
-                        ))}
-                    </div>
-                </motion.div>
             </div>
         </section>
 

@@ -17,13 +17,13 @@ import {
     Network,
     Search,
     Sparkles,
-    //Github,
     ArrowUpRight,
     ChevronRight,
     Layers3,
     Boxes,
 } from "lucide-react";
 
+import {FaGithub} from "react-icons/fa";
 
 import {
     fadeUp,
@@ -363,8 +363,8 @@ function ProjectCard({
                     whileHover={{ scale: 1.05 }}
                     className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm text-slate-300"
                 >
-                    {/*<Github size={16} />*/}
-                    {/*GitHub*/}
+                    < FaGithub size={16} />
+                    GitHub
                 </motion.button>
 
                 <motion.button

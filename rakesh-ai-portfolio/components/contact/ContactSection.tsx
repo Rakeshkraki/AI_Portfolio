@@ -31,22 +31,22 @@ import {
 const contactInfo = [
     {
         title: "Email",
-        value: "rakesh@example.com",
-        href: "mailto:rakesh@example.com",
+        value: "rakeshkraki3272@gmail.com",
+        href: "mailto:rakeshkraki3272@gmail.com",
         icon: Mail,
         color: "#22D3EE",
     },
     {
         title: "GitHub",
-        value: "github.com/rakesh-ai",
-        href: "https://github.com/rakesh-ai",
+        value: "github.com/Rakeshkraki",
+        href: "https://github.com/Rakeshkraki",
         icon: Link,
         color: "#8B5CF6",
     },
     {
         title: "LinkedIn",
         value: "linkedin.com/in/rakesh-ai",
-        href: "https://linkedin.com/in/rakesh-ai",
+        href: "https://www.linkedin.com/in/rakesh3272",
         icon: Link,
         color: "#0EA5E9",
     },
@@ -66,54 +66,8 @@ const contactInfo = [
 function ContactHero() {
     return (
         <motion.div
-            variants={fadeUp}
-            className="relative overflow-hidden rounded-[46px] border border-cyan-400/10 bg-gradient-to-br from-[#05111D] via-[#09101D] to-[#180F2B] p-10"
-        >
-            <motion.div
-                animate={{ rotate: 360 }}
-                transition={{
-                    repeat: Infinity,
-                    duration: 80,
-                    ease: "linear",
-                }}
-                className="absolute -right-24 -top-24 h-72 w-72 rounded-full border border-cyan-400/10"
-            />
+                   >
 
-            <div className="relative z-10 max-w-3xl">
-                <div className="status-pill mb-5 w-fit">
-                    <span className="status-dot" />
-                    AVAILABLE FOR AI OPPORTUNITIES
-                </div>
-
-                <h2 className="hero-gradient text-5xl font-bold leading-tight">
-                    LET'S BUILD AI PRODUCTS TOGETHER
-                </h2>
-
-                <p className="mt-6 text-lg leading-8 text-slate-300">
-                    Open to AI Backend Engineer, GenAI Engineer, AI Platform Engineer,
-                    GraphRAG Engineer and AI Infrastructure opportunities.
-                </p>
-
-                <div className="mt-10 flex flex-wrap gap-4">
-                    <motion.a
-                        whileHover={{ scale: 1.05 }}
-                        href="mailto:rakesh@example.com"
-                        className="btn-primary inline-flex items-center gap-3"
-                    >
-                        Say Hello
-                        <ArrowUpRight size={18} />
-                    </motion.a>
-
-                    <motion.a
-                        whileHover={{ scale: 1.05 }}
-                        href="mailto:rakeshK@example.com?subject=Resume%20request"
-                        download
-                        className="rounded-full border border-white/10 px-6 py-3 text-white"
-                    >
-                        Request Resume
-                    </motion.a>
-                </div>
-            </div>
         </motion.div>
     );
 }
@@ -181,37 +135,9 @@ function ContactGrid() {
 function AvailabilityCard() {
     return (
         <motion.div
-            variants={fadeUp}
-            whileHover={{ scale: 1.01 }}
-            className="glass-card rounded-[36px] border border-green-400/20 p-8"
+
         >
-            <div className="flex flex-wrap items-center justify-between gap-6">
-                <div>
-                    <div className="status-pill mb-4 w-fit bg-green-500/10 text-green-300 border-green-400/20">
-                        <span className="status-dot bg-green-400" />
-                        CURRENT STATUS
-                    </div>
 
-                    <h3 className="text-3xl font-semibold text-white">
-                        Available for Full-Time AI Engineering Roles
-                    </h3>
-
-                    <p className="mt-4 text-slate-400 leading-7">
-                        Interested in building production AI systems, GraphRAG platforms,
-                        enterprise copilots and AI infrastructure.
-                    </p>
-                </div>
-
-                <div className="rounded-3xl border border-green-400/20 bg-green-400/10 px-8 py-6 text-center">
-                    <p className="text-sm uppercase tracking-widest text-green-300">
-                        RESPONSE TIME
-                    </p>
-
-                    <h4 className="mt-3 text-3xl font-bold text-green-300">
-                        24 Hours
-                    </h4>
-                </div>
-            </div>
         </motion.div>
     );
 }
@@ -222,36 +148,7 @@ function AvailabilityCard() {
 function ResumeCard() {
     return (
         <motion.div
-            variants={fadeUp}
-            whileHover={{ y: -6 }}
-            className="glass-card rounded-[36px] border border-cyan-400/10 p-8"
         >
-            <div className="flex flex-wrap items-center justify-between gap-6">
-                <div>
-                    <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-3xl bg-cyan-400/10 text-cyan-300">
-                        <Download size={28} />
-                    </div>
-
-                    <h3 className="text-2xl font-semibold text-white">
-                        AI Backend Engineer Resume
-                    </h3>
-
-                    <p className="mt-4 text-slate-400 leading-7">
-                        Resume focused on GraphRAG, AI Backend Engineering, Multi-Agent Systems,
-                        FastAPI, Neo4j, Qdrant and Production AI Infrastructure.
-                    </p>
-                </div>
-
-                <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    href="mailto:rakeshK@example.com?subject=Resume%20request"
-                    download
-                    className="btn-primary inline-flex items-center gap-3"
-                >
-                    Download
-                    <ArrowUpRight size={18} />
-                </motion.a>
-            </div>
         </motion.div>
     );
 }
@@ -961,21 +858,7 @@ function RecruiterFAQ() {
                 </h3>
             </div>
 
-            {recruiterFAQ.map((faq) => (
-                <motion.div
-                    key={faq.q}
-                    whileHover={{ x: 5 }}
-                    className="glass-card rounded-[26px] border border-cyan-400/10 p-6"
-                >
-                    <h4 className="text-lg font-semibold text-cyan-300">
-                        {faq.q}
-                    </h4>
 
-                    <p className="mt-4 text-slate-400 leading-7">
-                        {faq.a}
-                    </p>
-                </motion.div>
-            ))}
         </motion.div>
     );
 }
@@ -1362,7 +1245,7 @@ function ThankYouBanner() {
             <div className="mt-8 flex justify-center">
                 <motion.a
                     whileHover={{ scale: 1.05 }}
-                    href="mailto:rakesh@example.com"
+                    href="mailto:rakesh.aziel@gmail.com"
                     className="btn-primary inline-flex items-center gap-3"
                 >
                     Let's Connect
@@ -1399,13 +1282,7 @@ export default function ContactSection() {
 
                 <div>
                     <motion.div variants={fadeUp} className="mb-12 text-center">
-                        <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
-                            GET IN TOUCH
-                        </p>
 
-                        <h2 className="section-title mt-4 hero-gradient">
-                            CONTACT CHANNELS
-                        </h2>
                     </motion.div>
 
                     <ContactGrid />
@@ -1426,7 +1303,6 @@ export default function ContactSection() {
                     variants={staggerContainer(0.15)}
                     className="mt-28"
                 >
-                    <CollaborationCards />
                 </motion.div>
 
                 {/* =====================================================
@@ -1448,7 +1324,7 @@ export default function ContactSection() {
                     variants={staggerContainer(0.15)}
                     className="mt-24"
                 >
-                    <AvailabilityTimeline />
+
                 </motion.div>
 
                 {/* =====================================================
@@ -1459,7 +1335,6 @@ export default function ContactSection() {
                     variants={staggerContainer(0.15)}
                     className="mt-24"
                 >
-                    <SocialDashboard />
                 </motion.div>
 
                 {/* =====================================================
@@ -1470,7 +1345,7 @@ export default function ContactSection() {
                     variants={staggerContainer(0.15)}
                     className="mt-28"
                 >
-                    <BuildAITogether />
+
                 </motion.div>
                 {/* =====================================================
       Contact Form
@@ -1491,7 +1366,7 @@ export default function ContactSection() {
                     variants={staggerContainer(0.15)}
                     className="mt-24"
                 >
-                    <AIServicesCards />
+
                 </motion.div>
 
                 {/* =====================================================
@@ -1502,7 +1377,6 @@ export default function ContactSection() {
                     variants={staggerContainer(0.15)}
                     className="mt-24"
                 >
-                    <TimezoneAvailability />
                 </motion.div>
 
                 {/* =====================================================
@@ -1513,7 +1387,6 @@ export default function ContactSection() {
                     variants={staggerContainer(0.15)}
                     className="mt-24"
                 >
-                    <CollaborationCalendar />
                 </motion.div>
 
                 {/* =====================================================
@@ -1524,7 +1397,7 @@ export default function ContactSection() {
                     variants={staggerContainer(0.15)}
                     className="mt-24"
                 >
-                    <QuickActions />
+
                 </motion.div>
                 {/* =====================================================
       Why Hire Me
@@ -1545,7 +1418,7 @@ export default function ContactSection() {
                     variants={staggerContainer(0.15)}
                     className="mt-24"
                 >
-                    <RecruiterFAQ />
+
                 </motion.div>
 
                 {/* =====================================================
@@ -1556,7 +1429,6 @@ export default function ContactSection() {
                     variants={staggerContainer(0.15)}
                     className="mt-24"
                 >
-                    <TrustMetrics />
                 </motion.div>
 
                 {/* =====================================================
@@ -1567,7 +1439,7 @@ export default function ContactSection() {
                     variants={staggerContainer(0.15)}
                     className="mt-24"
                 >
-                    <ValueProposition />
+
                 </motion.div>
 
                 {/* =====================================================
@@ -1578,7 +1450,7 @@ export default function ContactSection() {
                     variants={staggerContainer(0.15)}
                     className="mt-28"
                 >
-                    <CareerVision />
+
                 </motion.div>
                 {/* =====================================================
       Recruiter CTA
@@ -1588,7 +1460,6 @@ export default function ContactSection() {
                     variants={staggerContainer(0.15)}
                     className="mt-28"
                 >
-                    <RecruiterCTA />
                 </motion.div>
 
                 {/* =====================================================
@@ -1610,7 +1481,6 @@ export default function ContactSection() {
                     variants={staggerContainer(0.15)}
                     className="mt-24"
                 >
-                    <SocialFooterStrip />
                 </motion.div>
 
                 {/* =====================================================
@@ -1621,13 +1491,7 @@ export default function ContactSection() {
                     variants={staggerContainer(0.15)}
                     className="mt-28"
                 >
-                    <ThankYouBanner />
                 </motion.div>
-
-                {/* =====================================================
-      Divider
-===================================================== */}
-
                 <ContactDivider />
             </motion.div>
         </section>

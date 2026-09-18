@@ -1,139 +1,272 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import {
+    BrainCircuit,
+    Database,
+    Network,
+    Bot,
+    Cpu,
+    Search,
+    Cloud,
+    Workflow,
+} from "lucide-react";
 
-const TECH_STACK = [
-    // AI / GenAI
-    { name: "GPT-5", category: "AI" },
-    { name: "LangChain", category: "AI" },
-    { name: "LangGraph", category: "AI" },
-    { name: "GraphRAG", category: "AI" },
-    { name: "OpenAI API", category: "AI" },
-    { name: "Claude API", category: "AI" },
-    { name: "Gemini API", category: "AI" },
-
-    // Backend
-    { name: "Python", category: "Backend" },
-    { name: "FastAPI", category: "Backend" },
-    { name: "REST APIs", category: "Backend" },
-    { name: "JWT Auth", category: "Backend" },
-    { name: "Async IO", category: "Backend" },
-
-    // Databases
-    { name: "Neo4j", category: "Database" },
-    { name: "PostgreSQL", category: "Database" },
-    { name: "Redis", category: "Database" },
-    { name: "Pinecone", category: "Database" },
-    { name: "ChromaDB", category: "Database" },
-    { name: "Qdrant", category: "Database" },
-    { name: "FAISS", category: "Database" },
-
-    // Cloud / DevOps
-    { name: "Docker", category: "Cloud" },
-    { name: "Kubernetes", category: "Cloud" },
-    { name: "AWS", category: "Cloud" },
-    { name: "Azure", category: "Cloud" },
-    { name: "GitHub Actions", category: "Cloud" },
-    { name: "Linux", category: "Cloud" },
-
-    // Frontend
-    { name: "Next.js 15", category: "Frontend" },
-    { name: "React 19", category: "Frontend" },
-    { name: "TypeScript", category: "Frontend" },
-    { name: "Tailwind CSS v4", category: "Frontend" },
+const STACK = [
+    {
+        title: "GraphRAG Retrieval Systems",
+        icon: Search,
+        color: "from-cyan-400 to-sky-500",
+    },
+    {
+        title: "Knowledge Graph Engineering",
+        icon: Network,
+        color: "from-violet-400 to-fuchsia-500",
+    },
+    {
+        title: "LLM Orchestration Pipelines",
+        icon: Workflow,
+        color: "from-emerald-400 to-cyan-400",
+    },
+    {
+        title: "GPU Inference Infrastructure",
+        icon: Cpu,
+        color: "from-orange-400 to-red-500",
+    },
+    {
+        title: "AI Observability & Evaluation",
+        icon: BrainCircuit,
+        color: "from-pink-400 to-violet-500",
+    },
 ];
 
-const categoryStyles: Record<string, string> = {
-    AI: "border-cyan-400/25 bg-cyan-500/10 text-cyan-300",
-    Backend: "border-violet-400/25 bg-violet-500/10 text-violet-300",
-    Database: "border-emerald-400/25 bg-emerald-500/10 text-emerald-300",
-    Cloud: "border-orange-400/25 bg-orange-500/10 text-orange-300",
-    Frontend: "border-pink-400/25 bg-pink-500/10 text-pink-300",
-};
+const ORBIT_ITEMS = [
+    { label: "LangChain", x: 15, y: 12 },
+    { label: "Neo4j", x: 76, y: 18 },
+    { label: "FastAPI", x: 84, y: 56 },
+    { label: "Redis", x: 70, y: 86 },
+    { label: "Qdrant", x: 18, y: 80 },
+    { label: "Docker", x: 8, y: 46 },
+    { label: "OpenAI", x: 56, y: 6 },
+    { label: "Gemini", x: 46, y: 92 },
+    { label: "Claude", x: 92, y: 36 },
+    { label: "Postgres", x: 34, y: 24 },
+];
 
 export default function TechStackCloud() {
     return (
-        <section className="glass-card rounded-card p-8">
-            {/* Header */}
+        <section className="section-spacing relative overflow-hidden">
+            {/* Background Glow */}
 
-            <div className="mb-10 text-center">
-                <span className="badge-glow">Technology Cloud</span>
+            <div className="absolute left-1/2 top-0 h-[450px] w-[450px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[140px]" />
 
-                <h2 className="mt-6 text-3xl font-bold text-white">
-                    AI Backend Engineering Stack
-                </h2>
+            <div className="container-ai relative z-10 grid gap-14 lg:grid-cols-[1fr_1fr]">
+                {/* LEFT CONTENT */}
 
-                <p className="mx-auto mt-4 max-w-3xl text-slate-400">
-                    Technologies I use to build enterprise AI applications, GraphRAG
-                    systems, AI agents, vector search infrastructure, and cloud-native
-                    backend services.
-                </p>
-            </div>
+                <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                >
+                    <span className="badge-glow">AI TECHNOLOGY ECOSYSTEM</span>
 
-            {/* Floating Cloud */}
+                    <h2 className="section-title mt-6">
+                        The Stack I Build With
+                    </h2>
 
-            <div className="flex flex-wrap justify-center gap-4">
-                {TECH_STACK.map((tech, index) => (
-                    <motion.div
-                        key={tech.name}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{
-                            opacity: 1,
-                            scale: 1,
-                        }}
-                        viewport={{ once: true }}
-                        transition={{
-                            delay: index * 0.03,
-                            duration: 0.35,
-                        }}
-                        animate={{
-                            y: [0, -4, 0],
-                        }}
-                        whileHover={{
-                            scale: 1.08,
-                            y: -6,
-                        }}
-                        className={`cursor-default rounded-full border px-4 py-2 text-sm font-medium transition-all duration-300 ${categoryStyles[tech.category]}`}
-                    >
-                        {tech.name}
-                    </motion.div>
-                ))}
-            </div>
+                    <p className="section-description mt-6">
+                        Modern AI systems require orchestration across retrieval, reasoning,
+                        inference, observability, vector databases, and cloud deployment.
+                    </p>
 
-            {/* Category Legend */}
+                    <div className="mt-12 space-y-5">
+                        {STACK.map((item, index) => {
+                            const Icon = item.icon;
 
-            <div className="mt-16 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-                {Object.keys(categoryStyles).map((category) => (
-                    <div
-                        key={category}
-                        className="rounded-xl border border-white/10 bg-white/5 p-4 text-center"
-                    >
-                        <p className="text-sm text-slate-400">{category}</p>
+                            return (
+                                <motion.div
+                                    key={item.title}
+                                    initial={{ opacity: 0, y: 15 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.08 }}
+                                    whileHover={{ x: 8 }}
+                                    className="flex items-center gap-4 rounded-xl border border-white/5 bg-white/5 p-4 transition-all hover:border-cyan-400/20 hover:bg-cyan-500/5"
+                                >
+                                    <div
+                                        className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${item.color}`}
+                                    >
+                                        <Icon size={22} className="text-white" />
+                                    </div>
 
-                        <p className="mt-2 text-xl font-semibold text-white">
-                            {TECH_STACK.filter((item) => item.category === category).length}
-                        </p>
+                                    <span className="text-lg font-medium text-slate-200">
+                    {item.title}
+                  </span>
+                                </motion.div>
+                            );
+                        })}
                     </div>
-                ))}
-            </div>
+                </motion.div>
 
-            {/* Bottom Summary */}
+                {/* RIGHT VISUALIZATION */}
 
-            <div className="mt-16 rounded-2xl border border-cyan-400/15 bg-gradient-to-r from-cyan-500/10 to-violet-500/10 p-6">
-                <div className="flex items-center gap-3">
-                    <Sparkles className="text-cyan-400" size={22} />
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="relative flex items-center justify-center"
+                >
+                    <div className="relative aspect-square w-full max-w-[560px] rounded-[34px] border border-cyan-500/10 bg-slate-950/70 backdrop-blur-xl overflow-hidden">
+                        {/* Tiny stars */}
 
-                    <h3 className="text-lg font-semibold text-white">
-                        Full-Stack AI Backend Engineering
-                    </h3>
-                </div>
+                        {Array.from({ length: 28 }).map((_, i) => (
+                            <motion.span
+                                key={i}
+                                animate={{
+                                    opacity: [0.2, 1, 0.2],
+                                    scale: [0.8, 1.3, 0.8],
+                                }}
+                                transition={{
+                                    duration: 4 + Math.random() * 5,
+                                    repeat: Infinity,
+                                    delay: Math.random() * 3,
+                                }}
+                                className="absolute h-1.5 w-1.5 rounded-full bg-cyan-400"
+                                style={{
+                                    left: `${Math.random() * 100}%`,
+                                    top: `${Math.random() * 100}%`,
+                                }}
+                            />
+                        ))}
 
-                <p className="mt-4 leading-7 text-slate-300">
-                    My primary stack focuses on Python, FastAPI, Neo4j, GraphRAG,
-                    LangChain, LangGraph, GPT-5, vector databases, Docker, PostgreSQL,
-                    Redis, Kubernetes, and modern AI infrastructure for production systems.
-                </p>
+                        {/* Orbit Rings */}
+
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{
+                                    duration: 45,
+                                    repeat: Infinity,
+                                    ease: "linear",
+                                }}
+                                className="absolute h-[300px] w-[300px] rounded-full border border-cyan-500/10"
+                            />
+
+                            <motion.div
+                                animate={{ rotate: -360 }}
+                                transition={{
+                                    duration: 60,
+                                    repeat: Infinity,
+                                    ease: "linear",
+                                }}
+                                className="absolute h-[220px] w-[220px] rounded-full border border-cyan-500/10"
+                            />
+
+                            <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{
+                                    duration: 80,
+                                    repeat: Infinity,
+                                    ease: "linear",
+                                }}
+                                className="absolute h-[380px] w-[380px] rounded-full border border-cyan-500/5"
+                            />
+
+                            {/* Center Glow */}
+
+                            <motion.div
+                                animate={{
+                                    scale: [1, 1.08, 1],
+                                }}
+                                transition={{
+                                    duration: 4,
+                                    repeat: Infinity,
+                                }}
+                                className="relative flex h-40 w-40 items-center justify-center rounded-full bg-cyan-500/15 shadow-[0_0_90px_rgba(34,211,238,0.4)]"
+                            >
+                                <div className="absolute inset-4 rounded-full bg-cyan-500/10 blur-xl" />
+
+                                <div className="relative rounded-full bg-gradient-to-br from-slate-900 via-slate-950 to-black px-8 py-5 shadow-2xl ring-1 ring-cyan-400/20">
+                                    <p className="text-center text-lg font-bold tracking-[0.25em] text-cyan-300">
+                                        LLM
+                                    </p>
+                                </div>
+                            </motion.div>
+                        </div>
+
+                        {/* Floating Technologies */}
+
+                        {ORBIT_ITEMS.map((item, index) => (
+                            <motion.div
+                                key={item.label}
+                                animate={{
+                                    y: [0, -8, 0],
+                                }}
+                                transition={{
+                                    duration: 4 + index * 0.3,
+                                    repeat: Infinity,
+                                }}
+                                className="absolute"
+                                style={{
+                                    left: `${item.x}%`,
+                                    top: `${item.y}%`,
+                                }}
+                            >
+                                <div className="rounded-full border border-cyan-400/20 bg-slate-900/80 px-3 py-1 text-xs text-cyan-300 backdrop-blur-xl shadow-lg">
+                                    {item.label}
+                                </div>
+                            </motion.div>
+                        ))}
+
+                        {/* Bottom Info Cards */}
+
+                        <div className="absolute bottom-6 left-6 space-y-3">
+                            <div className="rounded-xl border border-cyan-400/15 bg-slate-900/70 px-4 py-3 backdrop-blur-xl">
+                                <div className="flex items-center gap-3">
+                                    <Database size={18} className="text-cyan-400" />
+                                    <div>
+                                        <p className="text-xs uppercase tracking-[0.2em] text-cyan-300">
+                                            Vector Database
+                                        </p>
+                                        <p className="text-sm text-slate-200">Qdrant • Pinecone</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="rounded-xl border border-violet-400/15 bg-slate-900/70 px-4 py-3 backdrop-blur-xl">
+                                <div className="flex items-center gap-3">
+                                    <Cloud size={18} className="text-violet-400" />
+                                    <div>
+                                        <p className="text-xs uppercase tracking-[0.2em] text-violet-300">
+                                            Deployment
+                                        </p>
+                                        <p className="text-sm text-slate-200">
+                                            Docker • AWS • FastAPI
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* AI Agent Card */}
+
+                        <motion.div
+                            animate={{ y: [-6, 6, -6] }}
+                            transition={{ duration: 6, repeat: Infinity }}
+                            className="absolute right-6 top-8 rounded-xl border border-cyan-400/15 bg-slate-900/70 px-4 py-3 backdrop-blur-xl"
+                        >
+                            <div className="flex items-center gap-3">
+                                <Bot size={18} className="text-cyan-400" />
+                                <div>
+                                    <p className="text-xs uppercase tracking-[0.2em] text-cyan-300">
+                                        AI Agent
+                                    </p>
+                                    <p className="text-sm text-slate-200">Reasoning Active</p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </motion.div>
             </div>
         </section>
     );

@@ -20,9 +20,9 @@ import {
 const CONTACT_INFO = [
     {
         title: "Email",
-        value: "rakeshk.dev.ai@gmail.com",
+        value: "rakeshkraki3272@gmail.com",
         icon: Mail,
-        link: "mailto:rakeshk.dev.ai@gmail.com",
+        link: "rakeshkraki3272@gmail.com",
     },
     {
         title: "GitHub",
@@ -34,7 +34,7 @@ const CONTACT_INFO = [
         title: "LinkedIn",
         value: "linkedin.com/in/rakeshkraki",
         icon: FaLinkedin,
-        link: "https://linkedin.com/in/rakeshkraki",
+        link: "https://www.linkedin.com/in/rakesh3272",
     },
     {
         title: "Location",

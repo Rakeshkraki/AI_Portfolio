@@ -6,26 +6,26 @@ export const PROFILE = {
     subtitle:
         "Building GraphRAG systems, AI Agents, LLM APIs and Enterprise AI Backend platforms.",
 
-    email: "rakeshK@example.com",
+    email: "rakesh.aziel@gmail.com",
 
     location: "Bengaluru, Karnataka, India",
 
     status: "Available for Opportunities",
 
-    resume: "mailto:rakeshK@example.com?subject=Resume%20request",
+    resume: "mailto:rakesh.aziel@gmail.com",
 
-    github: "https://github.com/yourusername",
+    github: "https://github.com/Rakeshkraki",
 
-    linkedin: "https://linkedin.com/in/yourlinkedin",
+    linkedin: "https://www.linkedin.com/in/rakesh3272",
 };
 
 export const PERSONAL_INFO = PROFILE;
 
 export const HERO_METRICS = [
-    { label: "AI Projects", value: "20+" },
+    { label: "AI Projects", value: "10+" },
     { label: "FastAPI APIs", value: "15+" },
-    { label: "GraphRAG Pipelines", value: "06" },
-    { label: "Experience", value: "3+ Years" },
+    { label: "GraphRAG Pipelines", value: "05" },
+    { label: "Experience", value: "2+ Years" },
 ];
 
 export const SYSTEM_STATUS = [

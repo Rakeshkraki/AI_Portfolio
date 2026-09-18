@@ -15,7 +15,6 @@ import {
     Database,
     GitBranch,
     Sparkles,
-    Terminal,
     Network,
     ArrowUpRight,
 } from "lucide-react";
@@ -517,40 +516,7 @@ function AIPhilosophy() {
     return (
         <motion.div
             variants={fadeUp}
-            className="mt-24 grid gap-10 lg:grid-cols-[1fr_1fr]"
         >
-            <div>
-                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
-                    AI PHILOSOPHY
-                </p>
-
-                <h3 className="mt-4 text-4xl font-semibold text-white">
-                    Principles Behind Every AI System I Build
-                </h3>
-
-                <p className="mt-6 leading-8 text-slate-400">
-                    I design AI applications that are explainable, observable,
-                    scalable and grounded in enterprise knowledge rather than
-                    relying only on model memory.
-                </p>
-            </div>
-
-            <div className="space-y-5">
-                {philosophy.map((point, index) => (
-                    <motion.div
-                        key={point}
-                        initial={{opacity: 0, x: 20}}
-                        whileInView={{opacity: 1, x: 0}}
-                        viewport={{once: true}}
-                        transition={{delay: index * 0.15}}
-                        className="glass-card flex items-start gap-4 rounded-2xl border border-cyan-400/10 p-5"
-                    >
-                        <Sparkles className="mt-1 text-cyan-300" size={20}/>
-
-                        <p className="leading-7 text-slate-300">{point}</p>
-                    </motion.div>
-                ))}
-            </div>
         </motion.div>
     );
 }
@@ -580,35 +546,6 @@ const researchCards = [
 function ResearchSection() {
     return (
         <motion.div variants={fadeUp} className="mt-24">
-            <div className="mb-10">
-                <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
-                    RESEARCH & OPEN SOURCE
-                </p>
-
-                <h3 className="mt-4 text-4xl font-semibold text-white">
-                    Constantly Learning. Constantly Building.
-                </h3>
-            </div>
-
-            <div className="grid gap-6 lg:grid-cols-3">
-                {researchCards.map((card) => (
-                    <motion.div
-                        key={card.title}
-                        whileHover={{y: -8, scale: 1.02}}
-                        className="glass-card rounded-[28px] border border-cyan-400/10 p-7"
-                    >
-                        <Boxes className="mb-5 text-cyan-300" size={26}/>
-
-                        <h4 className="text-xl font-semibold text-white">
-                            {card.title}
-                        </h4>
-
-                        <p className="mt-4 leading-7 text-slate-400">
-                            {card.description}
-                        </p>
-                    </motion.div>
-                ))}
-            </div>
         </motion.div>
     );
 }
@@ -621,54 +558,12 @@ function AvailabilityBanner() {
     return (
         <motion.div
             variants={fadeUp}
-            className="relative mt-28 overflow-hidden rounded-[36px] border border-cyan-400/15 bg-gradient-to-r from-cyan-500/10 via-violet-500/10 to-blue-500/10 p-10"
         >
             <motion.div
-                animate={{rotate: 360}}
-                transition={{
-                    repeat: Infinity,
-                    duration: 40,
-                    ease: "linear",
-                }}
-                className="absolute -right-24 -top-24 h-64 w-64 rounded-full border border-cyan-400/10"
             />
 
             <motion.div
-                animate={{rotate: -360}}
-                transition={{
-                    repeat: Infinity,
-                    duration: 50,
-                    ease: "linear",
-                }}
-                className="absolute -left-24 -bottom-24 h-64 w-64 rounded-full border border-violet-400/10"
             />
-
-            <div className="relative z-10 max-w-3xl">
-                <div className="status-pill mb-6 w-fit">
-                    <span className="status-dot"/>
-                    AVAILABLE FOR AI PROJECTS
-                </div>
-
-                <h3 className="text-4xl font-semibold text-white">
-                    Let's Build Intelligent Enterprise AI Systems Together.
-                </h3>
-
-                <p className="mt-6 leading-8 text-slate-300">
-                    Interested in GraphRAG, LLM applications, enterprise search,
-                    multi-agent systems, AI infrastructure or production AI
-                    engineering? Let's collaborate.
-                </p>
-
-                <motion.a
-                    whileHover={{scale: 1.04}}
-                    href="#contact"
-                    className="btn-primary mt-8 inline-flex items-center gap-3"
-                >
-                    Start a Conversation
-
-                    <ArrowUpRight size={18}/>
-                </motion.a>
-            </div>
         </motion.div>
     );
 }
@@ -677,7 +572,7 @@ export default function AboutSection() {
     return (
         <section
             id="about"
-            className="relative overflow-hidden py-32"
+            className="relative overflow-hidden py-3"
         >
             <div
                 className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,.08),transparent_55%)]"/>
@@ -691,221 +586,21 @@ export default function AboutSection() {
             >
                 {/* Section Heading */}
 
-                <motion.div variants={fadeUp} className="text-center">
-                    <div className="status-pill mx-auto w-fit">
-                        <span className="status-dot"/>
-                        ABOUT THE ENGINEER
-                    </div>
+                <motion.div>
 
-                    <h2 className="section-title mt-6 hero-gradient">
-                        BUILDING INTELLIGENT SYSTEMS,
-                        <br/>
-                        NOT JUST MODELS.
-                    </h2>
-
-                    <p className="section-subtitle mx-auto mt-6 max-w-3xl">
-                        I'm an AI Engineer focused on production AI infrastructure,
-                        GraphRAG, LLM applications, enterprise knowledge systems and
-                        scalable inference pipelines.
-                    </p>
                 </motion.div>
 
-                {/* =====================================================
-              Profile + Terminal
-        ====================================================== */}
-
-                <div className="mt-20 grid gap-10 lg:grid-cols-[1fr_1.2fr]">
-                    {/* Left Profile Card */}
+                <div className="mt-0 grid gap-1 lg:grid-cols-[1fr_1.2fr]">
 
                     <motion.div variants={heroItem}>
-                        <div className="glass-card rounded-[32px] border border-cyan-400/10 p-8">
-                            <div className="flex flex-col items-center text-center">
-                                <div
-                                    className="relative mb-6 h-36 w-36 rounded-full border border-cyan-400/30 bg-gradient-to-br from-cyan-500/20 to-violet-500/20 p-[2px]">
-                                    <div
-                                        className="flex h-full w-full items-center justify-center rounded-full bg-[#05070A] text-5xl font-bold text-cyan-300">
-                                        RK
-                                    </div>
-
-                                    <motion.div
-                                        animate={{
-                                            rotate: 360,
-                                        }}
-                                        transition={{
-                                            repeat: Infinity,
-                                            duration: 20,
-                                            ease: "linear",
-                                        }}
-                                        className="absolute inset-0 rounded-full border border-dashed border-cyan-400/20"
-                                    />
-                                </div>
-
-                                <h3 className="text-3xl font-semibold text-white">
-                                    {PROFILE.name}
-                                </h3>
-
-                                <p className="mt-3 text-cyan-300">
-                                    {PROFILE.title}
-                                </p>
-
-                                <p className="mt-6 leading-7 text-slate-400">
-                                    Passionate about designing AI systems that retrieve,
-                                    reason, plan, evaluate and continuously learn from
-                                    enterprise knowledge.
-                                </p>
-
-                                <div className="mt-8 flex flex-wrap justify-center gap-3">
-                                    {[
-                                        "GraphRAG",
-                                        "LangGraph",
-                                        "Neo4j",
-                                        "Qdrant",
-                                        "Next.js",
-                                        "Kubernetes",
-                                        "vLLM",
-                                        "Python",
-                                    ].map((skill) => (
-                                        <span
-                                            key={skill}
-                                            className="rounded-full border border-cyan-400/20 bg-cyan-500/5 px-4 py-2 text-xs tracking-wider text-cyan-300"
-                                        >
-                      {skill}
-                    </span>
-                                    ))}
-                                </div>
-
-                                <motion.a
-                                    whileHover={{
-                                        y: -4,
-                                    }}
-                                    href="#experience"
-                                    className="mt-8 inline-flex items-center gap-2 text-cyan-300"
-                                >
-                                    Explore My Journey
-                                    <ArrowUpRight size={18}/>
-                                </motion.a>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Right Terminal */}
-
-                    <motion.div variants={heroItem}>
-                        <div className="glass-card overflow-hidden rounded-[32px] border border-cyan-400/10">
-                            {/* Terminal Header */}
-
-                            <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
-                                <div className="flex items-center gap-2">
-                                    <span className="h-3 w-3 rounded-full bg-red-500"/>
-                                    <span className="h-3 w-3 rounded-full bg-yellow-500"/>
-                                    <span className="h-3 w-3 rounded-full bg-green-500"/>
-                                </div>
-
-                                <div className="flex items-center gap-2 text-slate-500">
-                                    <Terminal size={16}/>
-
-                                    <span className="mono text-xs">
-                    ai-engineer.sh
-                  </span>
-                                </div>
-                            </div>
-
-                            {/* Terminal Body */}
-
-                            <div className="space-y-5 p-6 font-mono text-sm">
-                                {[
-                                    "$ whoami",
-                                    PROFILE.name,
-                                    "",
-                                    "$ role",
-                                    PROFILE.title,
-                                    "",
-                                    "$ specialization",
-                                    "GraphRAG • Multi-Agent AI • Knowledge Graphs",
-                                    "",
-                                    "$ current_focus",
-                                    "Building enterprise AI infrastructure with LLMs.",
-                                    "",
-                                    "$ stack",
-                                    "Next.js | Python | Neo4j | Qdrant | LangGraph | Kubernetes",
-                                ].map((line, index) => (
-                                    <motion.div
-                                        key={index}
-                                        initial={{
-                                            opacity: 0,
-                                            x: -10,
-                                        }}
-                                        whileInView={{
-                                            opacity: 1,
-                                            x: 0,
-                                        }}
-                                        viewport={{once: true}}
-                                        transition={{
-                                            delay: index * 0.05,
-                                        }}
-                                        className={
-                                            line.startsWith("$")
-                                                ? "text-cyan-300"
-                                                : "text-slate-300"
-                                        }
-                                    >
-                                        {line === "" ? <br/> : line}
-                                    </motion.div>
-                                ))}
-
-                                <motion.div
-                                    animate={{
-                                        opacity: [1, 0, 1],
-                                    }}
-                                    transition={{
-                                        repeat: Infinity,
-                                        duration: 0.8,
-                                    }}
-                                    className="inline-block h-4 w-2 bg-cyan-400"
-                                />
-                            </div>
-                        </div>
                     </motion.div>
                 </div>
-                {/* =====================================================
-              Metrics
-        ====================================================== */}
-
-                <motion.div
-                    variants={staggerContainer(0.12)}
-                    className="mt-20 grid gap-5 sm:grid-cols-2 xl:grid-cols-4"
-                >
-                    {metrics.map((metric) => (
-                        <motion.div
-                            key={metric.label}
-                            variants={heroItem}
-                            whileHover={{
-                                y: -8,
-                                scale: 1.03,
-                            }}
-                            className="glass-card rounded-3xl border border-cyan-400/10 p-6 text-center"
-                        >
-                            <h3 className="metric-value hero-gradient text-4xl">
-                                {metric.value}
-                            </h3>
-
-                            <p className="metric-label mt-3">
-                                {metric.label}
-                            </p>
-                        </motion.div>
-                    ))}
-                </motion.div>
-
-                {/* =====================================================
-              Expertise Grid
-        ====================================================== */}
-
                 <motion.div
                     variants={staggerContainer(0.15)}
-                    className="mt-24"
+                    className="mt-0"
                 >
                     <motion.div variants={fadeUp}>
-                        <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
+                        <p className="mono  text-xs uppercase tracking-[0.35em] text-cyan-300/70">
                             CORE EXPERTISE
                         </p>
 
@@ -1001,11 +696,9 @@ export default function AboutSection() {
                     className="mt-28 grid gap-10 lg:grid-cols-[1fr_1fr]"
                 >
                     <motion.div variants={fadeUp}>
-                        <CareerTimeline/>
                     </motion.div>
 
                     <motion.div variants={fadeUp}>
-                        <GraphTerminal/>
                     </motion.div>
                 </motion.div>
 
@@ -1024,8 +717,6 @@ export default function AboutSection() {
                 <ResearchSection/>
 
                 {/* Availability Banner */}
-
-                <AvailabilityBanner/>
 
             </motion.div>
         </section>

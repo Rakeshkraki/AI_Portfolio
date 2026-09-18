@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import {motion} from "framer-motion";
 import {
     ArrowUpRight,
     Bot,
@@ -117,34 +117,21 @@ const PROJECTS = [
 
 export default function ProjectsSection() {
     return (
-        <section id="projects" className="section-spacing relative overflow-hidden" >
+        <section id="projects" className="section-spacing relative overflow-hidden">
             <div className="container-ai relative z-10">
-                <div className="mx-auto max-w-3xl text-center">
-                    <span className="badge-glow">Featured AI Projects</span>
 
-                    <h2 className="section-title mt-6">
-                        Production-Ready GenAI &amp; LLM Projects
-                    </h2>
-
-                    <p className="section-description mt-6">
-                        Projects focused on GraphRAG, AI Agents, Retrieval-Augmented
-                        Generation, Vector Databases, LLM APIs, and scalable AI backend
-                        engineering.
-                    </p>
-                </div>
-
-                <div className="mt-20 space-y-10">
+                <div className="mt-0 space-y-10">
                     {PROJECTS.map((project, index) => {
                         const Icon = project.icon;
 
                         return (
                             <motion.div
                                 key={project.title}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.08 }}
-                                whileHover={{ y: -6 }}
+                                initial={{opacity: 0, y: 40}}
+                                whileInView={{opacity: 1, y: 0}}
+                                viewport={{once: true}}
+                                transition={{delay: index * 0.08}}
+                                whileHover={{y: -6}}
                                 className="glass-card rounded-card border border-white/5 bg-gradient-to-br from-slate-900/80 to-slate-950 p-8"
                             >
                                 <div className="grid gap-10 lg:grid-cols-[1fr_280px]">
@@ -153,7 +140,7 @@ export default function ProjectsSection() {
                                             <div
                                                 className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${project.gradient}`}
                                             >
-                                                <Icon className="text-white" size={26} />
+                                                <Icon className="text-white" size={26}/>
                                             </div>
 
                                             <div>
@@ -213,7 +200,7 @@ export default function ProjectsSection() {
                                         rel="noopener noreferrer"
                                         className="btn-primary inline-flex items-center gap-2"
                                     >
-                                        <FaGithub size={18} />
+                                        <FaGithub size={18}/>
                                         Source Code
                                     </a>
 
@@ -223,7 +210,7 @@ export default function ProjectsSection() {
                                         rel="noopener noreferrer"
                                         className="btn-secondary inline-flex items-center gap-2"
                                     >
-                                        <ExternalLink size={18} />
+                                        <ExternalLink size={18}/>
                                         Live Demo
                                     </a>
                                 </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import {motion} from "framer-motion";
 import {
     ArrowRight,
     BriefcaseBusiness,
@@ -16,7 +16,7 @@ import {
     SOCIAL_LINKS,
 } from "@/lib/constants";
 
-import { useTypewriter } from "@/hooks/useTypewriter";
+import {useTypewriter} from "@/hooks/useTypewriter";
 import {
     heroTitleVariant,
     heroSubtitleVariant,
@@ -24,24 +24,23 @@ import {
     staggerContainer,
     fadeUpChild,
 } from "@/lib/motion";
-import { scrollToSection } from "@/lib/utils";
+import {scrollToSection} from "@/lib/utils";
 
 const ROLES = [
     "AI Backend Engineer",
-    "GraphRAG Developer",
     "LLM Platform Engineer",
     "GenAI Engineer",
     "FastAPI Specialist",
 ];
 
-function SocialIcon({ icon }: { icon: string }) {
-    if (icon === "github") return <Code2 size={20} aria-hidden="true" />;
-    if (icon === "linkedin") return <BriefcaseBusiness size={20} aria-hidden="true" />;
-    return <Mail size={20} aria-hidden="true" />;
+function SocialIcon({icon}: { icon: string }) {
+    if (icon === "github") return <Code2 size={20} aria-hidden="true"/>;
+    if (icon === "linkedin") return <BriefcaseBusiness size={20} aria-hidden="true"/>;
+    return <Mail size={20} aria-hidden="true"/>;
 }
 
 export default function HeroSection() {
-    const { text } = useTypewriter({
+    const {text} = useTypewriter({
         words: ROLES,
         typingSpeed: 80,
         deletingSpeed: 40,
@@ -55,10 +54,11 @@ export default function HeroSection() {
         >
             {/* Background Glow */}
 
-            <div className="absolute inset-0 -z-20 hero-grid opacity-50" />
+            <div className="absolute inset-0 -z-20 hero-grid opacity-50"/>
 
-            <div className="absolute left-0 top-20 -z-20 h-80 w-80 rounded-full bg-cyan-500/10 blur-[140px]" />
-            <div className="absolute right-0 bottom-10 -z-20 h-[28rem] w-[28rem] rounded-full bg-violet-600/10 blur-[180px]" />
+            <div className="absolute left-0 top-20 -z-20 h-80 w-80 rounded-full bg-cyan-500/10 blur-[140px]"/>
+            <div
+                className="absolute right-0 bottom-10 -z-20 h-[28rem] w-[28rem] rounded-full bg-violet-600/10 blur-[180px]"/>
 
             <div className="container-ai relative z-10">
                 <motion.div
@@ -74,7 +74,7 @@ export default function HeroSection() {
                             variants={fadeUpChild}
                             className="badge-glow mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300"
                         >
-                            <span className="h-2 w-2 rounded-full bg-cyan-400 animate-pulse" />
+                            <span className="h-2 w-2 rounded-full bg-cyan-400 animate-pulse"/>
                             Available for AI Backend Engineer Roles
                         </motion.span>
 
@@ -113,7 +113,7 @@ export default function HeroSection() {
                                 className="btn-primary btn-glow"
                             >
                                 View AI Projects
-                                <ArrowRight size={18} />
+                                <ArrowRight size={18}/>
                             </button>
 
                             <Link
@@ -121,7 +121,7 @@ export default function HeroSection() {
                                 target="_blank"
                                 className="btn-secondary"
                             >
-                                <Download size={18} aria-hidden="true" />
+                                <Download size={18} aria-hidden="true"/>
                                 Request Resume
                             </Link>
                         </motion.div>
@@ -141,7 +141,7 @@ export default function HeroSection() {
                                     aria-label={social.name}
                                     className="icon-box-sm border-soft transition hover:border-cyan-400/30 hover:bg-cyan-500/10 hover:text-cyan-400"
                                 >
-                                    <SocialIcon icon={social.icon} />
+                                    <SocialIcon icon={social.icon}/>
                                 </Link>
                             ))}
                         </motion.div>
@@ -155,7 +155,7 @@ export default function HeroSection() {
                     >
                         {/* Outer Glow */}
 
-                        <div className="absolute h-[420px] w-[420px] rounded-full bg-cyan-500/10 blur-[120px]" />
+                        <div className="absolute h-[420px] w-[420px] rounded-full bg-cyan-500/10 blur-[120px]"/>
 
                         {/* Main Glass Card */}
 
@@ -196,7 +196,7 @@ export default function HeroSection() {
                                         key={item}
                                         className="flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3"
                                     >
-                                        <span className="h-2 w-2 rounded-full bg-cyan-400" />
+                                        <span className="h-2 w-2 rounded-full bg-cyan-400"/>
 
                                         <span className="text-sm text-slate-200">{item}</span>
                                     </div>
@@ -242,9 +242,9 @@ export default function HeroSection() {
                 {/* Scroll Indicator */}
 
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 2 }}
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    transition={{delay: 2}}
                     className="mt-16 flex justify-center"
                 >
                     <button
@@ -256,14 +256,14 @@ export default function HeroSection() {
             </span>
 
                         <motion.div
-                            animate={{ y: [0, 8, 0] }}
+                            animate={{y: [0, 8, 0]}}
                             transition={{
                                 duration: 1.5,
                                 repeat: Infinity,
                             }}
                             className="flex h-10 w-6 justify-center rounded-full border border-cyan-400/30 pt-2"
                         >
-                            <div className="h-2 w-2 rounded-full bg-cyan-400" />
+                            <div className="h-2 w-2 rounded-full bg-cyan-400"/>
                         </motion.div>
                     </button>
                 </motion.div>

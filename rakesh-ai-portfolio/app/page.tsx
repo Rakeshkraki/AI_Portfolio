@@ -11,7 +11,6 @@ import ProjectsSection from "@/components/sections/ProjectsSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import ContactSection from "@/components/contact/ContactSection";
-import Footer from "@/components/footer/Footer";
 import { Suspense } from "react";
 import ErrorBoundary from "@/components/providers/ErrorBoundary";
 import LoadingScreen from "@/components/effects/LoadingScreen";
@@ -61,7 +60,7 @@ function PortfolioSection({
 }) {
     return (
         <ScrollReveal>
-            <section className="relative py-24 lg:py-32">
+            <section className="relative py-10 lg:py-5">
                 {children}
             </section>
         </ScrollReveal>
@@ -123,13 +122,13 @@ function SectionHeading({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-16 text-center"
+            className="mb-1 text-center"
         >
             <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
                 {label}
             </p>
 
-            <h2 className="hero-gradient mt-5 text-5xl font-bold">
+            <h2 className="hero-gradient mt-0 text-5xl font-bold">
                 {title}
             </h2>
         </motion.div>
@@ -289,6 +288,7 @@ function FloatingScrollTop() {
         <motion.a
             href="#home"
             whileHover={{ scale: 1.08, y: -4 }}
+            //            className="fixed bottom-8 right-8 z-50 flex h-14 w-14 items-center justify-center rounded-full border border-cyan-400/20 bg-black/60 backdrop-blur-xl text-cyan-300 shadow-[0_0_25px_rgba(34,211,238,.2)]"
             className="fixed bottom-8 right-8 z-50 flex h-14 w-14 items-center justify-center rounded-full border border-cyan-400/20 bg-black/60 backdrop-blur-xl text-cyan-300 shadow-[0_0_25px_rgba(34,211,238,.2)]"
         >
             ↑
@@ -362,7 +362,7 @@ function PortfolioHUD() {
         <div className="fixed left-6 top-1/2 z-40 hidden -translate-y-1/2 xl:block">
             <div className="glass-card rounded-[24px] border border-cyan-400/10 p-5">
                 <p className="mono mb-4 text-xs tracking-[0.35em] text-cyan-300/70">
-                    PORTFOLIO
+                    PORTFOLIO1
                 </p>
 
                 <div className="space-y-3">
@@ -443,56 +443,6 @@ function SafePage({
 }) {
     return <ErrorBoundary>{children}</ErrorBoundary>;
 }
-// ============================================================
-// End of Portfolio Banner
-// ============================================================
-
-function EndBanner() {
-    return (
-        <section className="relative overflow-hidden py-28">
-            <div className="container-ai">
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="rounded-[44px] border border-cyan-400/15 bg-gradient-to-br from-cyan-500/10 via-violet-500/10 to-sky-500/10 p-12 text-center"
-                >
-                    <motion.div
-                        animate={{ scale: [1, 1.08, 1] }}
-                        transition={{ repeat: Infinity, duration: 3 }}
-                        className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-cyan-400/10 text-cyan-300 text-3xl"
-                    >
-                        ✨
-                    </motion.div>
-
-                    <p className="mono text-xs uppercase tracking-[0.35em] text-cyan-300/70">
-                        THANK YOU
-                    </p>
-
-                    <h2 className="hero-gradient mt-5 text-5xl font-bold">
-                        Let's Build Intelligent AI Together
-                    </h2>
-
-                    <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-                        Passionate about GraphRAG, Agentic AI, AI Infrastructure,
-                        FastAPI, Retrieval Systems and scalable backend engineering.
-                    </p>
-
-                    <motion.a
-                        whileHover={{ scale: 1.05 }}
-                        href="#contact"
-                        className="btn-primary mt-10 inline-flex items-center gap-3"
-                    >
-                        Contact Me →
-                    </motion.a>
-                </motion.div>
-            </div>
-        </section>
-    );
-}
-// ============================================================
-// Scroll Restoration
-// ============================================================
 
 function ScrollRestoration() {
     return (
@@ -525,10 +475,6 @@ export default function HomePage() {
             <ParallaxLayers/>
 
             <FloatingNavigation/>
-
-            <PortfolioHUD/>
-
-            <CommandPaletteButton/>
 
             <FloatingScrollTop/>
 
@@ -566,9 +512,6 @@ export default function HomePage() {
 
                             <ContactPortfolioSection/>
 
-                            <EndBanner/>
-
-                            <Footer/>
                         </motion.div>
                     </PageSuspense>
                 </SafePage>
