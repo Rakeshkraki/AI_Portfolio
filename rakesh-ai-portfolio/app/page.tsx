@@ -19,6 +19,7 @@ import CursorGlow from "@/components/effects/CursorGlow";
 import AIChatWidget from "@/components/ai/AIChatWidget";
 // Effects
 
+import { useState } from "react";
 import SectionDivider from "@/components/ui/SectionDivider";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
@@ -456,6 +457,8 @@ function ScrollRestoration() {
 }
 
 export default function HomePage() {
+
+    const [loading, setLoading] = useState(true);
     return (
         <main className="relative overflow-hidden bg-[#050816] text-white">
             {/* Floating UI */}

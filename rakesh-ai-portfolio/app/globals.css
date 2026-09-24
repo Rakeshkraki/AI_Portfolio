@@ -2674,3 +2674,35 @@ a {
 /* ========================================================================== */
 /* END OF AI PORTFOLIO GLOBAL CSS V5 */
 /* ========================================================================== */
+
+/* Loading Screen */
+
+.hero-gradient {
+    background: linear-gradient(90deg, #22d3ee, #60a5fa, #8b5cf6);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Prevent loader from inheriting container width */
+.loading-root {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Smooth page fade after loading */
+.page-enter {
+    animation: pageFade 0.8s ease forwards;
+}
+
+@keyframes pageFade {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

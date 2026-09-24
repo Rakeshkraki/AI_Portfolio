@@ -1,126 +1,156 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { BrainCircuit } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const loadingMessages = [
-    "Initializing AI Portfolio...",
-    "Loading GraphRAG Projects...",
-    "Connecting AI Infrastructure...",
-    "Preparing Experience Timeline...",
-    "Launching Portfolio...",
+const logs = [
+    "Initializing AI Runtime",
+    "Loading GPT-5 Models",
+    "Connecting Vector Database",
+    "Building Knowledge Graph",
+    "Starting AI Agents",
+    "Portfolio Ready",
 ];
 
-export default function LoadingScreen() {
-    const [visible, setVisible] = useState(true);
+interface LoadingScreenProps {
+    onComplete?: () => void;
+}
+
+export default function LoadingScreen({
+                                          onComplete,
+                                      }: LoadingScreenProps) {
     const [progress, setProgress] = useState(0);
-    const [messageIndex, setMessageIndex] = useState(0);
+    const [show, setShow] = useState(true);
 
     useEffect(() => {
-        const progressTimer = setInterval(() => {
-            setProgress((prev) => {
-                if (prev >= 100) {
-                    clearInterval(progressTimer);
+        const interval = setInterval(() => {
+            setProgress((currentProgress) => {
+                const nextProgress =
+                    currentProgress + Math.random() * 8 + 2;
 
-                    setTimeout(() => setVisible(false), 500);
+                if (nextProgress >= 100) {
+                    clearInterval(interval);
+
+                    setTimeout(() => {
+                        setShow(false);
+                        onComplete?.();
+                    }, 600);
 
                     return 100;
                 }
 
-                return prev + 2;
+                return nextProgress;
             });
-        }, 50);
+        }, 120);
 
-        const messageTimer = setInterval(() => {
-            setMessageIndex((prev) => (prev + 1) % loadingMessages.length);
-        }, 900);
-
-        return () => {
-            clearInterval(progressTimer);
-            clearInterval(messageTimer);
-        };
-    }, []);
+        return () => clearInterval(interval);
+    }, [onComplete]);
 
     return (
         <AnimatePresence>
-            {visible && (
+            {show && (
                 <motion.div
-                    className="loading-screen"
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.8 }}
+                    className="fixed inset-0 z-[99999] flex items-center justify-center overflow-hidden bg-[#020617]"
                 >
-                    {/* AI Logo */}
+                    {/* Background Glow */}
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.15),transparent_55%)]" />
 
+                    {/* Animated Rings */}
                     <motion.div
-                        className="loading-logo"
-                        initial={{ scale: 0.7, opacity: 0 }}
-                        animate={{
-                            scale: [0.9, 1.05, 1],
-                            opacity: 1,
-                        }}
+                        animate={{ rotate: 360 }}
                         transition={{
-                            duration: 1,
                             repeat: Infinity,
-                            repeatType: "reverse",
+                            duration: 30,
+                            ease: "linear",
                         }}
-                    >
-                        RK
-                    </motion.div>
-
-                    {/* Name */}
-
-                    <motion.h2
-                        className="hero-gradient mt-8 text-3xl font-bold tracking-tight"
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.25 }}
-                    >
-                        Rakesh K
-                    </motion.h2>
-
-                    {/* Subtitle */}
-
-                    <motion.p
-                        className="loading-text"
-                        key={messageIndex}
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.35 }}
-                    >
-                        {loadingMessages[messageIndex]}
-                    </motion.p>
-
-                    {/* Progress */}
-
-                    <div className="loading-progress mt-8">
-                        <motion.div
-                            className="loading-progress-fill"
-                            style={{ width: `${progress}%` }}
-                        />
-                    </div>
-
-                    <motion.span
-                        className="mt-4 font-mono text-sm text-cyan-300"
-                        animate={{ opacity: [0.4, 1, 0.4] }}
-                        transition={{ repeat: Infinity, duration: 1.2 }}
-                    >
-                        {progress}%
-                    </motion.span>
-
-                    {/* Bottom Status */}
+                        className="absolute h-[420px] w-[420px] rounded-full border border-cyan-500/10"
+                    />
 
                     <motion.div
-                        className="mt-12 flex items-center gap-3 text-sm text-slate-400"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.6 }}
-                    >
-                        <span className="loader-dot" />
+                        animate={{ rotate: -360 }}
+                        transition={{
+                            repeat: Infinity,
+                            duration: 18,
+                            ease: "linear",
+                        }}
+                        className="absolute h-[300px] w-[300px] rounded-full border border-violet-500/10"
+                    />
 
-                        AI Backend Engineer Portfolio • Next.js 15 • GPT-5 Ready
-                    </motion.div>
+                    {/* Center Content */}
+                    <div className="relative flex w-full max-w-lg flex-col items-center px-8 text-center">
+                        {/* AI Icon */}
+                        <motion.div
+                            animate={{ scale: [1, 1.12, 1] }}
+                            transition={{
+                                duration: 2.5,
+                                repeat: Infinity,
+                            }}
+                            className="flex h-28 w-28 items-center justify-center rounded-full bg-cyan-500/10 shadow-[0_0_80px_rgba(34,211,238,0.4)]"
+                        >
+                            <BrainCircuit
+                                size={52}
+                                className="text-cyan-400"
+                            />
+                        </motion.div>
+
+                        {/* Title */}
+                        <motion.h1
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.3 }}
+                            className="hero-gradient mt-8 text-5xl font-black"
+                        >
+                            Rakesh AI
+                        </motion.h1>
+
+                        <p className="mt-4 text-sm uppercase tracking-[0.4em] text-cyan-300">
+                            Booting AI Infrastructure
+                        </p>
+
+                        {/* Progress */}
+                        <div className="mt-10 w-full">
+                            <div className="h-2 w-full overflow-hidden rounded-full bg-slate-800">
+                                <motion.div
+                                    animate={{ width: `${progress}%` }}
+                                    transition={{ duration: 0.15 }}
+                                    className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500"
+                                />
+                            </div>
+
+                            <div className="mt-3 flex justify-between text-xs text-slate-400">
+                                <span>AI Runtime</span>
+                                <span>{Math.floor(progress)}%</span>
+                            </div>
+                        </div>
+
+                        {/* Logs */}
+                        <div className="mt-10 w-full rounded-2xl border border-cyan-500/10 bg-slate-950/60 p-5 text-left font-mono text-xs backdrop-blur-xl">
+                            {logs.map((log, index) => {
+                                const isActive =
+                                    progress > index * 16 &&
+                                    progress < (index + 1) * 16;
+
+                                return (
+                                    <motion.p
+                                        key={log}
+                                        animate={{
+                                            opacity: progress > index * 16 ? 1 : 0.2,
+                                        }}
+                                        className="mb-2 text-cyan-300 last:mb-0"
+                                    >
+                                        &gt; {log}
+                                        {isActive && (
+                                            <span className="animate-pulse"> ▋</span>
+                                        )}
+                                    </motion.p>
+                                );
+                            })}
+                        </div>
+                    </div>
                 </motion.div>
             )}
         </AnimatePresence>
