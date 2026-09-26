@@ -36,7 +36,7 @@ const EXPERIENCE = [
         ],
     },
     {
-        company: "Self Learning + AI Projects",
+        company: "Spektra Systems LLC",
         role: "SDE Intern",
         period: "Mar 2024 — Jul 2024",
         icon: Bot,

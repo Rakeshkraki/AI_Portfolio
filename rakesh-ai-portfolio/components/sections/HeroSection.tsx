@@ -115,15 +115,16 @@ export default function HeroSection() {
                                 View AI Projects
                                 <ArrowRight size={18}/>
                             </button>
-
-                            <Link
-                                href={`mailto:${PERSONAL_INFO.email}?subject=Resume%20request`}
-                                target="_blank"
+                            <a
+                                href="/Rakesh_K_CV.pdf"
+                                download="Rakesh_K.pdf"
                                 className="btn-secondary"
                             >
-                                <Download size={18} aria-hidden="true"/>
-                                Request Resume
-                            </Link>
+                                <Download size={18} aria-hidden="true" />
+                                Resume
+                            </a>
+
+
                         </motion.div>
 
                         {/* Social Links */}
